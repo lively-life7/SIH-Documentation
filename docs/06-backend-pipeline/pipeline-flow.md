@@ -49,9 +49,9 @@ flowchart TD
 | Stage | Input Data Structure | Output Data Structure | Typical Latency | Primary Failure Guard |
 | :--- | :--- | :--- | :--- | :--- |
 | **Ingestion** | 23-byte binary LoRa frame | Row in `nodes.csv` (120 bytes) | $< 15\text{ ms}$ | CRC-16 error rejection; de-dup ring |
-| **C7 Cleaning**| Raw `nodes.csv` + `nodes.json` | Calibrated state dictionary (SI units) | $< 35\text{ ms}$ | Sag undo prior to thermal subtraction |
+| **C7 Cleaning** | Raw `nodes.csv` + `nodes.json` | Calibrated state dictionary (SI units) | $< 35\text{ ms}$ | Sag undo prior to thermal subtraction |
 | **C8 Quorum** | Calibrated state + `events.csv` | Alarm classification (Quiet/Warn/Crit) | $< 10\text{ ms}$ | 5-node Byzantine quorum + DGMS blast veto |
-| **Siren Action**| Dry-contact relay command | 125 dB physical audio siren | $< 250\text{ ms}$ | Local hardware latch; independent of internet |
+| **Siren Action** | Dry-contact relay command | 125 dB physical audio siren | $< 250\text{ ms}$ | Local hardware latch; independent of internet |
 | **C9 Twin** | Calibrated state (48 time slices) | $64 \times 64$ elevation & strain mesh | $\sim 45\text{ s}$ (Async)| PINN decoupled from real-time alarm loop |
 
 ### Inviolable Firewall Check:

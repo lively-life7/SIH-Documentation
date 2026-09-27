@@ -32,14 +32,14 @@ To minimize RF airtime, eliminate serialization overhead, and comply with Indian
 | **4 – 5** | `strain_ue` | int16 (LE) | $1\ \mu\varepsilon$ | $\pm 32,767\ \mu\varepsilon$ | Horizontal ground strain across 10m base |
 | **6 – 7** | `ext_delta_10um`| int16 (LE) | $10\ \mu\text{m}$ / LSB | $\pm 327.6\text{ mm}$ | 3D relative peg displacement |
 | **8 – 9** | `vib_rms_x100` | uint16 (LE)| $0.01\text{ mm/s}$ | $0.00 \to 655.35\text{ mm/s}$ | RMS vibration intensity during burst |
-| **10 – 11**| `vib_peak_x100`| uint16 (LE)| $0.01\text{ mm/s}$ | $0.00 \to 655.35\text{ mm/s}$ | Peak Particle Velocity (PPV) |
+| **10 – 11** | `vib_peak_x100`| uint16 (LE)| $0.01\text{ mm/s}$ | $0.00 \to 655.35\text{ mm/s}$ | Peak Particle Velocity (PPV) |
 | **12** | `vib_fdom_hz` | uint8 | $1\text{ Hz}$ | $0 \to 255\text{ Hz}$ | Dominant FFT spectral frequency |
-| **13 – 14**| `temp_dc` | int16 (LE) | $0.1^\circ\text{C}$ | $-40.0 \to +85.0^\circ\text{C}$ | Internal sensor die temperature |
-| **15 – 16**| `vbat_mv` | uint16 (LE)| $1\text{ mV}$ | $2500 \to 4500\text{ mV}$ | Battery supply voltage |
+| **13 – 14** | `temp_dc` | int16 (LE) | $0.1^\circ\text{C}$ | $-40.0 \to +85.0^\circ\text{C}$ | Internal sensor die temperature |
+| **15 – 16** | `vbat_mv` | uint16 (LE)| $1\text{ mV}$ | $2500 \to 4500\text{ mV}$ | Battery supply voltage |
 | **17** | `status_flags` | uint8 | Bitmask | 8 discrete bits | Diagnostic and operational state |
-| **18 – 19**| `epoch_lo` | uint16 (LE)| 1 epoch (60s) | $0 \to 65,535$ | Lower 16 bits of 60-second sample clock |
+| **18 – 19** | `epoch_lo` | uint16 (LE)| 1 epoch (60s) | $0 \to 65,535$ | Lower 16 bits of 60-second sample clock |
 | **20** | `node_id` | uint8 | Integer ID | $1 \to 255$ | Physical hardware identifier |
-| **21 – 22**| `crc16` | uint16 (LE)| Checksum | Standard CCITT | CRC-16-CCITT ($x^{16} + x^{12} + x^5 + 1$) |
+| **21 – 22** | `crc16` | uint16 (LE)| Checksum | Standard CCITT | CRC-16-CCITT ($x^{16} + x^{12} + x^5 + 1$) |
 
 ---
 
@@ -49,7 +49,7 @@ The `status_flags` byte provides single-bit diagnostic flags evaluated at the in
 
 | Bit | Name | Logic 0 | Logic 1 | Significance |
 | :--- | :--- | :--- | :--- | :--- |
-| **0 – 1**| `crack_level` | 00: Intact | 01: Micro, 10: Mod, 11: Severe | Conductive trip wire fracture state |
+| **0 – 1** | `crack_level` | 00: Intact | 01: Micro, 10: Mod, 11: Severe | Conductive trip wire fracture state |
 | **2** | `selftest_ok` | Sensor Hardware Fault | Transducers Healthy | Excludes faulty nodes from quorum (Test T43) |
 | **3** | `trip_active` | Routine Sampling | Priority Emergency Trip | Marks frame as emergency transmission |
 | **4** | `solar_chg` | Solar Panel Inactive | Panel Charging Battery | Power subsystem diagnostic |

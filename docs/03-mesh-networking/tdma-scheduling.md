@@ -33,7 +33,7 @@ Each cluster block coordinates up to **5 leaf Scout nodes** reporting to a desig
 * **Slots 1 to 5 (250 ms each):** Leaf Scout nodes transmit their 23-byte telemetry packet in their assigned sub-slot.
 * **Bitmap ACK Window (150 ms):** The Anchor Relay transmits a single compact **Bitmap ACK packet (1 byte mask, 20 bytes on-air)**. Each bit in the mask corresponds to a child node ID within the cluster:
   $$\text{Bitmap} = \sum_{i=1}^5 b_i \cdot 2^{i-1}$$
-  If bit $b_i = 1$, node $i$ marks its packet as delivered and clears its immediate retransmit buffer. This single broadcast replaces 5 individual downlink packets, cutting downlink airtime by over **$80\%$** and keeping gateway duty cycle strictly below the 1.0% statutory ceiling.
+  If bit $b_i = 1$, node $i$ marks its packet as delivered and clears its immediate retransmit buffer. This single broadcast replaces 5 individual downlink packets, cutting downlink airtime by over **80%** and keeping gateway duty cycle strictly below the 1.0% statutory ceiling.
 * **Retry Sub-slot (250 ms):** Any node whose bit was 0 attempts an immediate retransmission before the cluster window closes.
 
 ---
@@ -46,7 +46,7 @@ When a node experiences sudden mechanical shock, rapid tensile strain accelerati
 3. **Deterministic Subslot Indexing (Gate G10):**
    To prevent multiple simultaneous alarms from colliding on-air, the emergency window is divided into 16 deterministic subslots ($250\text{ ms}$ each). A node selects its emergency slot using a deterministic modulo function of its hardware ID:
    $$\text{Slot}_{\text{emergency}} = (\text{Node\_ID} \pmod{16})$$
-4. **Zero Collision Guarantee (Gate G11):** Even if 20 nodes trip simultaneously due to a sudden roof shear event, their transmissions map into non-overlapping subslots, guaranteeing that the critical trip packet reaches the gateway in **$< 1.4\text{ seconds}$**.
+4. **Zero Collision Guarantee (Gate G11):** Even if 20 nodes trip simultaneously due to a sudden roof shear event, their transmissions map into non-overlapping subslots, guaranteeing that the critical trip packet reaches the gateway in **< 1.4 seconds**.
 
 ---
 

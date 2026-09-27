@@ -61,10 +61,10 @@ For deeper extraction panels, such as the Adriyala Longwall Project ($H = 375\te
 | :--- | :--- | :--- | :--- |
 | **100 meters** | $142\text{ mm}$ (Severe aliasing) | $1.0\times$ (Low) | Unacceptable; misses localized fissures |
 | **60 meters** | $58\text{ mm}$ | $1.6\times$ | Marginal; poor inflection capture |
-| **40 meters** | **$21\text{ mm}$ (Error Knee)** | **$2.4\times$** | **Optimal Engineering Knee** |
+| **40 meters** | **21 mm (Error Knee)** | **2.4×** | **Optimal Engineering Knee** |
 | **20 meters** | $18\text{ mm}$ | $4.8\times$ | Diminishing returns (doubles cost for 3mm gain) |
 
-For deep seams ($H > 300\text{m}$), **$40\text{m}$ spacing** represents the optimal balance of spatial reconstruction accuracy ($21\text{ mm}$ error) and hardware cost, fitting precisely within the 37-scout baseline. For shallow panels ($H \le 150\text{m}$), the spacing contracts to **$15\text{–}25\text{m}$**.
+For deep seams ($H > 300\text{m}$), **40m spacing** represents the optimal balance of spatial reconstruction accuracy ($21\text{ mm}$ error) and hardware cost, fitting precisely within the 37-scout baseline. For shallow panels ($H \le 150\text{m}$), the spacing contracts to **15–25m**.
 
 ---
 

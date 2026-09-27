@@ -84,7 +84,7 @@ When multiple sensor signals abruptly disappear from the telemetry stream, the s
 | :--- | :--- | :--- |
 | **Spatial Signature** | All children of a single relay vanish simultaneously. | Concentrated along high-strain shear inflection zones. |
 | **Precursor Strain** | Precursor strain trend is flat ($\Delta\varepsilon \approx 0$). | Precursor strain accelerated sharply over previous 3–5 epochs. |
-| **Backup Slot Telemetry**| Children reappear via backup parents in slots 46–50s. | Nodes remain permanently dead across all frequencies. |
+| **Backup Slot Telemetry** | Children reappear via backup parents in slots 46–50s. | Nodes remain permanently dead across all frequencies. |
 | **Crack Sensor Flags** | `crack_level` remains 00 (intact). | `crack_level` latches to 11 (severed trace). |
 | **Engine Action** | Raises yellow maintenance alert `F4_RELAY_OFFLINE`. | **Trips Red Emergency Evacuation Siren `CLASS_A_COLLAPSE`.** |
 

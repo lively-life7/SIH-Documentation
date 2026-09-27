@@ -36,7 +36,7 @@ The primary economic barrier preventing the widespread adoption of continuous ge
 | **Manual Survey Crews** | 4-person survey team + field vehicle | Autonomous wireless telemetry | **₹14,00,000 / year** |
 | **Satellite Radar Contracts** | Commercial InSAR processing fees | Local physics-constrained mesh | **₹8,00,000 / year** |
 | **Battery & Consumables** | Frequent battery replacements | 1W Solar + LiFePO4 (>5-year life) | **₹1,50,000 / year** |
-| **Total Annual Operational Savings**| — | — | **₹23,50,000 / year / mine** |
+| **Total Annual Operational Savings** | — | — | **₹23,50,000 / year / mine** |
 
 ---
 

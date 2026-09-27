@@ -58,4 +58,4 @@ Mining operators in India and internationally rely on four primary categories of
 | **Instant Siren Trigger (< 2s)** | No | No | No | **Yes (< 1.4s)** |
 | **Algorithmic Low-Cost Scaling** | No (High OPEX) | No (₹40–60L CAPEX) | No (Commercial fees) | **Yes (~₹1,050–₹1,850/node)** |
 | **Monsoon & Weather Immunity** | Poor | Good | Poor | **Good (IP67 + RF)** |
-| **False Blast Discrimination** | N/A | Rare | None | **Yes (FFT + Blast Log)**|
+| **False Blast Discrimination** | N/A | Rare | None | **Yes (FFT + Blast Log)** |

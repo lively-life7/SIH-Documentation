@@ -55,9 +55,9 @@ To scientifically validate AEGIS against statutory mining standards, an independ
 
 | Metric | Minimum Acceptable Threshold | Measurement Method |
 | :--- | :--- | :--- |
-| **Displacement Correlation ($R^2$)** | **$R^2 \ge 0.90$** vs. manual leveling | Linear regression against Total Station survey |
-| **Advance Crack Prediction** | **$\ge 7.0$ days** prior to visible rupture | Time delta between $\varepsilon > 1500\ \mu\varepsilon$ and visual crack |
+| **Displacement Correlation ($R^2$)** | **R² ≥ 0.90** vs. manual leveling | Linear regression against Total Station survey |
+| **Advance Crack Prediction** | **≥ 7.0 days** prior to visible rupture | Time delta between $\varepsilon > 1500\ \mu\varepsilon$ and visual crack |
 | **False Blast Alarms** | **Zero false evacuation alarms** | 100% correlation with DGMS shift blast register |
-| **Network Availability / Uptime** | **$\ge 99.5\%$ packet delivery** | Total received frames vs. expected frames over 40 days |
-| **Emergency Trigger Latency** | **$< 1.4\text{ seconds}$** | Hardware event injection to siren contact closure |
+| **Network Availability / Uptime** | **≥ 99.5% packet delivery** | Total received frames vs. expected frames over 40 days |
+| **Emergency Trigger Latency** | **< 1.4 seconds** | Hardware event injection to siren contact closure |
 | **Hardware Enclosure Integrity** | Zero moisture or dust ingress | Post-trial inspection of IP67 enclosures and glands |

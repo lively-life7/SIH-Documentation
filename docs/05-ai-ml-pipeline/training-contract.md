@@ -33,7 +33,7 @@ The training contract strictly specifies which parameters the neural network is 
 | **Draw Angle ($\tan\beta$)** | Stratigraphy | Calibrated from core samples ($2.0$) | **FROZEN** (Constant) |
 | **Influence Radius ($r$)** | Kinematic | Calculated analytically ($H / \tan\beta = 75.0\text{m}$) | **FROZEN** (Constant) |
 | **Horizontal Ratio ($B_{\text{horiz}}$)** | Mechanics | Awershin ratio ($0.32 \cdot r = 24.0\text{m}$) | **FROZEN** (Constant) |
-| **Subsidence Factor ($\hat{a}$)**| Geological | Bound: $[0.40, \, 0.90]$ | **LEARNED by PINN** |
+| **Subsidence Factor ($\hat{a}$)** | Geological | Bound: $[0.40, \, 0.90]$ | **LEARNED by PINN** |
 | **Time Decay ($\hat{c}$)** | Rheological | Bound: $[0.005, \, 0.050]\text{ day}^{-1}$ | **LEARNED by PINN** |
 
 ---

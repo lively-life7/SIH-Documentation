@@ -47,7 +47,7 @@
 | **PWA** | Progressive Web Application | Mobile Application Architecture |
 | **RMS** | Root Mean Square | Vibration Amplitude Calculation |
 | **SCADA** | Supervisory Control and Data Acquisition | Industrial Mission Control |
-| **SCAMP**| Strata Control and Monitoring Plan (DGMS CMR Reg. 111) | Statutory Safety Mandate |
+| **SCAMP** | Strata Control and Monitoring Plan (DGMS CMR Reg. 111) | Statutory Safety Mandate |
 | **SCCL** | The Singareni Collieries Company Limited | Indian Coal Producer (Telangana) |
 | **SECL** | South Eastern Coalfields Limited | Indian Mining Industry (CIL) |
 | **SF** | Spreading Factor (LoRa SF7 to SF12) | Modulation Parameter |

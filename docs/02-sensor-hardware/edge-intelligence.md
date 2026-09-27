@@ -24,7 +24,7 @@ AEGIS solves this via **On-Node Edge Spectral Classification**:
    * `vib_rms_x100` (uint16): Root-Mean-Square vibration intensity ($0.01\text{ mm/s}$ resolution).
    * `vib_peak_x100` (uint16): Peak Particle Velocity ($0.01\text{ mm/s}$ resolution).
    * `vib_fdom_hz` (uint8): Dominant energy frequency ($1\text{ Hz}$ bins, $0\text{ to }200\text{ Hz}$).
-4. This compresses $144,000\text{ bytes}$ of raw data into **5 bytes** on the wire—a compression ratio of **$28,800:1$** while preserving the diagnostic frequency fingerprint.
+4. This compresses $144,000\text{ bytes}$ of raw data into **5 bytes** on the wire—a compression ratio of **28,800:1** while preserving the diagnostic frequency fingerprint.
 
 ---
 

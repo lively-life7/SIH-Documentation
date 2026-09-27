@@ -37,7 +37,7 @@ AEGIS selects **LoRa Sub-GHz modulation (IN865 band: 865–867 MHz)** as the fie
 1. **Sub-GHz Diffraction & Earth Penetration:**
    Radio waves at 865 MHz diffract around spoil tips, vegetated berms, and undulating ground far more effectively than 2.4 GHz signals. Path loss measurements confirm a $12\text{ to }18\text{ dB}$ link budget advantage over 2.4 GHz technologies under equivalent transmit power.
 2. **Airtime vs. Battery Optimization:**
-   Operating at Spreading Factor 7 (SF7) and 125 kHz bandwidth allows a 23-byte sensor packet to be transmitted in just **$90.4\text{ ms}$**. This enables leaf nodes to operate at an ultra-low **$0.10\%$ duty cycle**, conserving battery power for over 120 days of solar-free autonomy.
+   Operating at Spreading Factor 7 (SF7) and 125 kHz bandwidth allows a 23-byte sensor packet to be transmitted in just **90.4 ms**. This enables leaf nodes to operate at an ultra-low **0.10% duty cycle**, conserving battery power for over 120 days of solar-free autonomy.
 3. **Decoupled Cellular Architecture:**
    Equipping 40+ individual nodes with cellular NB-IoT SIM cards introduces high annual recurring costs, recurring SIM deactivations, and total failure during underground telecommunication outages. AEGIS isolates all field communication to an autonomous, local LoRa mesh. Only the single Master Gateway carries a cellular uplink, lowering connectivity costs by over 95%.
 4. **Deterministic TDMA over Raw LoRaWAN:**

@@ -20,7 +20,7 @@ The regulatory foundation for AEGIS is **Gazette of India Notification GSR 564(E
 | **Frequency Band** | 865.000 – 867.000 MHz | **865.100 – 866.900 MHz** | **PASS** (Operates entirely within band) |
 | **Carrier Bandwidth** | **Maximum 200 kHz** | **125 kHz (BW125)** | **PASS (Test T18)** |
 | **Conducted RF Power** | Maximum 30 dBm (1 Watt) | **14 dBm (Scout), 27 dBm (Relay)** | **PASS** (Below 30 dBm ceiling) |
-| **Effective Radiated Power (ERP)**| Maximum 36 dBm (4 Watts) | **30 dBm ERP (Gateway 8.5 dBi omni)** | **PASS** (6 dB safety margin) |
+| **Effective Radiated Power (ERP)** | Maximum 36 dBm (4 Watts) | **30 dBm ERP (Gateway 8.5 dBi omni)** | **PASS** (6 dB safety margin) |
 | **Statutory Duty Cycle Clause** | **None specified in GSR 564(E)** | **Self-imposed 1.0% limit** | **PASS** (Convention adopted) |
 | **Operating Licensing** | License-free (De-licensed band) | Fully license-free | No individual WPC station license required |
 
@@ -46,6 +46,6 @@ A common misstatement among technical presenters is claiming that "Indian radio 
 > However, AEGIS enforces a strict **self-imposed 1.0% duty cycle ceiling** across all transmitters:
 > 1. The 865–867 MHz band is shared with industrial UHF RFID systems and logistics trackers. Enforcing a 1% ceiling prevents mutual RF blocking.
 > 2. Self-imposed transmission caps are the mathematical foundation that allows a TDMA mesh network to scale to dozens of nodes without channel collapse.
-> 3. Measured field duty cycles remain far below the convention: **Scout nodes run at $0.10\%$**, and **Anchor relays run at $0.56\%$** (Test `T12`).
+> 3. Measured field duty cycles remain far below the convention: **Scout nodes run at 0.10%**, and **Anchor relays run at 0.56%** (Test `T12`).
 
 Stating this distinction demonstrates genuine mastery of Indian telecommunications law before technical and regulatory judging panels.

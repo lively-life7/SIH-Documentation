@@ -21,7 +21,7 @@
 | **Bedrock Anchor** | A fixed reference station installed outside the influence basin ($> 1.5r$) into undisturbed bedrock, providing the zero-displacement baseline. |
 | **Master Gateway** | The central communications hub (Tier 3) equipped with a 10m mast, SX1302 concentrator, cellular modem, and hardware siren relay. |
 | **LoRa (Long Range)** | A proprietary chirp spread spectrum (CSS) radio modulation technique optimized for low power and long-distance telemetry. |
-| **Spreading Factor (SF)**| The number of chirps used per data symbol in LoRa modulation. Lower SF (SF7) is fast with short airtime; higher SF (SF8) provides longer range. |
+| **Spreading Factor (SF)** | The number of chirps used per data symbol in LoRa modulation. Lower SF (SF7) is fast with short airtime; higher SF (SF8) provides longer range. |
 | **Bandwidth (BW)** | The frequency width of the RF carrier signal. Fixed at **125 kHz** to comply with Indian statutory ceilings ($\le 200\text{ kHz}$). |
 | **Airtime** | The physical on-air transmission duration of a wireless packet, representing the primary energy and channel capacity constraint. |
 | **Duty Cycle** | The percentage of time a radio transmitter occupies the shared RF spectrum. Self-imposed at $\le 1.0\%$ across all AEGIS nodes. |
@@ -32,7 +32,7 @@
 | **PDR** | Packet Delivery Ratio: The percentage of successfully received packets over a transmission channel. |
 | **PINN** | Physics-Informed Neural Network: A neural network constrained by differential physical laws that reconstructs continuous 3D terrain without alarm authority. |
 | **LOO Residual** | Leave-One-Out cross-validation residual: An accuracy metric computed by masking one node and evaluating prediction error. |
-| **$d_{\text{committed}}$** | The diameter of the Largest Empty Circle ($358\text{m}$) between sensor stations, representing the published spatial detection limit. |
+| $d_{\mathbf{committed}}$ | The diameter of the Largest Empty Circle ($358\text{m}$) between sensor stations, representing the published spatial detection limit. |
 | **DGMS** | Directorate General of Mines Safety: The statutory regulatory body governing mine occupational safety in India. |
 | **C7 Corrector** | The backend 8-step calibration pipeline that converts raw degraded bitstreams into clean physical engineering units. |
 | **C8 Safety Detector** | The deterministic, 100% mathematically auditable alarm engine holding exclusive authority to trip evacuation sirens. |

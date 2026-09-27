@@ -45,7 +45,7 @@ flowchart TD
 A common concern in wireless sensor networks is channel saturation as sensor counts grow. AEGIS manages RF capacity through deterministic allocation:
 
 1. **Per-Gateway Node Ceiling:**
-   * Under the 60-second superframe with 250 ms leaf slots, a single Master Gateway accommodates up to **60 active Scout nodes** while maintaining channel utilization below **$8.0\%$** (well below the 18% ALOHA collapse threshold).
+   * Under the 60-second superframe with 250 ms leaf slots, a single Master Gateway accommodates up to **60 active Scout nodes** while maintaining channel utilization below **8.0%** (well below the 18% ALOHA collapse threshold).
 2. **Multi-Panel Gateway Amortization:**
    * When adjacent mining panels are situated within a $2\text{ km}$ radius, a single central Master Gateway with an 8.5 dBi omnidirectional antenna coordinates both panels on alternating frequency channels (Channels 1–4 vs. Channels 5–6), cutting per-panel capital costs by an additional ₹8,500.
 

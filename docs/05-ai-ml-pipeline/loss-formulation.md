@@ -52,7 +52,7 @@ $$\mathcal{L}_{\text{anchor}} = \frac{1}{K} \sum_{k=1}^K \left| \hat{S}(x_{\text
 
 > [!WARNING]
 > **The Critical Role of Anchor Loss (Test T34):**
-> Verification tests demonstrate that when $\mathcal{L}_{\text{anchor}}$ is disabled, the neural network's unconstrained bias weights cause the entire global elevation grid to drift upward or downward by over **$10\text{ cm}$** ($> 100\text{ mm}$ systematic offset), rendering tilt derivatives meaningless. Locking the anchors to $|S| < 1\text{ mm}$ establishes a fixed absolute elevation datum.
+> Verification tests demonstrate that when $\mathcal{L}_{\text{anchor}}$ is disabled, the neural network's unconstrained bias weights cause the entire global elevation grid to drift upward or downward by over **10 cm** ($> 100\text{ mm}$ systematic offset), rendering tilt derivatives meaningless. Locking the anchors to $|S| < 1\text{ mm}$ establishes a fixed absolute elevation datum.
 
 ### 4. Asymptotic Boundary Decay ($\mathcal{L}_{\text{bound}}$)
 Penalizes any predicted deformation extending beyond the theoretical influence boundary:

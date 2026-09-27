@@ -10,7 +10,7 @@
 Field nodes must survive multi-year outdoor deployments in extreme Indian opencast and subsidence environments (ambient temperatures ranging from $4^\circ\text{C}$ in winter to $48^\circ\text{C}$ in summer, with high solar irradiance and coal dust accumulation).
 
 ### Lithium Iron Phosphate ($\text{LiFePO}_4$) Selection
-Standard Lithium-Cobalt ($LiCoO_2$) 18650 cells common in consumer electronics are rejected due to thermal runaway risk above $55^\circ\text{C}$ and rapid capacity degradation after 500 charge cycles. AEGIS selects **$\text{LiFePO}_4$ (3.2V 1500mAh 18650 cylindrical cells)**:
+Standard Lithium-Cobalt ($LiCoO_2$) 18650 cells common in consumer electronics are rejected due to thermal runaway risk above $55^\circ\text{C}$ and rapid capacity degradation after 500 charge cycles. AEGIS selects **LiFePO₄ (3.2V 1500mAh 18650 cylindrical cells)**:
 * **Thermal Stability:** Stable up to $+70^\circ\text{C}$ without thermal runaway.
 * **Cycle Durability:** Over 2,000 full charge-discharge cycles to 80% capacity retention (equivalent to >5 years of continuous field operation).
 * **Flat Voltage Plateau:** Operates between $3.2\text{V}$ and $3.1\text{V}$ across 80% of its discharge curve, minimizing reference rail drift for analogue sensor circuitry.
@@ -47,7 +47,7 @@ A Scout node spends over 98% of its operational life in ultra-low-power deep sle
 | **LoRa Uplink Transmission (SF7/125kHz)** | 90.4 ms | 110 mA | $9.944\text{ mA}\cdot\text{s}$ |
 | **Downlink ACK Window (SX1262 RX)** | 40.0 ms | 11 mA | $0.440\text{ mA}\cdot\text{s}$ |
 | **Deep Sleep (RTC Timer Active)** | 59,225 ms | 0.012 mA | $0.711\text{ mA}\cdot\text{s}$ |
-| **Total Energy Per 60-Second Cycle** | **60,000 ms** | **—** | **$25.29\text{ mA}\cdot\text{s}$** |
+| **Total Energy Per 60-Second Cycle** | **60,000 ms** | **—** | **25.29 mA·s** |
 
 $$\text{Average Current Draw} = \frac{25.29\text{ mA}\cdot\text{s}}{60\text{ s}} \approx 0.422\text{ mA}$$
 $$\text{Average Power Consumption} = 0.422\text{ mA} \times 3.2\text{ V} \approx 1.35\text{ mW}$$

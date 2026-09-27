@@ -38,9 +38,9 @@ Each stage is protected by an automated gate; developers cannot advance to the n
 | :--- | :--- | :--- | :--- |
 | **Day 1: Static Contracts** | `sim/constants.py`, `config/nodes.json` (layout manifest), `data/events.csv` | **V1–V12, E1–E8** | Any coordinate outside panel boundary fails build. |
 | **Day 2: Forward Physics** | Analytical $S(x,y,t)$, tilt, curvature, strain, and background vibration | **T1–T5, T9, T10** | Volume conservation must balance to 1.0000; derivatives $< 1\times 10^{-7}$. |
-| **Day 3: Physical Corruption**| 6-stage degradation chain: thermal walk, quantization, sag, dropouts | **T6, T7** | **CRITICAL GATE: If T7 fails, STOP.** Calibration cannot recover truth. |
-| **Day 4: Network Simulation** | TDMA superframe, Spreading Factor links, bitmap ACKs, relay failover | **T11, T12, T16–T26**| Worst-node duty cycle must stay $< 1.0\%$; carrier bandwidth $\le 200\text{ kHz}$. |
-| **Day 5: Persistence & Pipes**| Ingestion engine, 36h `nodes.csv` rolling store, Parquet archive worker | **T8, T13, T27–T31**| `import truth` must fail; zero rows unaccounted for in memory. |
+| **Day 3: Physical Corruption** | 6-stage degradation chain: thermal walk, quantization, sag, dropouts | **T6, T7** | **CRITICAL GATE: If T7 fails, STOP.** Calibration cannot recover truth. |
+| **Day 4: Network Simulation** | TDMA superframe, Spreading Factor links, bitmap ACKs, relay failover | **T11, T12, T16–T26** | Worst-node duty cycle must stay $< 1.0\%$; carrier bandwidth $\le 200\text{ kHz}$. |
+| **Day 5: Persistence & Pipes** | Ingestion engine, 36h `nodes.csv` rolling store, Parquet archive worker | **T8, T13, T27–T31** | `import truth` must fail; zero rows unaccounted for in memory. |
 | **Day 6: Final Freeze** | End-to-end integration, scenario tuning, full test suite pass | **FULL SUITE T1–T46** | Every single test must pass without warnings or overrides. |
 
 ---

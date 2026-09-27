@@ -48,9 +48,9 @@ Recomputed from closed-form equations over a high-resolution $4001 \times 4001$ 
 | Physical Channel | Fully Settled State ($t \to \infty$) | At Day 40 ($\eta = 0.432$) | Sensor Measurement Range | Margin to Saturation |
 | :--- | :--- | :--- | :--- | :--- |
 | **Subsidence ($S$)** | **1.950 meters** | 0.842 meters | Computed analytically | — |
-| **Surface Tilt ($T$)** | **$25,978\ \mu\text{rad}$ ($1.49^\circ$)**| $11,222\ \mu\text{rad}$ | $\pm 65,534\ \mu\text{rad}$ @ 2 µrad LSB | **$2.52\times$** |
-| **Horizontal Strain ($\varepsilon$)** | **$12,649\ \mu\varepsilon$** | $5,464\ \mu\varepsilon$ | $\pm 32,767\ \mu\varepsilon$ @ 1 µε LSB | **$2.59\times$** |
-| **Extensometer (10m Span)** | **$126.5\text{ mm}$** | $54.6\text{ mm}$ | $\pm 327.6\text{ mm}$ @ 10 µm LSB | **$2.59\times$** |
+| **Surface Tilt ($T$)** | **25,978 µrad (1.49°)** | $11,222\ \mu\text{rad}$ | $\pm 65,534\ \mu\text{rad}$ @ 2 µrad LSB | **2.52×** |
+| **Horizontal Strain ($\varepsilon$)** | **12,649 µε** | $5,464\ \mu\varepsilon$ | $\pm 32,767\ \mu\varepsilon$ @ 1 µε LSB | **2.59×** |
+| **Extensometer (10m Span)** | **126.5 mm** | $54.6\text{ mm}$ | $\pm 327.6\text{ mm}$ @ 10 µm LSB | **2.59×** |
 
 ---
 

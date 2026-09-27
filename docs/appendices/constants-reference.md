@@ -32,11 +32,11 @@ All mathematical simulation models, embedded firmware profiles, backend calibrat
 
 | Channel | Thermal Sensitivity ($k_T$) | Random Drift ($\sigma_b$) | White Noise ($\sigma_w$) | LSB Resolution |
 | :--- | :--- | :--- | :--- | :--- |
-| **Tilt ($T_x, T_y$)** | $250\ \mu\text{rad/}^\circ\text{C}$ | $3\ \mu\text{rad}$ | $8\ \mu\text{rad}$ | **$2\ \mu\text{rad}$** |
-| **Horizontal Strain ($\varepsilon$)** | $5\ \mu\varepsilon/^\circ\text{C}$ | $0.5\ \mu\varepsilon$ | $1.2\ \mu\varepsilon$ | **$1\ \mu\varepsilon$** |
-| **Extensometer ($Ext$)** | $12\ \mu\text{m/}^\circ\text{C}$ | $5\ \mu\text{m}$ | $15\ \mu\text{m}$ | **$10\ \mu\text{m}$** |
-| **Die Temperature ($T_{\text{die}}$)** | — | — | $0.05^\circ\text{C}$ | **$0.1^\circ\text{C}$** |
-| **Battery Voltage ($V_{\text{bat}}$)** | — | — | $5\text{ mV}$ | **$1\text{ mV}$** |
+| **Tilt ($T_x, T_y$)** | $250\ \mu\text{rad/}^\circ\text{C}$ | $3\ \mu\text{rad}$ | $8\ \mu\text{rad}$ | **2 µrad** |
+| **Horizontal Strain ($\varepsilon$)** | $5\ \mu\varepsilon/^\circ\text{C}$ | $0.5\ \mu\varepsilon$ | $1.2\ \mu\varepsilon$ | **1 µε** |
+| **Extensometer ($Ext$)** | $12\ \mu\text{m/}^\circ\text{C}$ | $5\ \mu\text{m}$ | $15\ \mu\text{m}$ | **10 µm** |
+| **Die Temperature ($T_{\text{die}}$)** | — | — | $0.05^\circ\text{C}$ | **0.1°C** |
+| **Battery Voltage ($V_{\text{bat}}$)** | — | — | $5\text{ mV}$ | **1 mV** |
 
 * Reference Temperature: `T_REF = 25.0 °C`
 * Drift Correlation Time: `TAU_OU = 21600.0 s` (6.0 hours)

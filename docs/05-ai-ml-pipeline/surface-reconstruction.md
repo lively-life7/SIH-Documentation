@@ -48,7 +48,7 @@ A common marketing claim in mine monitoring is "100% blind-spot-free coverage." 
 
 AEGIS addresses this through the **Largest Empty Circle (LEC)** metric:
 * **Definition:** The largest circle that can be inscribed between sensor locations within the active subsidence basin without containing a single node.
-* **$d_{\text{committed}} = 358\text{ meters}$ (Test T20):**
+* **Detection Limit ($d_{\text{committed}} = 358\text{ m}$, Test T20):**
   The diameter of the largest empty circle across the baseline layout is calculated geometrically as $358\text{ meters}$.
 * **Statutory Transparency:**
   Per Gate G15 and Test `T20`, the value of $d_{\text{committed}}$ is prominently displayed in the SCADA dashboard header:

@@ -14,7 +14,7 @@ The AEGIS monitoring platform is architected to satisfy all applicable Indian st
 | **Directorate General of Mines Safety (DGMS)** | **Coal Mines Regulations (CMR) 2017, Reg. 111** | Mandatory Strata Control and Monitoring Plan (SCAMP) | Provides continuous digital surface displacement and strain logging. |
 | **DGMS** | **Coal Mines Regulations (CMR) 2017, Reg. 112** | Continuous surveillance over extracted goaves and aquifers | High-density 15–25m grid detects tensile fissuring over aquifers. |
 | **DGMS** | **DGMS Circular No. 7 of 1997** | Ground vibration monitoring and mandatory blast record keeping | Automated ingestion of `events.csv` blast log; PPV threshold checks. |
-| **WPC / Min. of Comm.**| **Gazette Notification GSR 564(E)** | RF emission limits in 865–867 MHz band; bandwidth $\le 200\text{ kHz}$ | Operates at 125 kHz BW; transmit power $\le 30\text{ dBm}$ (Test T18). |
+| **WPC / Min. of Comm.** | **Gazette Notification GSR 564(E)** | RF emission limits in 865–867 MHz band; bandwidth $\le 200\text{ kHz}$ | Operates at 125 kHz BW; transmit power $\le 30\text{ dBm}$ (Test T18). |
 | **Ministry of Labour** | **The Mines Act, 1952 (Sec. 22)** | Power to prohibit extraction in dangerous conditions | Deterministic C8 engine trips automated siren (<1.4s) on critical breach. |
 | **Indian Standard** | **IS 14881:2001** | Guidelines for design and construction of ground monitoring systems | Stainless steel anchoring pegs, IP67 dust/water protection. |
 

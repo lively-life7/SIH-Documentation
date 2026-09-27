@@ -7,7 +7,7 @@
 
 ## 1. Sub-1.4 Second Emergency Siren Activation
 
-When ground failure occurs, every second of evacuation delay increases fatality risk. AEGIS enforces a hard latency ceiling of **$< 1.4\text{ seconds}$** from physical sensor trip to acoustic siren emission.
+When ground failure occurs, every second of evacuation delay increases fatality risk. AEGIS enforces a hard latency ceiling of **< 1.4 seconds** from physical sensor trip to acoustic siren emission.
 
 ```
 [Physical Ground Rupture / Crack Breached]
@@ -49,7 +49,7 @@ In parallel with acoustic field sirens, AEGIS dispatches redundant digital notif
 | **Tier 1: Advisory** | Blue | SCADA Banner, Audit Log | Shift Geotechnical Trainee | Logged automatically |
 | **Tier 2: Warning** | Yellow | Dashboard Flash, SMS Broadcast | Shift Mining Overman | 15 Minutes |
 | **Tier 3: Critical** | Orange | SMS, Automated Phone Call, Strobe | Geotechnical In-Charge & Manager | 3 Minutes |
-| **Tier 4: Emergency**| **Red** | **125 dB Siren, Automated Voice Call, SMS** | **Entire Mine Shift Crew & GM** | **IMMEDIATE EVACUATION** |
+| **Tier 4: Emergency** | **Red** | **125 dB Siren, Automated Voice Call, SMS** | **Entire Mine Shift Crew & GM** | **IMMEDIATE EVACUATION** |
 
 ---
 

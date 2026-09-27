@@ -36,9 +36,9 @@ Every row of telemetry processed by AEGIS carries an explicit provenance tag to 
 
 | Provenance Tag | Source of Observation | Physical Example | ML Training Loss Weight |
 | :--- | :--- | :--- | :--- |
-| **`real`** | Physical ground sensors in active mines | Historical SCCL Adriyala leveling pegs, Sentinel-1 InSAR | **$3.0\times$ (Highest ground truth)** |
-| **`pinned`** | Empirical Knothe physics fitted to field data | Baseline elevation grid fitted to field draw angle | **$1.0\times$ (Physical baseline)** |
-| **`synthetic`** | Emulated edge cases and noise injection | Simulated sensor battery drop, packet fade, thermal walk | **$0.1\times$ (Penalized)** |
+| `real` (real-world) | Physical ground sensors in active mines | Historical SCCL Adriyala leveling pegs, Sentinel-1 InSAR | **3.0× (Highest ground truth)** |
+| `pinned` (physics-fit) | Empirical Knothe physics fitted to field data | Baseline elevation grid fitted to field draw angle | **1.0× (Physical baseline)** |
+| `synthetic` (simulated) | Emulated edge cases and noise injection | Simulated sensor battery drop, packet fade, thermal walk | **0.1× (Penalized)** |
 
 ### Why Provenance Weighting Is Essential:
 Commercial and academic AI systems frequently fail in field deployments because their neural networks are trained uniformly on synthetic data. The model inadvertently learns synthetic noise artifacts (such as synthetic battery discharge curves) as if they were true geological signals. By discounting synthetic rows by $10\times$ ($0.1\times$ loss weight), AEGIS forces the neural network to prioritize real-world physical constraints.

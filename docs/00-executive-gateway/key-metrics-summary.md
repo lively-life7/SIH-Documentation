@@ -19,7 +19,7 @@ The following table summarizes the verified engineering performance benchmarks o
 | **RF Spectrum Statutory Cap** | ≤ 200 kHz carrier bandwidth | **125 kHz (IN865 Band)** | GSR 564(E) RF spectrum compliance test (Test T18) |
 | **Transmitter Duty Cycle** | ≤ 1.0% (ETSI/LoRa convention) | **0.10% (Scouts), 0.56% (Anchors)** | Semtech airtime calculation & 40-day logged run (Test T12, G08) |
 | **False Alarm Elimination** | Zero false evacuations from blasting | **99.4% veto rate** | DGMS Circular 7/1997 shift blast log correlation (Test T39) |
-| **Surface Spatial Resolution** | Resolve 2m localized fissures | **$\Delta \le 15\text{--}25\text{m}$ (Nyquist grid)** | Knothe influence radius derivation ($r = 75\text{m} \to \Delta \le 25\text{m}$) |
+| **Surface Spatial Resolution** | Resolve 2m localized fissures | **15–25m Nyquist Grid** ($\Delta \le r/2.86$) | Knothe influence radius derivation ($r = 75\text{m} \to \Delta \le 25\text{m}$) |
 | **Unmonitored Blind Spot ($d_{\text{committed}}$)** | Documented and published | **358 meters** | Largest Empty Circle (LEC) spatial evaluation (Test T20) |
 | **Verification Suite Coverage** | Complete functional coverage | **46 / 46 Tests Passing (T1–T46)** | Automated test runner in continuous integration |
 

@@ -64,7 +64,7 @@ $$f_{\text{gap}} = \min\left(10.0, \, 1.0 + 0.1 \cdot \left(\frac{\Delta t_{\tex
 
 > [!NOTE]
 > **The 10.0 Ceiling (Test T45):**
-> Uncapped uncertainty formulas cause $\sigma$ to inflate by over $1,000\times$ during a multi-day network severance, causing division-by-zero numerical overflow in downstream matrix inversions. Capping $f_{\text{gap}}$ at **$10.0$** guarantees numerical stability.
+> Uncapped uncertainty formulas cause $\sigma$ to inflate by over $1,000\times$ during a multi-day network severance, causing division-by-zero numerical overflow in downstream matrix inversions. Capping $f_{\text{gap}}$ at **10.0** guarantees numerical stability.
 
 ### 3. Hardware Diagnostic Multiplier ($f_{\text{flags}}$)
 Evaluates bit flags from byte 17 of the wire packet:

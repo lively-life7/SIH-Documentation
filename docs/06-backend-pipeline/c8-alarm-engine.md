@@ -48,7 +48,7 @@ Thresholds are established in strict accordance with Indian Coal Mines Regulatio
 | **Tier 1: Advisory** | Blue | $500\ \mu\varepsilon < \varepsilon \le 1000\ \mu\varepsilon$ OR Tilt $> 3\text{ mm/m}$ | Visual dashboard advisory alert |
 | **Tier 2: Warning** | Yellow | $1000\ \mu\varepsilon < \varepsilon \le 1500\ \mu\varepsilon$ OR Tilt $> 6\text{ mm/m}$ | SMS alert to Geotechnical Officer |
 | **Tier 3: Critical** | Orange | $\varepsilon > 1500\ \mu\varepsilon$ OR Acceleration $> 3\times$ baseline | Automated shift supervisor call tree |
-| **Tier 4: Emergency**| **Red** | **Quorum confirmed $\varepsilon > 1500\ \mu\varepsilon$ OR Crack = 11** | **Full-Mine Evacuation Siren (<1.4s)** |
+| **Tier 4: Emergency** | **Red** | **Quorum confirmed $\varepsilon > 1500\ \mu\varepsilon$ OR Crack = 11** | **Full-Mine Evacuation Siren (<1.4s)** |
 
 ---
 
@@ -74,7 +74,7 @@ Indian coal mines conduct daily scheduled production blasting. Detonations gener
 
 * Conventional threshold detectors interpret this blast vibration as an imminent slope collapse, triggering false alarms during every blasting shift.
 * **The AEGIS Blast Filter:**
-  The C8 engine monitors the digital blast register (`events.csv`). When a vibration surge occurs, the engine checks whether a blast was scheduled within a **$\pm 5\text{-second}$ window**.
+  The C8 engine monitors the digital blast register (`events.csv`). When a vibration surge occurs, the engine checks whether a blast was scheduled within a **±5-second window**.
   * If a scheduled blast matches the timestamp and mining sector, the event is marked `vetoed_by = BLAST_REGULAR`. The siren is suppressed.
   * If a violent shockwave ($> 15\text{ mm/s}$) occurs **without** a corresponding entry in `events.csv`, C8 immediately trips **Class-A Unlogged Blast / Seismic Shock Alert** (verified by test `T40`).
 
