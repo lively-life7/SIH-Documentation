@@ -73,6 +73,18 @@ docs/
 
 ---
 
+## Architectural Clarification: Dynamic Panel Sizing & Modular Cost Scaling
+
+> [!IMPORTANT]
+> **Dynamic Scaling Over Static Node Counts:**
+> Previous early drafts referenced a fixed "31-node / <₹1.5 Lakhs" deployment. In actual underground mining operations, panel dimensions, extraction depths, and geological strata vary substantially. AEGIS rejects rigid node counts and fixed package costs in favor of a **physics-driven dynamic sizing model**:
+> 
+> 1. **Variable Mine Panel Geometry:** Coal panels range from 200m to 1,500m in length, 100m to 300m in width, with seam depths ($H$) from 50m to 400m+. Node counts are computed dynamically based on the Knothe influence radius ($r = H / \tan\beta$) and the Nyquist spatial sampling limit ($\Delta \le r/2.86 \approx 15\text{--}25\text{m}$).
+> 2. **Modular Cost Scaling:** The Scout Node BOM is maintained at an ultra-low unit cost (~₹1,050/node using indigenous COTS components). The total panel deployment cost scales linearly with the calculated node count ($N$) and terrain criticality, providing massive savings compared to imported systems (₹2–5L per unit, ₹40–60L+ per panel) regardless of panel size.
+> 3. **Adaptive Mesh Scheduling:** The TDMA superframe and DAG routing scale to match the deployed node population for any specific panel layout.
+
+---
+
 ## Module-by-Module Blueprint
 
 ---
@@ -97,10 +109,10 @@ docs/
 
 #### `key-metrics-summary.md`
 <!-- One-page scorecard
-     - ₹1,050 per Scout Node
+     - ₹1,050 per Scout Node (indigenous COTS BOM)
      - 8.9-day advance crack prediction
      - <1.4s end-to-end siren latency
-     - 31-node full panel coverage for <₹1.5 Lakhs
+     - Dynamic panel coverage & modular cost scaling per panel dimensions & depth (replaces rigid 31-node / fixed-cost assumptions)
      - 72h zero data loss buffer
      - T1–T46 verification register
      - Zero false alarm (Byzantine quorum) -->
@@ -153,7 +165,7 @@ docs/
 #### `bill-of-materials.md`
 <!-- Full BOM table: part | quantity | unit cost | supplier
      Total per Scout: ~₹1,050
-     Total per panel (31 nodes): <₹1.5 Lakhs
+     Total per panel: Variable & modular cost scaling based on panel dimensions (L × W), seam depth (H), and physics-driven grid spacing (replacing static single-cost/fixed-node figures)
      Comparison table vs imported systems (₹2–5L per unit, ₹40–60L per panel) -->
 
 #### `power-and-energy.md`
@@ -175,7 +187,7 @@ docs/
 
 ### Module 03 — Mesh Networking
 
-> How data moves from 31 field nodes to the gateway: protocol, scheduling, packet format, routing, resilience, and compliance.
+> How data moves from dynamically sized field node meshes (scaled to panel dimensions) to the gateway: protocol, scheduling, packet format, routing, resilience, and compliance.
 
 #### `protocol-selection.md`
 <!-- LoRa vs Zigbee vs Wi-Fi mesh vs NB-IoT
@@ -282,7 +294,7 @@ docs/
      Retraining cadence -->
 
 #### `surface-reconstruction.md`
-<!-- Sparse-to-dense: 31 discrete points → continuous 3D surface
+<!-- Sparse-to-dense: discrete sparse mesh points (scaled to panel dimensions) → continuous 3D surface
      Leave-One-Out (LOO) residual validation
      Largest Empty Circle (LEC) metric: d_committed = 358m
      Output: deformation heatmap for CesiumJS -->
@@ -305,7 +317,7 @@ docs/
 #### `data-architecture.md`
 <!-- nodes.csv: 36h rolling window, ~8 MB fixed size
      Parquet cold archive for historical analysis
-     nodes.json: frozen geometry + calibration manifest (31 entries)
+     nodes.json: panel geometry + calibration manifest (parameterized N-node manifest generated per panel layout)
      events.csv: DGMS blast register + lightning register
      How files relate to each other -->
 
@@ -388,7 +400,7 @@ docs/
 
 #### `build-order.md`
 <!-- 6-day milestone sequence:
-     Day 1: constants.py, nodes.json (31 entries frozen), events.csv → V1–V12, E1–E8
+     Day 1: constants.py, nodes.json (panel node layout manifest), events.csv → V1–V12, E1–E8
      Day 2: Layers 0–2 (surface, derivatives, weather, vibration) → T1–T5, T9, T10
      Day 3: Layer 3 (6-stage corruption) → T6, T7 — IF THESE FAIL, STOP
      Day 4: Layer 4 (mesh, TDMA, PDR, aggregation, failover) → T11, T12, T16–T26
@@ -397,7 +409,7 @@ docs/
 
 #### `field-validation-plan.md`
 <!-- Target coalfield for pilot (which Coal India subsidiary)
-     Number of nodes for trial deployment
+     Number of nodes for trial deployment (scaled to pilot panel area)
      Duration and monitoring cadence
      Success metrics: detection accuracy, false alarm rate, uptime, latency
      Comparison methodology: AEGIS vs manual survey on same panel -->
@@ -419,7 +431,7 @@ docs/
 
 #### `scalability.md`
 <!-- Same architecture: 1 panel or 50 panels
-     Linear cost scaling (₹1.5L per panel)
+     Modular cost scaling based on panel dimensions, node density, and terrain criticality (driven by ~₹1,050/node Scout BOM)
      Gateway density: 1 per panel or 1 per cluster of adjacent panels
      Cloud infrastructure scaling: horizontal backend, per-panel PINN instances
      Multi-mine centralized monitoring center concept -->
@@ -432,7 +444,7 @@ docs/
      Blast register cross-referencing per DGMS Circular 7/1997 -->
 
 #### `cost-benefit-analysis.md`
-<!-- Per-panel deployment: <₹1.5 Lakhs vs ₹40–60 Lakhs imported
+<!-- Per-panel deployment: modular, ultra-low-cost deployment (~₹1,050/Scout Node) scaling dynamically with panel size vs ₹40–60 Lakhs imported systems
      Annual opex savings: no manual survey crew
      Infrastructure damage prevention: ₹313 Cr railway, mine shutdowns
      ROI timeline for Coal India subsidiaries
