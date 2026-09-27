@@ -60,7 +60,7 @@ flowchart TD
 | **Ingestion Engine** | `backend/ingest` | Wire unpacking, duplicate frame rejection, rolling `nodes.csv` window maintenance | Sensor error compensation, ground physics fitting |
 | **C7 Corrector** | `backend/c7` | 8-step cleaning, battery sag compensation, thermal drift removal, common-mode rejection | Threshold checking, siren triggers, surface meshing |
 | **C8 Safety Detector** | `backend/c8` | Strain rate calculation, 5-node Byzantine quorum gating, DGMS blast veto, siren actuation | Continuous terrain rendering, neural weights |
-| **C9 PINN Twin** | `backend/c9` | Sparse-to-dense 3D mesh interpolation, parameter estimation ($\hat{a}, \hat{c}$), dashboard display feed | Alarm generation, siren control, SMS dispatch |
+| **C9 PINN Twin** | `backend/c9` | Sparse-to-dense 3D mesh interpolation, parameter estimation (â, ĉ), dashboard display feed | Alarm generation, siren control, SMS dispatch |
 
 ---
 

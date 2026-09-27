@@ -7,7 +7,7 @@
 
 ## 1. Battery Chemistry & Environmental Durability
 
-### Question: Why does AEGIS specify Lithium Iron Phosphate ($\text{LiFePO}_4$) chemistry rather than standard Lithium-Ion/Cobalt ($LiCoO_2$) or NMC cells for mining panel deployments?
+### Question: Why does AEGIS specify Lithium Iron Phosphate (LiFePO_4) chemistry rather than standard Lithium-Ion/Cobalt (LiCoO_2) or NMC cells for mining panel deployments?
 
 **Answer:** Standard consumer Lithium-Ion ($LiCoO_2$) and Nickel Manganese Cobalt (NMC) chemistries represent unacceptable safety hazards in Indian open-cast and subsidence monitoring environments:
 1. **Thermal Stability and Explosion Immunity:** In Indian mining sectors (e.g., Godavari Valley, Singrauli, Jharia), summer ambient temperatures regularly reach $+48^\circ\text{C}$. Inside sealed, UV-exposed IP67 enclosures, internal temperatures can exceed $+65^\circ\text{C}$. Standard lithium chemistries undergo exothermic electrolyte breakdown and catastrophic thermal runaway above $+55^\circ\text{C}$. In contrast, $\text{LiFePO}_4$ possesses exceptional chemical stability, remaining completely safe up to $+70^\circ\text{C}$ with zero risk of explosion or fire.
@@ -41,16 +41,16 @@
 
 The precise electrical charge consumption per 60-second epoch is itemized below:
 
-| Operational Phase | Duration ($t$) | Current ($I$) | Electrical Charge ($I × t$) | Energy ($V_{cc} = 3.2\text{V}$) |
+| Operational Phase | Duration (t) | Current (I) | Electrical Charge (I × t) | Energy (V_cc = 3.2V) |
 | :--- | :--- | :--- | :--- | :--- |
-| **Sensor I²C / SPI Read** | $3.0\text{ ms}$ | $15.0\text{ mA}$ | $0.0450\text{ mA}\cdot\text{s}$ | $0.144\text{ mJ}$ |
-| **Vibration Sampling Burst (256 pts @ 400Hz)** | $640.0\text{ ms}$ | $22.0\text{ mA}$ | $14.0800\text{ mA}\cdot\text{s}$ | $45.056\text{ mJ}$ |
-| **Edge FFT Feature Extraction** | $1.5\text{ ms}$ | $45.0\text{ mA}$ | $0.0675\text{ mA}\cdot\text{s}$ | $0.216\text{ mJ}$ |
-| **Wire Payload Serialization & CRC-16** | $0.05\text{ ms}$ | $15.0\text{ mA}$ | $0.0008\text{ mA}\cdot\text{s}$ | $0.003\text{ mJ}$ |
-| **LoRa Uplink Transmission (SF7 / 125kHz)** | $90.4\text{ ms}$ | $110.0\text{ mA}$ | $9.9440\text{ mA}\cdot\text{s}$ | $31.821\text{ mJ}$ |
-| **Downlink ACK Window (SX1262 RX)** | $40.0\text{ ms}$ | $11.0\text{ mA}$ | $0.4400\text{ mA}\cdot\text{s}$ | $1.408\text{ mJ}$ |
-| **Ultra-Low Power Deep Sleep** | $59,225.45\text{ ms}$ | $0.012\text{ mA}$ | $0.7107\text{ mA}\cdot\text{s}$ | $2.274\text{ mJ}$ |
-| **Total Per 60-Second Superframe** | **$60,000.0\text{ ms}$** | — | **$25.288\text{ mA}\cdot\text{s}$** | **$80.922\text{ mJ}$** |
+| **Sensor I²C / SPI Read** | 3.0 ms | 15.0 mA | 0.0450 mA·s | 0.144 mJ |
+| **Vibration Sampling Burst (256 pts @ 400Hz)** | 640.0 ms | 22.0 mA | 14.0800 mA·s | 45.056 mJ |
+| **Edge FFT Feature Extraction** | 1.5 ms | 45.0 mA | 0.0675 mA·s | 0.216 mJ |
+| **Wire Payload Serialization & CRC-16** | 0.05 ms | 15.0 mA | 0.0008 mA·s | 0.003 mJ |
+| **LoRa Uplink Transmission (SF7 / 125kHz)** | 90.4 ms | 110.0 mA | 9.9440 mA·s | 31.821 mJ |
+| **Downlink ACK Window (SX1262 RX)** | 40.0 ms | 11.0 mA | 0.4400 mA·s | 1.408 mJ |
+| **Ultra-Low Power Deep Sleep** | 59,225.45 ms | 0.012 mA | 0.7107 mA·s | 2.274 mJ |
+| **Total Per 60-Second Superframe** | **60,000.0 ms** | — | **25.288 mA·s** | **80.922 mJ** |
 
 ### Question: What are the resulting average current, average power consumption, and daily milliamp-hour requirements?
 
@@ -92,11 +92,11 @@ The ESP32’s dual-core Xtensa LX6 processor operating at $240\text{ MHz}$ provi
 
 | Computational Task | Execution Time | RAM Footprint | CPU Headroom Factor | Energy per Epoch |
 | :--- | :--- | :--- | :--- | :--- |
-| **7-Channel Sensor Polling ($I^2C$/SPI)** | $3.0\text{ ms}$ | $64\text{ Bytes}$ | $> 20,000×$ | $0.144\text{ mJ}$ ($0.18\%$) |
-| **256-Point Real FFT Feature Extraction** | $1.5\text{ ms}$ | $2.0\text{ KB}$ | $> 40,000×$ | $0.216\text{ mJ}$ ($0.27\%$) |
-| **Wire Framing & CRC-16 Calculation** | $0.045\text{ ms}$ | $23\text{ Bytes}$ | $> 1,000,000×$ | $0.003\text{ mJ}$ ($0.004\%$) |
-| **Flash Log Append (SPI Ring Buffer)** | $0.8\text{ ms}$ | $128\text{ Bytes}$ | $> 75,000×$ | $0.038\text{ mJ}$ ($0.05\%$) |
-| **LoRa Uplink Transmission (RF Output)** | $90.4\text{ ms}$ | — | — | **$31.821\text{ mJ}$ ($39.3\%$)** |
-| **Deep Sleep Standby (RTC Active)** | $59,225\text{ ms}$ | — | — | **$2.274\text{ mJ}$ ($2.8\%$)** |
+| **7-Channel Sensor Polling (I²C/SPI)** | 3.0 ms | 64 Bytes | > 20,000× | 0.144 mJ (0.18%) |
+| **256-Point Real FFT Feature Extraction** | 1.5 ms | 2.0 KB | > 40,000× | 0.216 mJ (0.27%) |
+| **Wire Framing & CRC-16 Calculation** | 0.045 ms | 23 Bytes | > 1,000,000× | 0.003 mJ (0.004%) |
+| **Flash Log Append (SPI Ring Buffer)** | 0.8 ms | 128 Bytes | > 75,000× | 0.038 mJ (0.05%) |
+| **LoRa Uplink Transmission (RF Output)** | 90.4 ms | — | — | **31.821 mJ (39.3%)** |
+| **Deep Sleep Standby (RTC Active)** | 59,225 ms | — | — | **2.274 mJ (2.8%)** |
 
 As demonstrated, the 256-point FFT consumes only $0.216\text{ mJ}$—less than **$0.27\%$** of the superframe energy budget. In contrast, the LoRa radio transmission consumes $31.82\text{ mJ}$ ($39.3\%$ of total energy). Executing local edge analytics to compress $144\text{ KB}$ of raw data into 5 bytes reduces total RF energy consumption by over $99\%$, proving that edge compute directly optimizes system battery life.

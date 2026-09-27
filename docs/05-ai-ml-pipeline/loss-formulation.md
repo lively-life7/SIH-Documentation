@@ -34,7 +34,7 @@ Where the loss weights balance the relative gradient magnitudes:
 
 ## 2. Loss Term Mathematical Derivations
 
-### Question: How is the observational data loss ($\mathcal{L}_{\text{data}}$) formulated with provenance weighting, and why is uniform Mean Squared Error (MSE) inadequate for mining telemetry?
+### Question: How is the observational data loss (L_data) formulated with provenance weighting, and why is uniform Mean Squared Error (MSE) inadequate for mining telemetry?
 
 **Answer:** Mining field datasets combine heterogeneous observation channels: high-precision optical leveling surveys, real-time wireless mesh sensor telemetry, and synthetic noise-injected edge cases. A naive uniform MSE treats all observations as equally authoritative, causing the network to learn synthetic noise artifacts or transient packet loss dropouts as true geological deformation.
 
@@ -49,7 +49,7 @@ Where the scalar weight $\omega_{\text{prov}}(i)$ is assigned dynamically per Ga
 
 Penalizing synthetic telemetry by $10\times$ ensures that the network fits physical field data with highest fidelity while using synthetic points strictly for structural regularization.
 
-### Question: What is the governing Knothe Partial Differential Equation (PDE), and how is the differential residual loss ($\mathcal{L}_{\text{PDE}}$) computed via automatic differentiation?
+### Question: What is the governing Knothe Partial Differential Equation (PDE), and how is the differential residual loss (L_PDE) computed via automatic differentiation?
 
 **Answer:** Strata relaxation above an extracted seam is governed by Knothe's time-rate differential equation, which states that vertical subsidence velocity is proportional to the remaining distance to asymptotic final subsidence:
 
@@ -64,7 +64,7 @@ $$\mathcal{L}_{\text{PDE}} = \frac{1}{M} \sum_{j=1}^M \left| \left.\frac{\partia
 
 The temporal derivative $\partial \hat{S} / \partial t$ is computed analytically via reverse-mode **automatic differentiation (autodiff)** through the PyTorch computational graph. Collocation points require no physical sensors; they sample arbitrary coordinates across the extraction basin, forcing the neural network to satisfy the physics of continuum strata relaxation everywhere.
 
-### Question: What is the Bedrock Anchor Boundary Lock ($\mathcal{L}_{\text{anchor}}$), and why does disabling it cause a catastrophic $> 10\text{ cm}$ elevation datum drift (Test T34)?
+### Question: What is the Bedrock Anchor Boundary Lock (L_anchor), and why does disabling it cause a catastrophic > 10 cm elevation datum drift (Test T34)?
 
 **Answer:** Reference bedrock anchor nodes are physically positioned outside the extraction influence basin ($x > x_2 + 2r$), anchored deep into stable geological formations where physical subsidence must remain identically zero across all epochs.
 
@@ -77,7 +77,7 @@ In an unconstrained neural network, the output layer bias parameter $b_{\text{ou
 
 Because civil infrastructure decisions depend on absolute elevation benchmarks, and spatial tilt derivatives become distorted near the boundary, locking the bedrock anchors to $|\hat{S}| < 1.0\text{ mm}$ with a high loss penalty ($w_{\text{anchor}} = 2.0$) establishes an unyielding absolute coordinate datum.
 
-### Question: How is the Asymptotic Boundary Decay Loss ($\mathcal{L}_{\text{bound}}$) formulated to prevent unphysical far-field deformation?
+### Question: How is the Asymptotic Boundary Decay Loss (L_bound) formulated to prevent unphysical far-field deformation?
 
 **Answer:** Mining subsidence basins do not propagate infinitely. Physical deformation decays to negligible levels beyond the radius of influence $r$. Outside the far-field boundary domain $\Omega_{\text{far}} = \{ (x, y) \mid \text{dist}((x, y), \text{Panel}) > 2r \}$, vertical settlement must vanish.
 
@@ -113,4 +113,4 @@ AEGIS implements a rigorous **Two-Stage Hybrid Optimization Pipeline**:
 2. **Stage 2 — L-BFGS Second-Order Convergence (Local Exploitation):**  
    Once the total loss plateau is reached ($\Delta \mathcal{L} / \mathcal{L} < 10^{-4}$), optimization switches to the **Limited-memory Broyden-Fletcher-Goldfarb-Shanno (L-BFGS)** algorithm with strong Wolfe line search. L-BFGS approximates the inverse Hessian matrix ($\mathbf{H}^{-1}$) using curvature information from recent gradient history:
    $$\mathbf{x}_{k+1} = \mathbf{x}_k - \alpha_k \mathbf{H}_k^{-1} \nabla \mathcal{L}_{\text{total}}(\mathbf{x}_k)$$
-   This second-order transition yields rapid super-linear (quadratic) convergence, driving the PDE physics residual $\mathcal{L}_{\text{PDE}}$ and anchor datum errors to near-machine precision ($\mathcal{L}_{\text{anchor}} < 10^{-6}$), which first-order methods cannot achieve within reasonable time bounds.
+   This second-order transition yields rapid super-linear (quadratic) convergence, driving the PDE physics residual $\mathcal{L}_{\text{PDE}}$ and anchor datum errors to near-machine precision ($\mathcal{L}_{\text{anchor}} < 10⁻⁶$), which first-order methods cannot achieve within reasonable time bounds.

@@ -1,11 +1,11 @@
-# Dynamic Measurement Uncertainty ($\sigma$) Derivations
+# Dynamic Measurement Uncertainty (\sigma) Derivations
 
 **Appendices**  
 **Cross-References:** [`constants-reference.md`](constants-reference.md) · [Module 06 C7 Corrector](../06-backend-pipeline/c7-corrector.md) · [Module 08 Test T45](../08-verification/test-register.md)
 
 ---
 
-### Question: Why does AEGIS derive a dynamic measurement uncertainty ($\sigma_{\text{final}}$) for every channel at every epoch instead of using static sensor tolerances?
+### Question: Why does AEGIS derive a dynamic measurement uncertainty (\sigma_final) for every channel at every epoch instead of using static sensor tolerances?
 
 **Answer:** Static confidence intervals fail in outdoor wireless IoT environments. A geotechnical reading captured with a fresh battery over a direct line-of-sight RF link ($+10\text{ dB SNR}$) has vastly higher physical credibility than a reading arriving after a 12-hour store-and-forward transmission outage over a fading link ($-12\text{ dB SNR}$) with a decaying battery voltage.
 
@@ -28,17 +28,17 @@ To ensure that every observation is weighted by its true instantaneous statistic
 
 ---
 
-### Question: What is the exact mathematical derivation of $\sigma_{\text{final}}$, and how does error propagation propagate through common-mode rejection?
+### Question: What is the exact mathematical derivation of \sigma_final, and how does error propagation propagate through common-mode rejection?
 
 **Answer:** The dynamic uncertainty is derived across three rigorous mathematical stages:
 
-#### Stage 1: Base Transducer Noise Floor ($\sigma_{\text{base}}$)
+#### Stage 1: Base Transducer Noise Floor (\sigma_base)
 The empirical Gaussian white-noise floor of the physical transducers operating at the reference calibration temperature ($T_{\text{REF}} = 25.0^\circ\text{C}$):
 * **Horizontal Strain ($\varepsilon$):** $\sigma_{\text{base}} = 1.2\ \mu\varepsilon$
 * **Ground Tilt ($T_x, T_y$):** $\sigma_{\text{base}} = 8.0\ \mu\text{rad}$
 * **Wire Extensometer ($Ext$):** $\sigma_{\text{base}} = 15.0\ \mu\text{m}$
 
-#### Stage 2: Common-Mode Rejection Variance Injection ($\sigma_{\text{cmr}}$)
+#### Stage 2: Common-Mode Rejection Variance Injection (\sigma_cmr)
 To eliminate regional topsoil swelling and seasonal barometric heaving, the C7 pipeline subtracts the average baseline displacement recorded by two Bedrock Reference Anchors ($A_1, A_2$) from the Scout reading:
 $$S_{\text{corrected}} = S_{\text{scout}} - \frac{S_{A1} + S_{A2}}{2}$$
 
@@ -56,11 +56,11 @@ $$\sigma_{\text{final}} = \sigma_{\text{cmr}} \cdot f_{\text{link}} \cdot f_{\te
 
 ---
 
-### Question: How are the RF link ($f_{\text{link}}$), temporal gap ($f_{\text{gap}}$), and hardware health ($f_{\text{flags}}$) penalty multipliers formulated?
+### Question: How are the RF link (f_link), temporal gap (f_gap), and hardware health (f_flags) penalty multipliers formulated?
 
 **Answer:** The operational multipliers evaluate telemetry reception quality, data staleness, and on-node hardware diagnostics:
 
-#### 1. RF Link Margin Multiplier ($f_{\text{link}}$)
+#### 1. RF Link Margin Multiplier (f_link)
 Evaluates signal quality recorded by the Master Gateway receiver:
 $$f_{\text{link}} = \begin{cases} 
 1.0 & \text{if } \text{SNR} \ge 0\text{ dB (Strong, robust RF link)} \\ 
@@ -68,14 +68,14 @@ $$f_{\text{link}} = \begin{cases}
 1.5 & \text{if } \text{SNR} < -10\text{ dB (Fading edge; packet near sensitivity limit)} 
 \end{cases}$$
 
-#### 2. Temporal Age Gap Multiplier ($f_{\text{gap}}$ — Verified by Test T45)
+#### 2. Temporal Age Gap Multiplier (f_gap — Verified by Test T45)
 When a Scout node's transmissions are temporarily severed by rockfall, machinery obstruction, or power dips, the elapsed time since the last valid sample ($\Delta t_{\text{gap}}$ in seconds) increases uncertainty regarding intervening ground movement:
 $$f_{\text{gap}} = \min\left(10.0, \, 1.0 + 0.1 \cdot \left(\frac{\Delta t_{\text{gap}}}{3600\text{ seconds}}\right)\right)$$
 
 **The Statutory 10.0 Ceiling (Test T45):**
 Uncapped exponential or linear gap functions allow $\sigma$ to inflate by over $1,000\times$ following a 4-day communication partition. When ingested into downstream algorithms, such astronomical variances cause severe floating-point division-by-zero errors or numerical singularity ($NaN$) in inverse covariance matrix computations. Capping $f_{\text{gap}}$ at **10.0** mathematically suppresses stale data during spatial quorum consensus while guaranteeing numerical stability.
 
-#### 3. Hardware Diagnostic Flag Multiplier ($f_{\text{flags}}$)
+#### 3. Hardware Diagnostic Flag Multiplier (f_flags)
 Evaluates byte 17 of the 23-byte wire frame for on-node hardware warnings:
 $$f_{\text{flags}} = 1.0 + 0.5 \cdot (\text{ext\_overflow}) + 0.3 \cdot (\text{vbat\_critical})$$
 

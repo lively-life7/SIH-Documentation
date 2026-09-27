@@ -23,9 +23,9 @@ Where $(\xi, \zeta)$ are the extraction coordinates in the seam, and $r$ is the 
 
 ### Question: How is the time-dependent subsidence field mathematically decoupled into spatial and temporal components?
 
-**Answer:** Under Knothe's kinematic theory, vertical surface settlement $S(x, y, t)$ across spatial coordinates $(x, y)$ and elapsed time $t$ is expressed as the product of a static spatial subsidence basin $S_{\text{final}}(x, y)$ and a dimensionless, monotonically increasing time factor $\eta(t)$:
+**Answer:** Under Knothe's kinematic theory, vertical surface settlement $S(x, y, t)$ across spatial coordinates $(x, y)$ and elapsed time $t$ is expressed as the product of a static spatial subsidence basin $S_{\text{final}}(x, y)$ and a dimensionless, monotonically increasing time factor $η(t)$:
 
-$$S(x, y, t) = S_{\text{final}}(x, y) \cdot \eta(t)$$
+$$S(x, y, t) = S_{\text{final}}(x, y) \cdot η(t)$$
 
 ```
                                   KNOTHE DECOMPOSITION
@@ -38,7 +38,7 @@ $$S(x, y, t) = S_{\text{final}}(x, y) \cdot \eta(t)$$
 
 This spatio-temporal separability implies that the geometric shape of the subsidence trough is established by the excavation boundaries and overburden depth, while the rate at which the basin deepens is governed by the rheological compaction of the collapsed rock in the goaf.
 
-### Question: What physical phenomenon governs the time factor $\eta(t)$, and how is the time decay constant $c$ calibrated?
+### Question: What physical phenomenon governs the time factor η(t), and how is the time decay constant c calibrated?
 
 **Answer:** Ground settlement does not occur instantaneously upon seam excavation. The broken roof strata (caving zone) collapses into the void, forming an uncompacted rubble mound (goaf). As the overburden weight bears down on this broken rock mass, time-dependent viscoelastic compaction and creep deformation take place.
 
@@ -46,12 +46,12 @@ Knothe modeled this rheological behavior using a linear rate-of-settlement diffe
 $$\frac{d S(t)}{dt} = c \cdot \left[ S_{\text{final}} - S(t) \right]$$
 
 Integrating with initial condition $S(0) = 0$ yields the closed-form time factor:
-$$\eta(t) = 1 - e^{-c \cdot t}$$
+$$η(t) = 1 - e^{-c \cdot t}$$
 
 Where:
 * $t$ = Elapsed time in days since seam extraction began.
 * $c$ = Time decay coefficient ($c = 0.01414\text{ day}^{-1}$, calibrated from high-precision levelling survey data at Singareni Collieries Company Limited (SCCL) Adriyala Longwall Project).
-* At $t = 40\text{ days}$, $\eta(40) = 1 - e^{-0.01414 \times 40} = 1 - e^{-0.5656} \approx \mathbf{0.4320}$ ($43.2\%$ of final asymptotic settlement).
+* At $t = 40\text{ days}$, $η(40) = 1 - e^{-0.01414 \times 40} = 1 - e^{-0.5656} \approx \mathbf{0.4320}$ ($43.2\%$ of final asymptotic settlement).
 
 ### Question: How is the spatial error function equation derived for a finite rectangular longwall panel?
 
@@ -82,14 +82,14 @@ Where:
 | Parameter Symbol | Frozen Value | Engineering Units | Physical Meaning |
 | :--- | :--- | :--- | :--- |
 | `H` | 150.0 | meters | Seam depth below surface datum |
-| `TAN_BETA` | 2.0 | dimensionless | Tangent of major angle of draw ($\beta ≈ 63.4^°$) |
-| `R_INFL` | 75.0 | meters | Knothe radius of influence ($H / \tan\beta$) |
+| `TAN_BETA` | 2.0 | dimensionless | Tangent of major angle of draw (β ≈ 63.4°) |
+| `R_INFL` | 75.0 | meters | Knothe radius of influence (H / \tanβ) |
 | `M_SEAM` | 3.0 | meters | Extracted coal seam thickness |
 | `A_SUBS` | 0.65 | dimensionless | Empirical subsidence coefficient (PINN target) |
-| `S_MAX` | 1.95 | meters | Maximum asymptotic center subsidence ($a \cdot m_{\text{seam}}$) |
-| `C_KNOTHE` | 0.01414 | $\text{day}^{-1}$ | Time decay coefficient (PINN target) |
-| `B_HORIZ` | 24.0 | meters | Awershin horizontal displacement factor ($0.32 \cdot r$) |
-| `PANEL` | (100, 100, 700, 300) | meters | Extraction panel coordinates ($600\text{m} × 200\text{m}$) |
+| `S_MAX` | 1.95 | meters | Maximum asymptotic center subsidence (a · m_seam) |
+| `C_KNOTHE` | 0.01414 | day⁻¹ | Time decay coefficient (PINN target) |
+| `B_HORIZ` | 24.0 | meters | Awershin horizontal displacement factor (0.32 · r) |
+| `PANEL` | (100, 100, 700, 300) | meters | Extraction panel coordinates (600m × 200m) |
 
 Any dynamic panel deployment recalculates $r$, $S_{\text{max}}$, and $B_{\text{horiz}}$ algorithmically from the site's measured depth $H$, seam height $m_{\text{seam}}$, and draw angle tangent $\tan\beta$.
 
@@ -133,5 +133,5 @@ Automated test `T1` asserts that this ratio remains within $1.0000 \pm 0.005$, p
 
 **Automated CI Assertion (Test T38):**  
 Test `T38` validates that the generation parameters strictly satisfy these four preconditions before any verification run is executed. Furthermore, Test `T5` verifies spatio-temporal separability across all grid points:
-$$\frac{S(x, y, t_1)}{S(x, y, t_2)} \equiv \frac{\eta(t_1)}{\eta(t_2)} \quad \forall (x, y) \text{ where } S_{\text{final}} > 1\text{ mm}$$
+$$\frac{S(x, y, t_1)}{S(x, y, t_2)} \equiv \frac{η(t_1)}{η(t_2)} \quad \forall (x, y) \text{ where } S_{\text{final}} > 1\text{ mm}$$
 Confirming that numerical discretization does not distort the analytical time decay curve.

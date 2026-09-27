@@ -28,7 +28,7 @@ The 3D visualization engine composites four discrete spatial layers in real time
 
 ---
 
-### Question: How are dynamic safety exclusion perimeters ($1.2r$ and $1.5r$) calculated from Knothe subsidence physics, and what operational protocols do they enforce?
+### Question: How are dynamic safety exclusion perimeters (1.2r and 1.5r) calculated from Knothe subsidence physics, and what operational protocols do they enforce?
 **Answer:** In underground longwall and deep caving operations, surface subsidence does not terminate abruptly at the vertical boundary of the extracted coal seam. Due to strata shearing and the angle of draw ($\beta$), ground movement propagates upward and outward, defining the Knothe Radius of Influence ($r$):
 
 $$r = \frac{H}{\tan\beta}$$

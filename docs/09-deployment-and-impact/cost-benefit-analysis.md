@@ -40,7 +40,7 @@
 | :--- | :--- | :--- | :--- |
 | **Manual Survey Crews** | 4-person surveying team, optical instruments, dedicated 4WD vehicle fuel and maintenance. | Autonomous 60-second wireless telemetry; automated cloud ingestion. | **₹14,00,000 / year** |
 | **Commercial InSAR Radar Contracts** | Commercial satellite radar tasking, raw interferogram licensing, and external processing fees. | Local real-time physics-constrained ground mesh; zero orbital licensing dependencies. | **₹8,00,000 / year** |
-| **Consumables & Battery Servicing** | Disposable primary lithium batteries requiring quarterly field replacement and disposal. | Integrated 1W monocrystalline solar panel + $\text{LiFePO}_4$ battery ($> 5\text{-year}$ continuous lifespan). | **₹1,50,000 / year** |
+| **Consumables & Battery Servicing** | Disposable primary lithium batteries requiring quarterly field replacement and disposal. | Integrated 1W monocrystalline solar panel + LiFePO_4 battery (> 5-year continuous lifespan). | **₹1,50,000 / year** |
 | **Total Recurring Annual Savings** | — | — | **₹23,50,000 / year / mine** |
 
 Beyond direct line-item reductions, automating surface displacement logging frees colliery surveying engineers to focus on underground face alignment and statutory ventilation surveys.

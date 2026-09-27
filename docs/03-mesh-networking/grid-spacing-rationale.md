@@ -19,7 +19,7 @@
 
 ## 2. How Is the Lateral Extent of the Subsidence Trough Mathematically Derived?
 
-### Question: How is the lateral reach of the surface deformation bowl (Influence Radius $r$) calculated?
+### Question: How is the lateral reach of the surface deformation bowl (Influence Radius r) calculated?
 
 **Answer:** According to Knothe's theory of subsidence, the lateral reach of the surface deformation bowl is characterized by the **Radius of Influence ($r$)**, defined as:
 
@@ -54,13 +54,13 @@ This confirms that the primary surface zone of tensile and compressive deformati
 
 ---
 
-## 3. What Is the Formal Mathematical Derivation of the Spatial Nyquist Sampling Limit ($\Delta \le r / 2.86$)?
+## 3. What Is the Formal Mathematical Derivation of the Spatial Nyquist Sampling Limit (Δ ≤ r / 2.86)?
 
 ### Question: Why does spatial reconstruction of surface subsidence require a Nyquist sampling criterion?
 
 **Answer:** In classical digital signal processing, the Nyquist-Shannon sampling theorem states that to prevent spectral aliasing, a continuous waveform must be sampled at a frequency $f_s \ge 2 f_{\max}$. In spatial geomechanics, continuous ground settlement $S(x)$ and horizontal strain $\varepsilon(x)$ represent continuous spatial signals. If spatial sampling points are spaced too far apart, high-frequency spatial gradients—specifically the steep inflection zone where tensile strain reaches its dangerous maximum—are completely missed or falsely reconstructed as gentle, harmless slopes.
 
-### Question: What is the step-by-step mathematical proof deriving the factor $2.86$?
+### Question: What is the step-by-step mathematical proof deriving the factor 2.86?
 
 **Answer:** The derivation proceeds from Knothe's Gaussian error integral to the spatial Fourier bandwidth of the curvature profile:
 

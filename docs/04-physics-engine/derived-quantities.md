@@ -47,10 +47,10 @@ This formulation guarantees that horizontal ground displacements vanish at the e
 **Answer:** Differentiating the master Knothe double-error-function equation yields exact, continuous analytical expressions for both first and second spatial derivatives.
 
 **1. Ground Tilt ($T_x = \partial S / \partial x$):**
-$$T_x(x, y, t) = \frac{S_{\text{max}} \cdot \eta(t)}{2 r} \left[ e^{-\frac{\pi (x - x_1)^2}{r^2}} - e^{-\frac{\pi (x - x_2)^2}{r^2}} \right] \left[ \text{erf}\left(\frac{\sqrt{\pi}(y - y_1)}{r}\right) - \text{erf}\left(\frac{\sqrt{\pi}(y - y_2)}{r}\right) \right]$$
+$$T_x(x, y, t) = \frac{S_{\text{max}} \cdot η(t)}{2 r} \left[ e^{-\frac{\pi (x - x_1)^2}{r^2}} - e^{-\frac{\pi (x - x_2)^2}{r^2}} \right] \left[ \text{erf}\left(\frac{\sqrt{\pi}(y - y_1)}{r}\right) - \text{erf}\left(\frac{\sqrt{\pi}(y - y_2)}{r}\right) \right]$$
 
 **2. Ground Curvature ($\kappa_x = \partial^2 S / \partial x^2$):**
-$$\frac{\partial^2 S}{\partial x^2} = -\frac{\pi S_{\text{max}} \cdot \eta(t)}{r^3} \left[ (x - x_1) e^{-\frac{\pi (x - x_1)^2}{r^2}} - (x - x_2) e^{-\frac{\pi (x - x_2)^2}{r^2}} \right] \left[ \text{erf}\left(\frac{\sqrt{\pi}(y - y_1)}{r}\right) - \text{erf}\left(\frac{\sqrt{\pi}(y - y_2)}{r}\right) \right]$$
+$$\frac{\partial^2 S}{\partial x^2} = -\frac{\pi S_{\text{max}} \cdot η(t)}{r^3} \left[ (x - x_1) e^{-\frac{\pi (x - x_1)^2}{r^2}} - (x - x_2) e^{-\frac{\pi (x - x_2)^2}{r^2}} \right] \left[ \text{erf}\left(\frac{\sqrt{\pi}(y - y_1)}{r}\right) - \text{erf}\left(\frac{\sqrt{\pi}(y - y_2)}{r}\right) \right]$$
 
 **3. Horizontal Tensile & Compressive Strain ($\varepsilon_x$):**
 $$\varepsilon_x(x, y, t) = B_{\text{horiz}} \cdot \frac{\partial^2 S(x, y, t)}{\partial x^2}$$
@@ -63,14 +63,14 @@ By evaluating these analytical derivatives, AEGIS achieves exact ground truth be
 
 ### Question: What are the theoretical peak magnitudes for subsidence, tilt, strain, and extensometer elongation, and how do they validate sensor dynamic range (Test T4)?
 
-**Answer:** Using a high-resolution $4001 \times 4001$ numerical grid evaluated at fully settled equilibrium ($t \to \infty, \eta = 1.0$) and intermediate advance ($t = 40\text{ days}, \eta = 0.432$), the exact peak values are computed as follows:
+**Answer:** Using a high-resolution $4001 \times 4001$ numerical grid evaluated at fully settled equilibrium ($t → \infty, η = 1.0$) and intermediate advance ($t = 40\text{ days}, η = 0.432$), the exact peak values are computed as follows:
 
-| Physical Channel | Fully Settled State ($t \to \infty$) | At Day 40 ($\eta = 0.432$) | Hardware Measurement Range | Margin to Saturation |
+| Physical Channel | Fully Settled State (t → ∞) | At Day 40 (η = 0.432) | Hardware Measurement Range | Margin to Saturation |
 | :--- | :--- | :--- | :--- | :--- |
-| **Subsidence ($S$)** | **1.950 meters** | $0.842\text{ meters}$ | Analytical Benchmark | — |
-| **Surface Tilt ($T$)** | **25,978 µrad ($1.49^°$)** | $11,222\ µrad$ | $± 65,534\ µrad$ @ $2\ µrad$ LSB | **2.52×** |
-| **Horizontal Strain ($ε$)** | **12,649 µε** | $5,464\ µε$ | $± 32,767\ µε$ @ $1\ µε$ LSB | **2.59×** |
-| **Extensometer (10m Span)** | **126.5 mm** | $54.6\text{ mm}$ | $± 327.6\text{ mm}$ @ $10\ µm$ LSB | **2.59×** |
+| **Subsidence (S)** | **1.950 meters** | 0.842 meters | Analytical Benchmark | — |
+| **Surface Tilt (T)** | **25,978 µrad (1.49°)** | 11,222 µrad | ± 65,534 µrad @ 2 µrad LSB | **2.52×** |
+| **Horizontal Strain (ε)** | **12,649 µε** | 5,464 µε | ± 32,767 µε @ 1 µε LSB | **2.59×** |
+| **Extensometer (10m Span)** | **126.5 mm** | 54.6 mm | ± 327.6 mm @ 10 µm LSB | **2.59×** |
 
 **Engineering Validation:**
 1. **Dynamic Headroom:** Every physical channel maintains a safety factor greater than $2.5\times$ above the maximum theoretical asymptotic deformation. Transducers will never saturate, even during extreme geological super-subsidence events.
@@ -81,7 +81,7 @@ By evaluating these analytical derivatives, AEGIS achieves exact ground truth be
 
 ## 3. Physical Precursor Mechanics: Why Strain Detects Collapse First
 
-### Question: Why is horizontal tensile strain ($\varepsilon$) the definitive kinematic precursor for catastrophic ground failure rather than tilt or vertical settlement?
+### Question: Why is horizontal tensile strain (ε) the definitive kinematic precursor for catastrophic ground failure rather than tilt or vertical settlement?
 
 **Answer:** Relying primarily on tilt inclinometers or GNSS elevation pegs for early warning represents a dangerous misconception in mine monitoring:
 
@@ -112,7 +112,7 @@ Day 25–40: Macroscopic surface fissures widen; vertical settlement exceeds 80 
 $$\theta_c = 1500\ \mu\varepsilon \pm 10\%$$
 
 Using Knothe's time-dependent strain evolution equation along the maximum tensile inflection zone:
-$$\varepsilon_{\text{peak}}(t) = \varepsilon_{\text{final}} \cdot \eta(t) = \varepsilon_{\text{final}} \cdot \left( 1 - e^{-c \cdot t} \right)$$
+$$\varepsilon_{\text{peak}}(t) = \varepsilon_{\text{final}} \cdot η(t) = \varepsilon_{\text{final}} \cdot \left( 1 - e^{-c \cdot t} \right)$$
 
 Substituting the frozen geotechnical site parameters:
 * Asymptotic peak tensile strain: $\varepsilon_{\text{final}} = 12,649\ \mu\varepsilon$
@@ -152,7 +152,7 @@ $$T_x^{\text{numerical}}(x, y) = \frac{S(x + h, y) - S(x - h, y)}{2h}$$
 $$\kappa_x^{\text{numerical}}(x, y) = \frac{S(x + h, y) - 2S(x, y) + S(x - h, y)}{h^2}$$
 
 **Acceptance Criterion:**
-$$\max\left| T_x^{\text{analytical}} - T_x^{\text{numerical}} \right| < 1 \times 10^{-7}\ \text{rad}$$
-$$\max\left| \kappa_x^{\text{analytical}} - \kappa_x^{\text{numerical}} \right| < 1 \times 10^{-7}\ \text{m}^{-1}$$
+$$\max\left| T_x^{\text{analytical}} - T_x^{\text{numerical}} \right| < 1 \times 10⁻⁷\ \text{rad}$$
+$$\max\left| \kappa_x^{\text{analytical}} - \kappa_x^{\text{numerical}} \right| < 1 \times 10⁻⁷\ \text{m}^{-1}$$
 
 If an algebraic error or sign flip is introduced during refactoring, Test `T3` halts the CI build immediately, guaranteeing total mathematical integrity.

@@ -82,10 +82,10 @@
 
 | Frequency Band | Physical Source | Typical Amplitude (PPV) | Operational Classification & System Action |
 | :--- | :--- | :--- | :--- |
-| **Band 1: 8 – 20 Hz** | Surface Haulage (40-tonne dumpers, excavators) | $0.5\text{ to }3.0\text{ mm/s}$ | **Vehicular Surface Noise (Veto):** Heavy vehicles generate low-frequency surface Rayleigh waves. When detected, the alarm engine suppresses subsidence warnings to prevent false alarms. |
-| **Band 2: 50.0 ± 0.5 Hz** | Armored Face Conveyors (AFC) & Shearers | $0.8\text{ to }4.0\text{ mm/s}$ | **Stationary Machine Harmonic (Notch Rejection):** Heavy longwall induction motors emit a steady 50 Hz rotational vibration. An on-node digital notch filter isolates and rejects this harmonic. |
-| **Band 3: 40 – 80 Hz** | Deep Production Blasting Detonations | $10.0\text{ to }40.0\text{ mm/s}$ | **Controlled Explosive Detonation (Veto via Blast Log):** Characterized by high PPV shockwaves. The alarm engine cross-references timestamps with the DGMS digital blast schedule to veto evacuation trips. |
-| **Band 4: 100 – 250 Hz** | Subsurface Strata Delamination & Micro-Fracturing | $0.2\text{ to }5.0\text{ mm/s}$ | **Rock Mass Tensile/Shear Failure (Immediate Escalation):** High-frequency brittle tensile fracturing of sandstone overlying beds. Directly escalates to Level-2 Geotechnical Warning. |
+| **Band 1: 8 – 20 Hz** | Surface Haulage (40-tonne dumpers, excavators) | 0.5 to 3.0 mm/s | **Vehicular Surface Noise (Veto):** Heavy vehicles generate low-frequency surface Rayleigh waves. When detected, the alarm engine suppresses subsidence warnings to prevent false alarms. |
+| **Band 2: 50.0 ± 0.5 Hz** | Armored Face Conveyors (AFC) & Shearers | 0.8 to 4.0 mm/s | **Stationary Machine Harmonic (Notch Rejection):** Heavy longwall induction motors emit a steady 50 Hz rotational vibration. An on-node digital notch filter isolates and rejects this harmonic. |
+| **Band 3: 40 – 80 Hz** | Deep Production Blasting Detonations | 10.0 to 40.0 mm/s | **Controlled Explosive Detonation (Veto via Blast Log):** Characterized by high PPV shockwaves. The alarm engine cross-references timestamps with the DGMS digital blast schedule to veto evacuation trips. |
+| **Band 4: 100 – 250 Hz** | Subsurface Strata Delamination & Micro-Fracturing | 0.2 to 5.0 mm/s | **Rock Mass Tensile/Shear Failure (Immediate Escalation):** High-frequency brittle tensile fracturing of sandstone overlying beds. Directly escalates to Level-2 Geotechnical Warning. |
 
 ### Question: How are low-frequency vehicle disturbances and blast events prevented from causing false alarms?
 

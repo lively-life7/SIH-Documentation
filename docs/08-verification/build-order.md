@@ -39,10 +39,10 @@ To guarantee mathematical determinism, AEGIS enforces a strict sequential 6-day 
 | Milestone Day | Deliverables & Code Modules | Automated Gates & Test Suite | Strict Stop-the-Line Criteria |
 | :--- | :--- | :--- | :--- |
 | **Day 1: Static Contracts** | `sim/constants.py`, `config/nodes.json` (layout manifest), `data/events.csv` (blast ledger) | **G01 (V1–V12), G02 (E1–E8)** | Any spatial coordinate outside panel boundary fails build; any missing required parameter aborts compilation immediately. |
-| **Day 2: Forward Physics** | Analytical $S(x,y,t)$, tilt ($T$), curvature ($K$), strain ($ε$), and USBM vibration decay | **G03 (T1, T2, T5), G04 (T3, T4, T9, T10)** | Volume conservation ratio $\iint S / (a \cdot m \cdot A) \neq 1.0000 ± 0.01$; analytic derivatives diverge from finite differences by $> 1 × 10^{-7}$. |
+| **Day 2: Forward Physics** | Analytical S(x,y,t), tilt (T), curvature (K), strain (ε), and USBM vibration decay | **G03 (T1, T2, T5), G04 (T3, T4, T9, T10)** | Volume conservation ratio ∬ S / (a · m · A) ≠ 1.0000 ± 0.01; analytic derivatives diverge from finite differences by > 1 × 10⁻⁷. |
 | **Day 3: Physical Corruption** | 6-stage degradation pipeline: thermal walk, quantization, mechanical sag, dropouts | **G05 (T6), G06 (T7)** | **CRITICAL GATE (T7):** If post-calibration residual exceeds hardware white-noise floor, **STOP THE LINE**. Downstream models will not be built. |
-| **Day 4: Network Simulation** | TDMA superframe scheduler, Spreading Factor links, bitmap ACKs, relay failover | **G07 (T17, T18, T19), G08 (T11, T12, T16, T21, T24–T26)** | Worst-case node duty cycle $≥ 1.0\%$; RF carrier bandwidth $> 200\text{ kHz}$ (statutory breach); unacknowledged packet loss during relay failover $> 0\%$. |
-| **Day 5: Persistence & Pipes** | Raw ingestion worker, 36h rolling `nodes.csv`, Parquet archival engine | **G09 (T27–T31), G10 (T8, T13, T14)** | Telemetry conservation violated ($\sum \text{Produced} \neq \text{Persisted} + \text{Lost}$); `backend/` attempts to import truth variables (`ModuleNotFoundError`). |
+| **Day 4: Network Simulation** | TDMA superframe scheduler, Spreading Factor links, bitmap ACKs, relay failover | **G07 (T17, T18, T19), G08 (T11, T12, T16, T21, T24–T26)** | Worst-case node duty cycle ≥ 1.0%; RF carrier bandwidth > 200 kHz (statutory breach); unacknowledged packet loss during relay failover > 0%. |
+| **Day 5: Persistence & Pipes** | Raw ingestion worker, 36h rolling `nodes.csv`, Parquet archival engine | **G09 (T27–T31), G10 (T8, T13, T14)** | Telemetry conservation violated (∑ Produced ≠ Persisted + Lost); `backend/` attempts to import truth variables (`ModuleNotFoundError`). |
 | **Day 6: Final Freeze** | End-to-end integration, scenario tuning, PINN convergence, alarm verification | **FULL SUITE T1–T46** | Any test warning, NaN loss, non-zero exit code, or unhandled exception halts system deployment. |
 
 ---
@@ -69,7 +69,7 @@ If Test T7 fails, it proves that the C7 Calibration Pipeline cannot mathematical
    No bitfields, encodings, or byte offsets in the over-the-air LoRa frame may be altered. The exact packing layout (including the lower 8 bits of the epoch counter, 16-bit signed integer transducer channels, and 8-bit diagnostic bitmasks) is frozen across embedded firmware and gateway parsers.
 2. **Immutable System Schemas:**
    The JSON schema for `config/nodes.json` (defining station coordinates, roles, TDMA slots, and primary/backup parents) and the tabular schema for `nodes.csv` (storing 36 hours of raw time-series) are sealed. No columns may be added, renamed, or reordered.
-3. **Immutable C7 $\to$ C8/C9 Analytical Contract:**
+3. **Immutable C7 $→$ C8/C9 Analytical Contract:**
    The calibrated state dictionary passed across the C7 cleaning boundary to the C8 Safety Detector and C9 Digital Twin is frozen. It guarantees that downstream engines receive fully corrected physical values alongside an explicit dynamic uncertainty $\sigma_{\text{final}}$ and quality flags.
 4. **Post-Freeze Codebase Discipline:**
    Under SIH 2026 judging protocols, any theoretical optimizations, cosmetic refactorings, or architectural expansions conceived after Day 6 are formally classified as *v2.1 Roadmaps*. They are barred from being committed as live code modifications during judging defense or active field trials to protect statutory system integrity.

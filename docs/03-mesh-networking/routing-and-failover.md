@@ -45,9 +45,9 @@ flowchart TD
 
 | Channel Group | Center Frequencies | Modulation & Bandwidth | RF Transmit Power | Operational Role |
 | :--- | :--- | :--- | :--- | :--- |
-| **Channels 1 – 4 (Cluster Leaf)** | 865.1, 865.5, 865.9, 866.1 MHz | LoRa SF7 / BW 125 kHz | $+14\text{ dBm}$ ($25\text{ mW}$) | Scout-to-Anchor short-range cluster uplinks ($<150\text{m}$). Low power conserves battery and minimizes cross-cluster RF spillover. |
-| **Channels 5 – 6 (Backbone Trunk)** | 866.5, 866.9 MHz | LoRa SF8 / BW 125 kHz | $+27\text{ dBm}$ ($500\text{ mW}$) | Anchor-to-Gateway long-range backbone relays ($500\text{m to }3,000\text{m}$). Higher link margin overcomes NLOS terrain obstructions. |
-| **Beacon Channel** | 865.1 MHz | LoRa SF7 / BW 125 kHz | $+30\text{ dBm}$ ($1.0\text{ W}$) | Broadcast by the elevated Master Gateway at the beginning of each 60-second superframe to achieve panel-wide TDMA clock synchronization. |
+| **Channels 1 – 4 (Cluster Leaf)** | 865.1, 865.5, 865.9, 866.1 MHz | LoRa SF7 / BW 125 kHz | +14 dBm (25 mW) | Scout-to-Anchor short-range cluster uplinks (<150m). Low power conserves battery and minimizes cross-cluster RF spillover. |
+| **Channels 5 – 6 (Backbone Trunk)** | 866.5, 866.9 MHz | LoRa SF8 / BW 125 kHz | +27 dBm (500 mW) | Anchor-to-Gateway long-range backbone relays (500m to 3,000m). Higher link margin overcomes NLOS terrain obstructions. |
+| **Beacon Channel** | 865.1 MHz | LoRa SF7 / BW 125 kHz | +30 dBm (1.0 W) | Broadcast by the elevated Master Gateway at the beginning of each 60-second superframe to achieve panel-wide TDMA clock synchronization. |
 
 ---
 
@@ -63,8 +63,8 @@ flowchart TD
    Every Scout is pre-configured with an orthogonal backup parent located in an adjacent geographic cluster, providing $\ge 10\text{ dB}$ link margin on a different carrier frequency.
 3. **Deterministic Hop Bounding:**
    To guarantee bounded latency within the 60-second superframe, routing depth is strictly bounded:
-   * **Nominal Path:** Bounded to **2 hops** ($\text{Scout} \to \text{Anchor} \to \text{Gateway}$).
-   * **Worst-Case Failover Path:** Bounded to **3 hops** ($\text{Scout} \to \text{Peer Relay} \to \text{Anchor} \to \text{Gateway}$).
+   * **Nominal Path:** Bounded to **2 hops** ($\text{Scout} → \text{Anchor} → \text{Gateway}$).
+   * **Worst-Case Failover Path:** Bounded to **3 hops** ($\text{Scout} → \text{Peer Relay} → \text{Anchor} → \text{Gateway}$).
    Because child nodes only forward to strictly higher-tier nodes (Rank $K+1$), cyclical routing loops are mathematically impossible.
 
 ---
@@ -120,8 +120,8 @@ The C8 Safety Engine uses a five-dimensional cross-validation matrix to decisive
 | Diagnostic Dimension | Class F4: Relay Hardware Failure | Class F3: Catastrophic Ground Collapse |
 | :--- | :--- | :--- |
 | **Spatial Signature** | All child nodes under a specific single Anchor Relay vanish simultaneously, while adjacent clusters show normal stability. | Vanishing nodes trace a narrow, linear shear inflection boundary or known geological fault line. |
-| **Precursor Geotechnical Trends** | Prior to dropout, tilt rates ($\dot{θ}$) and strain rates ($\dot{ε}$) were completely flat and nominal ($Δε ≈ 0$). | Precursor horizontal strain and tilt rates exhibited exponential acceleration over the preceding 3 to 5 superframe epochs. |
-| **Backup Slot Telemetry** | Child nodes reappear through their backup parents ($P_2$) during the $46.0\text{s} - 50.0\text{s}$ failover window. | Child nodes remain permanently silent across all backup channels and frequencies due to physical transducer shearing. |
+| **Precursor Geotechnical Trends** | Prior to dropout, tilt rates (θ̇) and strain rates (ε̇) were completely flat and nominal (Δε ≈ 0). | Precursor horizontal strain and tilt rates exhibited exponential acceleration over the preceding 3 to 5 superframe epochs. |
+| **Backup Slot Telemetry** | Child nodes reappear through their backup parents (P_2) during the 46.0s - 50.0s failover window. | Child nodes remain permanently silent across all backup channels and frequencies due to physical transducer shearing. |
 | **Physical Crack Trace Status** | Telemetry before loss reported intact crack traces (`crack_level = 00`). | Last transmitted frames or adjacent surviving nodes report sheared break-wires (`crack_level = 11`). |
 | **System Action & Safety Trip** | Generates a yellow maintenance alert (`F4_RELAY_OFFLINE`); dispatches technician to inspect relay mast. | **Instantly trips the Master 125 dB Evacuation Siren (`CLASS_A_COLLAPSE`) and triggers automated personnel SMS alerts.** |
 

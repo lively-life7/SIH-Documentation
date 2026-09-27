@@ -65,7 +65,7 @@ AEGIS implements an automated **Leave-One-Out (LOO) Residual Cross-Validation Sc
 
 ## 3. Spatial Resolution & The Largest Empty Circle Metric (Test T20)
 
-### Question: What is the Largest Empty Circle (LEC) metric, and how is the committed spatial resolution ($d_{\text{committed}}$) derived for a physical sensor deployment (Test T20)?
+### Question: What is the Largest Empty Circle (LEC) metric, and how is the committed spatial resolution (d_committed) derived for a physical sensor deployment (Test T20)?
 
 **Answer:** A common and dangerous claim in commercial IoT monitoring is "100% blind-spot-free coverage." In physical reality, any discrete sensor array has spatial gaps between sensor locations. If a localized sinkhole or crown hole develops entirely within an empty pocket between sensors, it will remain undetected until it expands.
 
@@ -99,7 +99,7 @@ $$d_{\text{committed}} = \mathbf{358.0\text{ meters}}$$
 +-----------------------------------------------------------------------------------+
 ```
 
-### Question: Why does AEGIS mandate publishing $d_{\text{committed}}$ on the SCADA dashboard header, and what is its regulatory significance (Gate G15)?
+### Question: Why does AEGIS mandate publishing d_committed on the SCADA dashboard header, and what is its regulatory significance (Gate G15)?
 
 **Answer:** Regulators (such as DGMS) and mine general managers must know the precise physical limits of automated safety systems. Hiding sensor gaps behind smooth visual interpolations creates false confidence that can lead to fatal accidents.
 

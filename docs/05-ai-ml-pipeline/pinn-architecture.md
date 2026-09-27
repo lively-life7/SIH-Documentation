@@ -65,7 +65,7 @@ flowchart LR
 
 ## 3. Activation Function Selection & Second-Derivative Vanishing Gradient
 
-### Question: Why is the standard Rectified Linear Unit (ReLU) activation function mathematically incapable of training geotechnical physics models, and why does AEGIS mandate SiLU or $\tanh$ (Test T35)?
+### Question: Why is the standard Rectified Linear Unit (ReLU) activation function mathematically incapable of training geotechnical physics models, and why does AEGIS mandate SiLU or \tanh (Test T35)?
 
 **Answer:** In standard computer vision and natural language processing, Rectified Linear Units ($\text{ReLU}(z) = \max(0, z)$) are favored for computational simplicity. In physics-informed neural networks that model geotechnical strain, **ReLU is mathematically fatal**.
 
@@ -99,8 +99,8 @@ AEGIS resolves this through a **Hybrid Parameter Partitioning Strategy**:
 
 | Parameter Category | Parameters | Handling Strategy | Justification |
 | :--- | :--- | :--- | :--- |
-| **Frozen Stratigraphic Invariants** | Seam depth $H$, draw angle $\tan\beta$, influence radius $r = H/\tan\beta$, Awershin ratio $B_{\text{horiz}} = 0.32 r$ | Hardcoded directly into the PyTorch loss computational graph; immutable constants | Known from direct exploratory borehole core drilling and stratigraphic logs. |
-| **Learned Field Parameters** | Effective subsidence factor $\hat{a}$, time decay constant $\hat{c}$ | Instantiated as trainable `nn.Parameter` tensors optimized via backpropagation | Represent dynamic field variables that vary with longwall advance rate and strata caving behavior. |
+| **Frozen Stratigraphic Invariants** | Seam depth H, draw angle \tanβ, influence radius r = H/\tanβ, Awershin ratio B_horiz = 0.32 r | Hardcoded directly into the PyTorch loss computational graph; immutable constants | Known from direct exploratory borehole core drilling and stratigraphic logs. |
+| **Learned Field Parameters** | Effective subsidence factor â, time decay constant ĉ | Instantiated as trainable `nn.Parameter` tensors optimized via backpropagation | Represent dynamic field variables that vary with longwall advance rate and strata caving behavior. |
 
 ### Prevention of Ground Truth Cheating (Test T32):
 To guarantee that the PINN model does not artificially "cheat" by accessing private simulation constants, automated CI Test `T32` performs a strict static analysis scan across `backend/c9/`:

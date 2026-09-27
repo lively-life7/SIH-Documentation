@@ -46,7 +46,7 @@
 
 Zero-filling is strictly prohibited because physical ground displacement, strain, and tilt are continuous, cumulative state variables. Inserting a numerical value of zero into missing slots introduces artificial infinite-gradient step discontinuities:
 
-$$\lim_{\Delta t \to 0} \frac{0 - y(t-\Delta t)}{\Delta t} = -\infty$$
+$$\lim_{\Delta t → 0} \frac{0 - y(t-\Delta t)}{\Delta t} = -\infty$$
 
 Such artificial impulses falsely indicate sudden structural unloading or catastrophic collapse, causing catastrophic false alarm trips in C8 threshold detectors, destabilizing Kalman filter covariance matrices, and corrupting loss gradients in the C9 PINN digital twin. All downstream operations in C7 propagate `NaN` values safely through arithmetic operations, which are subsequently masked out in Step 8.
 
@@ -58,11 +58,11 @@ Such artificial impulses falsely indicate sudden structural unloading or catastr
 | Bit Index | Flag Identifier | Binary Value | Physical Condition & Algorithmic Impact |
 | :--- | :--- | :--- | :--- |
 | **Bit 0** | `selftest_ok` | `1` = Pass, `0` = Fail | Transducer self-test circuit status; if `0`, node is stripped of C8 voting rights. |
-| **Bit 1** | `accel_sat` | `1` = Saturated | MEMS accelerometer clipping ($> ± 2g$); disqualifies tilt calculation. |
+| **Bit 1** | `accel_sat` | `1` = Saturated | MEMS accelerometer clipping (> ± 2g); disqualifies tilt calculation. |
 | **Bit 2** | `gauge_open` | `1` = Open/Short | Wheatstone bridge lead wire severed or shorted; forces strain channel invalid. |
 | **Bit 3** | `i2c_timeout` | `1` = Bus Error | Digital sensor bus lockup; triggers hardware watchdog reboot flag. |
 | **Bit 4** | `solar_active`| `1` = Charging | Photovoltaic harvesting active; alerts thermal model to expect rapid solar heating. |
-| **Bit 5** | `low_vbat` | `1` = Low Power | Battery $< 3.2\text{ V}$; enables aggressive power conservation and flags ADC risk. |
+| **Bit 5** | `low_vbat` | `1` = Low Power | Battery < 3.2 V; enables aggressive power conservation and flags ADC risk. |
 | **Bit 6** | `tamper_trip` | `1` = Enclosure Open | Mechanical enclosure lid switch triggered; alerts operator to physical tampering. |
 
 ---
@@ -108,10 +108,10 @@ Continuous integration test `T7` enforces this execution invariant. In `T7`, syn
 
 | Channel | Transducer Hardware | Raw Representation | Transfer Function to SI Engineering Units | SI Output Unit |
 | :--- | :--- | :--- | :--- | :--- |
-| **Biaxial Tilt ($X, Y$)** | MEMS Dual-Axis Inclinometer | `int16` $(-32768 \dots 32767)$ | $θ = \arcsin≤ft(\frac{\text{raw} \cdot g_{\text{scale}}}{g}\right) - θ_{\text{offset}}$ | Radians ($\text{rad}$) / $\text{mm/m}$ |
-| **Tensile Strain ($ε$)** | Vibrating Wire / Foil Gauge | `int24` ADC raw counts | $ε = ≤ft(\frac{\text{raw} - \text{raw}_{\text{zero}}}{\text{GF} \cdot V_{\text{bridge}}}\right) × 10^6$ | Microstrain ($µε$) |
-| **Displacement ($Δ L$)** | Multi-Point Extensometer | `int16` LVDT counts | $Δ L = \text{raw} \cdot S_{\text{LVDT}} \cdot L_{\text{rod}}$ | Millimeters ($\text{mm}$) |
-| **Vibration (PPV)** | 3-Axis Geophone / Accelerometer | `int16` Peak amplitude | $\text{PPV} = \frac{\text{raw} \cdot V_{\text{LSB}}}{\text{Sensitivity}_{\text{geo}}}$ | Millimeters/second ($\text{mm/s}$) |
+| **Biaxial Tilt (X, Y)** | MEMS Dual-Axis Inclinometer | `int16` (-32768 \dots 32767) | θ = \arcsin≤ft(\frac{raw · g_scale}{g}\right) - θ_offset | Radians (rad) / mm/m |
+| **Tensile Strain (ε)** | Vibrating Wire / Foil Gauge | `int24` ADC raw counts | ε = ≤ft(\frac{raw - raw_zero}{GF · V_bridge}\right) × 10^6 | Microstrain (µε) |
+| **Displacement (Δ L)** | Multi-Point Extensometer | `int16` LVDT counts | Δ L = raw · S_LVDT · L_rod | Millimeters (mm) |
+| **Vibration (PPV)** | 3-Axis Geophone / Accelerometer | `int16` Peak amplitude | PPV = \frac{raw · V_LSB}{Sensitivity_geo} | Millimeters/second (mm/s) |
 
 ---
 
@@ -130,7 +130,7 @@ By subtracting the regional baseline, non-mining diurnal expansion and seasonal 
 
 ---
 
-### Question: How is dynamic channel uncertainty ($\sigma_{\text{final}}$, Step 7) calculated, and why must anchor noise inflation follow CMR?
+### Question: How is dynamic channel uncertainty (\sigma_final, Step 7) calculated, and why must anchor noise inflation follow CMR?
 **Answer:** Sensor uncertainty is not static. Operational conditions—such as degraded radio link margins or missed packets—degrade measurement confidence. C7 calculates a dynamic standard deviation ($\sigma_{\text{final}}$) for every sensor channel at every epoch using a multi-factor scaling model:
 
 $$\sigma_{\text{final}} = \sqrt{\sigma_{\text{base}}^2 + \sigma_{\text{anchor}}^2} \cdot f_{\text{link}} \cdot f_{\text{gap}} \cdot f_{\text{flag}}$$

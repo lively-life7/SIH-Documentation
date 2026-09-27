@@ -59,13 +59,13 @@ Automated CI Test `T36` asserts that the training window spans $\ge 12.0\text{ h
 
 | Parameter Symbol | Stratigraphic Dimension | Bounds / Nominal | Handling Contract | Justification |
 | :--- | :--- | :--- | :--- | :--- |
-| **$H$** | Overburden Seam Depth | $150.0\text{ meters}$ | **FROZEN** | Measured directly from exploratory core boreholes. |
-| **$\tan\beta$** | Tangent of Angle of Draw | $2.0$ ($\beta ≈ 63.4^°$) | **FROZEN** | Calibrated from regional stratigraphy. |
-| **$r$** | Knothe Radius of Influence | $75.0\text{ meters}$ ($H / \tan\beta$) | **FROZEN** | Direct geometric derivation from $H$ and $\tan\beta$. |
-| **$B_{\text{horiz}}$** | Awershin Displacement Ratio | $24.0\text{ meters}$ ($0.32 \cdot r$) | **FROZEN** | Theoretical kinematic coupling ratio. |
-| **$m_{\text{seam}}$** | Extracted Seam Thickness | $3.0\text{ meters}$ | **FROZEN** | Fixed longwall shearer drum cutting height. |
-| **$\hat{a}$** | Empirical Subsidence Factor | Bound: $[0.40, \, 0.90]$ | **LEARNED** | Varies dynamically with roof caving and bulking ratio. |
-| **$\hat{c}$** | Viscoelastic Time Decay | Bound: $[0.005, \, 0.050]\text{ day}^{-1}$ | **LEARNED** | Varies dynamically with longwall face advance rate. |
+| **H** | Overburden Seam Depth | 150.0 meters | **FROZEN** | Measured directly from exploratory core boreholes. |
+| **\tanβ** | Tangent of Angle of Draw | 2.0 (β ≈ 63.4°) | **FROZEN** | Calibrated from regional stratigraphy. |
+| **r** | Knothe Radius of Influence | 75.0 meters (H / \tanβ) | **FROZEN** | Direct geometric derivation from H and \tanβ. |
+| **B_horiz** | Awershin Displacement Ratio | 24.0 meters (0.32 · r) | **FROZEN** | Theoretical kinematic coupling ratio. |
+| **m_seam** | Extracted Seam Thickness | 3.0 meters | **FROZEN** | Fixed longwall shearer drum cutting height. |
+| **â** | Empirical Subsidence Factor | Bound: [0.40, 0.90] | **LEARNED** | Varies dynamically with roof caving and bulking ratio. |
+| **ĉ** | Viscoelastic Time Decay | Bound: [0.005, 0.050] day⁻¹ | **LEARNED** | Varies dynamically with longwall face advance rate. |
 
 The learned parameters $\hat{a}$ and $\hat{c}$ are instantiated as bounded PyTorch parameters passed through sigmoid activation bounds:
 $$\hat{a} = a_{\text{min}} + (a_{\text{max}} - a_{\text{min}}) \cdot \sigma(w_a)$$

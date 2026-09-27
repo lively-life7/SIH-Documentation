@@ -42,11 +42,11 @@ Under Directorate General of Mines Safety (DGMS) statutory frameworks and Indian
 
 | Alert Tier | Visual Level | Physical Threshold Condition | Action Dispatched |
 | :--- | :--- | :--- | :--- |
-| **Normal (Quiet)** | Green | $ε ≤ 500\ µε$, Tilt $≤ 3\text{ mm/m}$, Crack = `00` | Routine telemetry logging; continuous monitoring |
-| **Tier 1: Advisory** | Blue | $500\ µε < ε ≤ 1000\ µε$ OR Tilt $> 3\text{ mm/m}$ | Visual dashboard advisory alert; maintenance notification |
-| **Tier 2: Warning** | Yellow | $1000\ µε < ε ≤ 1500\ µε$ OR Tilt $> 6\text{ mm/m}$ | Automated SMS alert to Geotechnical Officer; 15-min ack window |
-| **Tier 3: Critical** | Orange | $ε > 1500\ µε$ OR Acceleration $> 3×$ baseline | Automated shift supervisor call tree; 3-min escalation countdown |
-| **Tier 4: Emergency** | **Red** | **Quorum confirmed $ε > 1500\ µε$ OR Crack Wire = `11`** | **Full-Mine Evacuation Siren (<1.4s); SCADA Emergency Lockout** |
+| **Normal (Quiet)** | Green | ε ≤ 500 µε, Tilt ≤ 3 mm/m, Crack = `00` | Routine telemetry logging; continuous monitoring |
+| **Tier 1: Advisory** | Blue | 500 µε < ε ≤ 1000 µε OR Tilt > 3 mm/m | Visual dashboard advisory alert; maintenance notification |
+| **Tier 2: Warning** | Yellow | 1000 µε < ε ≤ 1500 µε OR Tilt > 6 mm/m | Automated SMS alert to Geotechnical Officer; 15-min ack window |
+| **Tier 3: Critical** | Orange | ε > 1500 µε OR Acceleration > 3× baseline | Automated shift supervisor call tree; 3-min escalation countdown |
+| **Tier 4: Emergency** | **Red** | **Quorum confirmed ε > 1500 µε OR Crack Wire = `11`** | **Full-Mine Evacuation Siren (<1.4s); SCADA Emergency Lockout** |
 
 ---
 

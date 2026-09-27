@@ -33,7 +33,7 @@
 
 5. **Knothe, St. (1957):**
    * *Citation:* Knothe, St., *"Observations of surface movements under influence of mining and their theoretical interpretation"*, Proceedings of the European Congress on Ground Movement, University of Leeds, Leeds, UK, pp. 210–218.
-   * *Equations Verified:* Gaussian influence function, spatial integration error functions, and time-dependent exponential relaxation factor $\eta(t) = 1 - e^{-ct}$.
+   * *Equations Verified:* Gaussian influence function, spatial integration error functions, and time-dependent exponential relaxation factor $η(t) = 1 - e^{-ct}$.
 6. **Awershin, S.G. (1947):**
    * *Citation:* Awershin, S.G., *"Ground Movement Under the Influence of Mining Operations"*, Ugletekhizdat, Moscow.
    * *Equations Verified:* Awershin's horizontal displacement relation $U_x = B_{\text{horiz}} \cdot (\partial S / \partial x)$ with $B_{\text{horiz}} \approx 0.32 \cdot r$.

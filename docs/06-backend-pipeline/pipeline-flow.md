@@ -54,14 +54,14 @@ flowchart TD
 
 | Stage | Input Data Structure | Output Data Structure | Latency Budget | Primary Failure Guard |
 | :--- | :--- | :--- | :--- | :--- |
-| **Ingestion** | 23-byte binary LoRa frame | Row in `nodes.csv` (120 bytes) | $< 15\text{ ms}$ | CRC-16 error rejection; ring buffer de-duplication |
-| **C7 Cleaning** | Raw `nodes.csv` + `nodes.json` | Calibrated state dictionary (SI units) | $< 35\text{ ms}$ | Sag undo prior to thermal subtraction; NaN propagation |
-| **C8 Quorum** | Calibrated state + `events.csv` | Alarm classification (Quiet/Warn/Crit) | $< 10\text{ ms}$ | 5-station Byzantine quorum + DGMS blast veto |
-| **Siren Action** | Dry-contact relay command | 125 dB physical audio siren | $< 250\text{ ms}$ | Local hardware latch; independent of cellular/cloud |
-| **C9 Twin** | Calibrated state buffer (48 slices) | $64 × 64$ continuous elevation mesh | $\sim 45\text{ s}$ (Async)| PINN decoupled from safety alarm loop |
+| **Ingestion** | 23-byte binary LoRa frame | Row in `nodes.csv` (120 bytes) | < 15 ms | CRC-16 error rejection; ring buffer de-duplication |
+| **C7 Cleaning** | Raw `nodes.csv` + `nodes.json` | Calibrated state dictionary (SI units) | < 35 ms | Sag undo prior to thermal subtraction; NaN propagation |
+| **C8 Quorum** | Calibrated state + `events.csv` | Alarm classification (Quiet/Warn/Crit) | < 10 ms | 5-station Byzantine quorum + DGMS blast veto |
+| **Siren Action** | Dry-contact relay command | 125 dB physical audio siren | < 250 ms | Local hardware latch; independent of cellular/cloud |
+| **C9 Twin** | Calibrated state buffer (48 slices) | 64 × 64 continuous elevation mesh | \sim 45 s (Async)| PINN decoupled from safety alarm loop |
 
 #### Latency Budget Synthesis:
-The critical safety path (Ingestion $\to$ C7 Calibration $\to$ C8 Quorum $\to$ Siren Contact Closure) executes in:
+The critical safety path (Ingestion $→$ C7 Calibration $→$ C8 Quorum $→$ Siren Contact Closure) executes in:
 
 $$\tau_{\text{critical}} = 15\text{ ms} + 35\text{ ms} + 10\text{ ms} + 250\text{ ms} = \mathbf{310\text{ ms}}$$
 

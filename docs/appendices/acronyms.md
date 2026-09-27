@@ -31,7 +31,7 @@
 | **GPS** | Global Positioning System | Geolocation & Master PPS Clock |
 | **HMI** | Human-Machine Interface | Industrial Automation & SCADA |
 | **InSAR** | Interferometric Synthetic Aperture Radar | Satellite Remote Sensing |
-| **LEC** | Largest Empty Circle ($d_{\text{committed}}$) | Geometrical Spatial Coverage |
+| **LEC** | Largest Empty Circle (d_committed) | Geometrical Spatial Coverage |
 | **LoRa** | Long Range (Semtech Sub-GHz RF technology) | Physical Layer Wireless |
 | **LOO** | Leave-One-Out Cross-Validation | Machine Learning Validation |
 | **LSB** | Least Significant Bit | ADC Quantization Resolution |

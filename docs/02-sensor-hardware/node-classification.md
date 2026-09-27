@@ -49,10 +49,10 @@ AEGIS separates functional responsibilities into three distinct tiers: high-dens
 
 | Tier | Transducer / Interface | Measurement Parameter | Dynamic Spatial Placement | Geotechnical Role & Safety Logic |
 | :--- | :--- | :--- | :--- | :--- |
-| **Tier 1A (Tilt Inclinometer)** | InvenSense MPU-6050 (3-axis MEMS accelerometer + gyro) | Angular tilt ($θ_x, θ_y$) in $0.05^°$ resolution; 3-axis vibration | Central trough basin and outer subsidence boundary | Maps continuous spatial slope across the subsidence bowl. Tilt alone does not trip emergency alarms due to diurnal thermal tilt artifacts. |
-| **Tier 1B (Horizontal Rod Strain)** | 10m carbon-fiber/invar reference rod + linear slide pot + TI ADS1115 16-bit ADC | Differential horizontal displacement ($Δ U_x$) in $0.1\text{ mm}$ resolution; ground strain ($ε$) | Perimeter inflection zone ($± 0.4 r$ from extraction boundary) | Primary early-warning indicator. Measures horizontal ground stretching weeks before visible surface fissures appear. |
-| **Tier 1C (Wire Extensometer)** | 30m high-tensile invar wire rotary draw-wire optical/potentiometric encoder | Long-baseline surface elongation in $0.5\text{ mm}$ resolution | Straddling the unmined barrier pillar and panel edge | Directly satisfies DGMS technical requirements for monitoring absolute distance changes between ground stations across major shear boundaries. |
-| **Crack Trip Scout** | Continuous conductive silver-palladium break-wire trace or microswitch | Binary physical fissure rupture ($0$ = intact, $1$ = sheared) | Known geological fault outcrops and panel hinge lines | Hardware interrupt-driven instantaneous trigger. Upon physical rupture, awakens from deep sleep and immediately broadcasts an emergency priority frame. |
+| **Tier 1A (Tilt Inclinometer)** | InvenSense MPU-6050 (3-axis MEMS accelerometer + gyro) | Angular tilt (θ_x, θ_y) in 0.05° resolution; 3-axis vibration | Central trough basin and outer subsidence boundary | Maps continuous spatial slope across the subsidence bowl. Tilt alone does not trip emergency alarms due to diurnal thermal tilt artifacts. |
+| **Tier 1B (Horizontal Rod Strain)** | 10m carbon-fiber/invar reference rod + linear slide pot + TI ADS1115 16-bit ADC | Differential horizontal displacement (Δ U_x) in 0.1 mm resolution; ground strain (ε) | Perimeter inflection zone (± 0.4 r from extraction boundary) | Primary early-warning indicator. Measures horizontal ground stretching weeks before visible surface fissures appear. |
+| **Tier 1C (Wire Extensometer)** | 30m high-tensile invar wire rotary draw-wire optical/potentiometric encoder | Long-baseline surface elongation in 0.5 mm resolution | Straddling the unmined barrier pillar and panel edge | Directly satisfies DGMS technical requirements for monitoring absolute distance changes between ground stations across major shear boundaries. |
+| **Crack Trip Scout** | Continuous conductive silver-palladium break-wire trace or microswitch | Binary physical fissure rupture (0 = intact, 1 = sheared) | Known geological fault outcrops and panel hinge lines | Hardware interrupt-driven instantaneous trigger. Upon physical rupture, awakens from deep sleep and immediately broadcasts an emergency priority frame. |
 
 ---
 
@@ -111,6 +111,6 @@ AEGIS separates functional responsibilities into three distinct tiers: high-dens
 1. **Perimeter Inflection Zone (Peak Curvature $\partial^2 S / \partial x^2$):**
    Located at $\pm r / \sqrt{2\pi} \approx \pm 0.4 r$ from the extraction boundary. This band experiences peak horizontal tensile strain and differential tilt. Sensor density is maximized here, concentrating Tier 1B horizontal strain rods, Tier 1C wire extensometers, and Crack Trip break-wires at close Nyquist intervals ($\Delta \le r / 2.86$).
 2. **Central Trough Basin (Flat Settlement Zone):**
-   Over the extracted center, vertical subsidence is maximal ($S \to S_{\max}$) but curvature and horizontal strain approach zero. Tier 1A tilt inclinometers are spaced at wider intervals to track bulk elevation settlement and block rotation without unnecessary hardware over-allocation.
+   Over the extracted center, vertical subsidence is maximal ($S → S_{\max}$) but curvature and horizontal strain approach zero. Tier 1A tilt inclinometers are spaced at wider intervals to track bulk elevation settlement and block rotation without unnecessary hardware over-allocation.
 3. **Exterior Reference Zone ($x \ge 1.5 r$):**
    Outside the strata angle of draw, Tier 2A reference anchors provide the zero-displacement geotechnical baseline.

@@ -71,7 +71,7 @@ Any continuous movement occurring below these LSB thresholds is trapped as quant
 
 ### Question: How is long-term electronic baseline drift modeled, and why is an Ornstein-Uhlenbeck process chosen over an unbounded random walk (Stage 3)?
 
-**Answer:** Analogue front-end amplifiers, operational amplifier input offset currents, and piezoresistive bridge bonds experience low-frequency $1/f$ flicker noise and physical relaxation over weeks of field exposure. If modeled as a pure Gaussian random walk (Brownian motion), the simulated sensor bias would integrate infinitely ($b_t \to \pm \infty$), which is physically impossible for passive silicon components.
+**Answer:** Analogue front-end amplifiers, operational amplifier input offset currents, and piezoresistive bridge bonds experience low-frequency $1/f$ flicker noise and physical relaxation over weeks of field exposure. If modeled as a pure Gaussian random walk (Brownian motion), the simulated sensor bias would integrate infinitely ($b_t → \pm \infty$), which is physically impossible for passive silicon components.
 
 AEGIS implements a mean-reverting **Ornstein-Uhlenbeck (OU) stochastic differential equation** with an empirical relaxation time constant $\tau = 21,600\text{ seconds}$ (6.0 hours):
 
@@ -128,7 +128,7 @@ CONSEQUENCE: Massive artificial rate-of-change spikes trigger false Class-A sire
 
 By preserving missing values as `NaN`, the C7 Kalman filter executes a pure time update (state propagation without measurement update), maintaining mathematical continuity without tripping spurious rate-of-change alarms.
 
-### Question: How does temporal staleness inflate observation covariance, and why must the staleness multiplier $f_{\text{gap}}$ be capped (Stage 6, Test T45)?
+### Question: How does temporal staleness inflate observation covariance, and why must the staleness multiplier f_gap be capped (Stage 6, Test T45)?
 
 **Answer:** When communication link outages occur, the uncertainty associated with a sensor station's state estimate grows monotonically with elapsed time. When the node finally reconnects and retransmits telemetry, the measurement update must not be treated with the same statistical confidence as continuous, synchronized streaming data.
 
@@ -140,7 +140,7 @@ The observation variance $\sigma^2$ fed into downstream Kalman filtering and PIN
 $$\sigma_{\text{adjusted}}^2 = f_{\text{gap}} \cdot \sigma_{\text{nominal}}^2$$
 
 **The Mathematical Necessity of the Cap at 10.0 (Test T45):**  
-If a remote node is isolated for several days or weeks during scheduled longwall maintenance, an uncapped linear inflation model would allow $f_{\text{gap}} \to \infty$. This would cause the observation covariance matrix $\mathbf{R}$ in the Kalman filter to become ill-conditioned, leading to numerical overflow, division-by-zero during Kalman gain computation ($\mathbf{K} = \mathbf{P} \mathbf{H}^T (\mathbf{H}\mathbf{P}\mathbf{H}^T + \mathbf{R})^{-1}$), and fatal system crashes. Capping $f_{\text{gap}}$ at $10.0$ bounds the condition number of the covariance matrix while accurately de-weighting stale telemetry.
+If a remote node is isolated for several days or weeks during scheduled longwall maintenance, an uncapped linear inflation model would allow $f_{\text{gap}} → \infty$. This would cause the observation covariance matrix $\mathbf{R}$ in the Kalman filter to become ill-conditioned, leading to numerical overflow, division-by-zero during Kalman gain computation ($\mathbf{K} = \mathbf{P} \mathbf{H}^T (\mathbf{H}\mathbf{P}\mathbf{H}^T + \mathbf{R})^{-1}$), and fatal system crashes. Capping $f_{\text{gap}}$ at $10.0$ bounds the condition number of the covariance matrix while accurately de-weighting stale telemetry.
 
 ---
 

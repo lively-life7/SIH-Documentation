@@ -52,7 +52,7 @@ AEGIS implements the **Inviolable Quarantine Rule**, enforced by automated CI Te
 
 AEGIS enforces the **3-Tier Data Provenance Model (Gate G04)**, tagging every ingested telemetry record with an immutable provenance classification:
 
-| Provenance Tag | Source of Observation | Physical Example | ML Training Loss Weight ($\omega_{\text{prov}}$) |
+| Provenance Tag | Source of Observation | Physical Example | ML Training Loss Weight (\omega_prov) |
 | :--- | :--- | :--- | :--- |
 | `real` (real-world) | Physical ground sensors in active mines | Historical SCCL Adriyala leveling pegs, in-situ tiltmeters, Sentinel-1 InSAR | **3.0× (Authoritative ground truth)** |
 | `pinned` (physics-fit) | Empirical Knothe physics fitted to field data | Baseline elevation grid fitted to field draw angle and depth | **1.0× (Physical baseline constraint)** |

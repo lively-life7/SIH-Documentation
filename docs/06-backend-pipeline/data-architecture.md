@@ -53,12 +53,12 @@ $$\text{Max Disk Footprint} = \text{Max Rows} \times S_{\text{row}}$$
 
 The following table demonstrates dynamic scaling across varied mining deployments with a nominal 60-second transmission interval ($\Delta t_{\text{transmit}} = 60\text{ s}$, $\tau_{\text{retention}} = 36\text{ h}$):
 
-| Mining Deployment Profile | Grid Stations ($N_{\text{nodes}}$) | Max Rows in Hot Store | Max Disk Footprint | Peak RAM Buffer |
+| Mining Deployment Profile | Grid Stations (N_nodes) | Max Rows in Hot Store | Max Disk Footprint | Peak RAM Buffer |
 | :--- | :--- | :--- | :--- | :--- |
-| **Pilot Demonstration Panel** | 16 stations | 34,560 rows | $4.15\text{ MB}$ | $< 8\text{ MB}$ |
-| **Standard Longwall Panel** | 36 stations | 77,760 rows | $9.33\text{ MB}$ | $< 16\text{ MB}$ |
-| **High-Resolution Continuous Miner**| 64 stations | 138,240 rows | $16.59\text{ MB}$ | $< 28\text{ MB}$ |
-| **Regional Multi-Panel Lease** | 128 stations | 276,480 rows | $33.18\text{ MB}$ | $< 55\text{ MB}$ |
+| **Pilot Demonstration Panel** | 16 stations | 34,560 rows | 4.15 MB | < 8 MB |
+| **Standard Longwall Panel** | 36 stations | 77,760 rows | 9.33 MB | < 16 MB |
+| **High-Resolution Continuous Miner**| 64 stations | 138,240 rows | 16.59 MB | < 28 MB |
+| **Regional Multi-Panel Lease** | 128 stations | 276,480 rows | 33.18 MB | < 55 MB |
 
 Continuous integration test `T30` validates this bounded behavior by feeding 100,000 synthetic epochs into the ingestion pipeline. The test verifies that the pruning worker triggers at $T > 36\text{ h}$, accurately moves aged rows to Parquet, and caps file size at the theoretical bound within a $\pm 1\%$ tolerance.
 

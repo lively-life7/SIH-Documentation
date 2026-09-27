@@ -36,15 +36,15 @@
 
 | Phase Window | Duration | Protocol Function | PHY Configuration | Packet Type & On-Air Time |
 | :--- | :--- | :--- | :--- | :--- |
-| **0.00s – 0.10s** | $100\text{ ms}$ | **Master Sync Beacon** broadcast panel-wide by Master Gateway | LoRa SF7 / BW 125 kHz | 13-byte sync beacon ($75.0\text{ ms}$ on-air) |
-| **0.10s – 1.00s** | $900\text{ ms}$ | **Network Propagation & Guard Window** | — | Channel idle; permits cluster heads to adjust phase timers |
-| **1.00s – 37.00s** | $36.0\text{ s}$ | **Scout Cluster Uplinks** (Parallel orthogonal frequency channels) | LoRa SF7 / BW 125 kHz | 23-byte leaf telemetry ($90.4\text{ ms}$ on-air) |
-| **37.00s – 38.00s**| $1.0\text{ s}$ | **Inter-Tier Channel Retuning Guard Window** | — | Anchor nodes finalize trunk frame serialization |
-| **38.00s – 45.00s**| $7.0\text{ s}$ | **Anchor Backbone Relays** to Master Gateway Hub | LoRa SF8 / BW 125 kHz | Aggregated trunk bundles ($406.0\text{ to }457.2\text{ ms}$ on-air) |
-| **45.00s – 46.00s**| $1.0\text{ s}$ | **Backbone Clearance Guard Window** | — | Master Gateway clears reception buffers |
-| **46.00s – 50.00s**| $4.0\text{ s}$ | **Emergency Contention-Free Slots** (16 deterministic subslots) | LoRa SF7 / BW 125 kHz | 8-byte emergency trip frames ($69.9\text{ ms}$ on-air) |
-| **50.00s – 51.00s**| $1.0\text{ s}$ | **Emergency Verification Guard Window** | — | Gateway validates emergency alarms |
-| **51.00s – 60.00s**| $9.0\text{ s}$ | **Store-and-Forward Backfill & Quiet Window** | LoRa SF7 / BW 125 kHz | Opportunistic historical backfill ($90.4\text{ ms}$) |
+| **0.00s – 0.10s** | 100 ms | **Master Sync Beacon** broadcast panel-wide by Master Gateway | LoRa SF7 / BW 125 kHz | 13-byte sync beacon (75.0 ms on-air) |
+| **0.10s – 1.00s** | 900 ms | **Network Propagation & Guard Window** | — | Channel idle; permits cluster heads to adjust phase timers |
+| **1.00s – 37.00s** | 36.0 s | **Scout Cluster Uplinks** (Parallel orthogonal frequency channels) | LoRa SF7 / BW 125 kHz | 23-byte leaf telemetry (90.4 ms on-air) |
+| **37.00s – 38.00s**| 1.0 s | **Inter-Tier Channel Retuning Guard Window** | — | Anchor nodes finalize trunk frame serialization |
+| **38.00s – 45.00s**| 7.0 s | **Anchor Backbone Relays** to Master Gateway Hub | LoRa SF8 / BW 125 kHz | Aggregated trunk bundles (406.0 to 457.2 ms on-air) |
+| **45.00s – 46.00s**| 1.0 s | **Backbone Clearance Guard Window** | — | Master Gateway clears reception buffers |
+| **46.00s – 50.00s**| 4.0 s | **Emergency Contention-Free Slots** (16 deterministic subslots) | LoRa SF7 / BW 125 kHz | 8-byte emergency trip frames (69.9 ms on-air) |
+| **50.00s – 51.00s**| 1.0 s | **Emergency Verification Guard Window** | — | Gateway validates emergency alarms |
+| **51.00s – 60.00s**| 9.0 s | **Store-and-Forward Backfill & Quiet Window** | LoRa SF7 / BW 125 kHz | Opportunistic historical backfill (90.4 ms) |
 
 ---
 
@@ -109,7 +109,7 @@
    At exact second zero of each superframe ($t = 0.000\text{s}$), the gateway broadcasts a 13-byte synchronization beacon. When a Scout node’s SX1262 receiver detects the sync preamble, the Semtech transceiver asserts a physical hardware interrupt on its `DIO1` pin. The ESP32 captures this edge via an internal timer capture register, resetting its local microsecond counter and eliminating all operating system software interrupt latency.
 3. **Crystal Drift vs. Guard Band Mathematical Margin:**
    The uncompensated internal crystal oscillators of commercial ESP32 modules specify a maximum frequency tolerance of $\pm 30\text{ ppm}$ under extreme operational temperatures ($-20^\circ\text{C}\text{ to }+70^\circ\text{C}$). Over the full 60-second superframe epoch, the maximum accumulated timing drift is:
-   $$\Delta t_{\text{drift}} = 60.0\text{ s} \times (\pm 30 \times 10^{-6}) = \mathbf{\pm 1.80\text{ milliseconds}}$$
+   $$\Delta t_{\text{drift}} = 60.0\text{ s} \times (\pm 30 \times 10⁻⁶) = \mathbf{\pm 1.80\text{ milliseconds}}$$
    Each TDMA cluster subslot is allocated a $250\text{ ms}$ temporal window, whereas the physical 23-byte LoRa packet requires only $90.4\text{ ms}$ of on-air transmission time. This provides an effective guard band of:
    $$\text{Guard Margin} = 250\text{ ms} - 90.4\text{ ms} = \mathbf{159.6\text{ milliseconds}}$$
    Because the guard band ($159.6\text{ ms}$) exceeds maximum crystal drift ($1.8\text{ ms}$) by a safety factor of **$>88\times$**, clock drift can never cause packet overlap or inter-slot collisions between adjacent nodes.

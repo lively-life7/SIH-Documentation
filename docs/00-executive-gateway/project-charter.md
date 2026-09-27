@@ -53,11 +53,11 @@ AEGIS sizes its sensor deployments dynamically using Knothe subsidence physics:
 | Metric | Target Specification | Rationale & Enabling Mechanism | Verification Standard |
 | :--- | :--- | :--- | :--- |
 | **Scout Node BOM** | ~₹1,050 / node | 100% indigenous COTS parts (ESP32-WROOM-32, MPU-6050, ADS1115, LoRa SX1262) | Verified BOM invoice audit (Gate G03) |
-| **Advance Crack Prediction** | 8.93 days | Closed-form Knothe strain curve derivation at critical micro-strain threshold ($θ_c = 1500\,µε$) | Analytic proof & synthetic run (Test T10) |
+| **Advance Crack Prediction** | 8.93 days | Closed-form Knothe strain curve derivation at critical micro-strain threshold (θ_c = 1500 µε) | Analytic proof & synthetic run (Test T10) |
 | **End-to-End Siren Latency** | < 1.4 seconds | Hardware edge interrupt to gateway relay contact closure, bypassing cloud dependencies | Measured edge-to-relay oscilloscope latch |
 | **Zero Data Loss Buffer** | 72 hours (4,320 epochs) | On-node 99 KB SPI flash circular ring buffer with store-and-forward backfill | Disconnected mesh recovery test (Test T11, T29) |
-| **False Alarm Elimination** | Near-zero false alarms | 5-node Byzantine spatial quorum gating ($≥ 3\sigma$) + 200 Hz 4-band FFT vibration discriminator | DGMS blast log correlation test (Test T39) |
-| **Spectrum Compliance** | 100% license-free | GSR 564(E) IN865 band (865–867 MHz), 125 kHz BW, transmitter duty cycle $≤ 0.15\%$ | RF spectrum analyzer audit (Test T18) |
+| **False Alarm Elimination** | Near-zero false alarms | 5-node Byzantine spatial quorum gating (≥ 3\sigma) + 200 Hz 4-band FFT vibration discriminator | DGMS blast log correlation test (Test T39) |
+| **Spectrum Compliance** | 100% license-free | GSR 564(E) IN865 band (865–867 MHz), 125 kHz BW, transmitter duty cycle ≤ 0.15% | RF spectrum analyzer audit (Test T18) |
 
 ---
 

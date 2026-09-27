@@ -44,19 +44,19 @@
 
 | Offset (Bytes) | Field Identifier | Wire Data Type | Physical Scaling / LSB | Valid Measurement Range | Physical Geotechnical Meaning |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **0 – 1** | `tilt_x` | int16 (Little-Endian) | $2\ µ\text{rad / LSB}$ | $± 65,534\ µrad$ ($≈ ± 3.75^°$) | Transverse ground surface inclination angle |
-| **2 – 3** | `tilt_y` | int16 (Little-Endian) | $2\ µ\text{rad / LSB}$ | $± 65,534\ µrad$ ($≈ ± 3.75^°$) | Longitudinal ground surface inclination angle |
-| **4 – 5** | `strain_ue` | int16 (Little-Endian) | $1\ µε\text{ / LSB}$ | $± 32,767\ µε$ | Horizontal ground strain across 10m baseline |
-| **6 – 7** | `ext_delta_10um`| int16 (Little-Endian) | $10\ µ\text{m / LSB}$ | $± 327.6\text{ mm}$ | 3D relative peg displacement across fault line |
-| **8 – 9** | `vib_rms_x100` | uint16 (Little-Endian)| $0.01\text{ mm/s / LSB}$ | $0.00\text{ to }655.35\text{ mm/s}$ | RMS ground vibration velocity during burst |
-| **10 – 11**| `vib_peak_x100`| uint16 (Little-Endian)| $0.01\text{ mm/s / LSB}$ | $0.00\text{ to }655.35\text{ mm/s}$ | Peak Particle Velocity (PPV) shock impulse |
-| **12** | `vib_fdom_hz` | uint8 | $1\text{ Hz / LSB}$ | $0\text{ to }255\text{ Hz}$ | Dominant FFT spectral frequency peak |
-| **13 – 14**| `temp_dc` | int16 (Little-Endian) | $0.1^°\text{C / LSB}$ | $-40.0^°\text{C to }+85.0^°\text{C}$ | Semiconductor die temperature for thermal compensation |
-| **15 – 16**| `vbat_mv` | uint16 (Little-Endian)| $1\text{ mV / LSB}$ | $2,500\text{ to }4,500\text{ mV}$ | LiFePO4 battery terminal voltage |
+| **0 – 1** | `tilt_x` | int16 (Little-Endian) | 2 µrad / LSB | ± 65,534 µrad (≈ ± 3.75°) | Transverse ground surface inclination angle |
+| **2 – 3** | `tilt_y` | int16 (Little-Endian) | 2 µrad / LSB | ± 65,534 µrad (≈ ± 3.75°) | Longitudinal ground surface inclination angle |
+| **4 – 5** | `strain_ue` | int16 (Little-Endian) | 1 µε / LSB | ± 32,767 µε | Horizontal ground strain across 10m baseline |
+| **6 – 7** | `ext_delta_10um`| int16 (Little-Endian) | 10 µm / LSB | ± 327.6 mm | 3D relative peg displacement across fault line |
+| **8 – 9** | `vib_rms_x100` | uint16 (Little-Endian)| 0.01 mm/s / LSB | 0.00 to 655.35 mm/s | RMS ground vibration velocity during burst |
+| **10 – 11**| `vib_peak_x100`| uint16 (Little-Endian)| 0.01 mm/s / LSB | 0.00 to 655.35 mm/s | Peak Particle Velocity (PPV) shock impulse |
+| **12** | `vib_fdom_hz` | uint8 | 1 Hz / LSB | 0 to 255 Hz | Dominant FFT spectral frequency peak |
+| **13 – 14**| `temp_dc` | int16 (Little-Endian) | 0.1°C / LSB | -40.0°C to +85.0°C | Semiconductor die temperature for thermal compensation |
+| **15 – 16**| `vbat_mv` | uint16 (Little-Endian)| 1 mV / LSB | 2,500 to 4,500 mV | LiFePO4 battery terminal voltage |
 | **17** | `status_flags` | uint8 (Bitmask) | 8 discrete flags | Bitfield | Sensor self-test, trip, solar, and failover status |
-| **18 – 19**| `epoch_lo` | uint16 (Little-Endian)| 1 epoch ($60\text{ s}$) | $0\text{ to }65,535$ ($45.5\text{ days}$) | Lower 16 bits of hardware sample sequence clock |
-| **20** | `node_id` | uint8 | Integer ID | $1\text{ to }255$ | Unique network node address |
-| **21 – 22**| `crc16` | uint16 (Little-Endian)| CCITT Checksum | 16-bit hash | CRC-16 error detection ($x^{16} + x^{12} + x^5 + 1$) |
+| **18 – 19**| `epoch_lo` | uint16 (Little-Endian)| 1 epoch (60 s) | 0 to 65,535 (45.5 days) | Lower 16 bits of hardware sample sequence clock |
+| **20** | `node_id` | uint8 | Integer ID | 1 to 255 | Unique network node address |
+| **21 – 22**| `crc16` | uint16 (Little-Endian)| CCITT Checksum | 16-bit hash | CRC-16 error detection (x^{16} + x^{12} + x^5 + 1) |
 
 ---
 
@@ -72,7 +72,7 @@
 | **Bit 2** | `selftest_ok` | Transducer Hardware Fault | All Transducers Healthy | Firmware self-test verification. Nodes reporting `0` are excluded from the spatial voting quorum (Test T43). |
 | **Bit 3** | `trip_active` | Routine Telemetry Epoch | Priority Emergency Trip | Identifies packet as an unscheduled emergency transmission initiated by acceleration or strain triggers. |
 | **Bit 4** | `solar_chg` | Solar Inactive / Occluded | Panel Actively Charging | Diagnostics for solar panel health, dust accumulation, or mechanical displacement. |
-| **Bit 5** | `failover` | Primary Parent ($P_1$) | Backup Parent ($P_2$) | Alerts the backend that the primary Anchor Relay is unreachable and traffic has rerouted to the secondary parent. |
+| **Bit 5** | `failover` | Primary Parent (P_1) | Backup Parent (P_2) | Alerts the backend that the primary Anchor Relay is unreachable and traffic has rerouted to the secondary parent. |
 | **Bit 6** | `ext_ovf` | Transducer Stroke Normal | Mechanical Limit Exceeded | Flags that the linear extensometer has reached maximum mechanical travel, preventing misleading displacement values. |
 | **Bit 7** | `reserved` | Logic 0 | Reserved | Unassigned; reserved for future firmware feature flags. |
 

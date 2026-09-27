@@ -17,10 +17,10 @@
 
 | Component | Part Description / Model | Unit Cost (₹) | Source / Distributor | Technical Justification |
 | :--- | :--- | :--- | :--- | :--- |
-| **Compute & Wireless** | ESP32-WROOM-32 (Dual Core, 240 MHz) + Semtech SX1262 LoRa module | ₹480 | Robu.in / Domestic distributors | Ultra-low deep-sleep current ($5\ µA$), 865–867 MHz band support, $+22\text{ dBm}$ link budget. |
-| **Primary Inclinometer** | InvenSense MPU-6050 (3-axis MEMS accelerometer + gyro) | ₹160 | Domestic electronics distributor | $16\text{-bit}$ resolution, $± 2g$ scale, $0.05^°$ angular tilt resolution, digital $I^2C$ interface. |
-| **Energy Storage** | 3.2V 1500mAh LiFePO4 18650 cell + TP5000 CC/CV charge management | ₹240 | Robu.in / Semikart | Intrinsically stable lithium chemistry; zero thermal runaway risk up to $60^°\text{C}$; 2000+ lifecycle cycles. |
-| **Solar Harvesting** | 1W 5V Monocrystalline Solar Panel (Epoxy sealed) | ₹180 | Domestic solar manufacturer | Delivers $≈ 180\text{ mA}$ peak current under peak sunlight; recharges daily node energy consumption in under 45 minutes. |
+| **Compute & Wireless** | ESP32-WROOM-32 (Dual Core, 240 MHz) + Semtech SX1262 LoRa module | ₹480 | Robu.in / Domestic distributors | Ultra-low deep-sleep current (5 µA), 865–867 MHz band support, +22 dBm link budget. |
+| **Primary Inclinometer** | InvenSense MPU-6050 (3-axis MEMS accelerometer + gyro) | ₹160 | Domestic electronics distributor | 16-bit resolution, ± 2g scale, 0.05° angular tilt resolution, digital I²C interface. |
+| **Energy Storage** | 3.2V 1500mAh LiFePO4 18650 cell + TP5000 CC/CV charge management | ₹240 | Robu.in / Semikart | Intrinsically stable lithium chemistry; zero thermal runaway risk up to 60°C; 2000+ lifecycle cycles. |
+| **Solar Harvesting** | 1W 5V Monocrystalline Solar Panel (Epoxy sealed) | ₹180 | Domestic solar manufacturer | Delivers ≈ 180 mA peak current under peak sunlight; recharges daily node energy consumption in under 45 minutes. |
 | **Enclosure & Mount** | IP67 Polycarbonate Enclosure + PG7 cable glands + rebar clamp | ₹270 | Local injection molding / hardware | Ingress protection against mine slurry, heavy monsoon downpours, and coal dust; UV-stabilized. |
 | **Passives & PCB** | Double-sided FR4 PCB, TVS surge diodes, bypass caps, fasteners | ₹120 | Domestic assembly / JLCPCB | Transient voltage protection against electro-static discharge and induced surface lightning spikes. |
 | **Total Unit Cost** | — | **₹1,450** | — | **Fully functional autonomous Tier 1A Scout Node.** |
@@ -47,7 +47,7 @@
 
 | Subsystem / Tier | Core Hardware Components | Unit Cost (₹) | Functional Role |
 | :--- | :--- | :--- | :--- |
-| **Tier 2 Anchor Backbone Node** | ESP32-S3 / ESP32 + Semtech SX1262 LoRa with $+22\text{ dBm}$ PA; 3.2V 3000mAh LiFePO4 pack (dual 18650 parallel); 3W 5V solar panel; 3-meter elevated galvanized steel mounting mast. | **₹3,100** | Operates as TDMA cluster head; routes packets from up to 5 child scouts; maintains multi-hop backbone relay to gateway. |
+| **Tier 2 Anchor Backbone Node** | ESP32-S3 / ESP32 + Semtech SX1262 LoRa with +22 dBm PA; 3.2V 3000mAh LiFePO4 pack (dual 18650 parallel); 3W 5V solar panel; 3-meter elevated galvanized steel mounting mast. | **₹3,100** | Operates as TDMA cluster head; routes packets from up to 5 child scouts; maintains multi-hop backbone relay to gateway. |
 | **Master Edge Gateway Hub** | Industrial Quad-Core ARM SBC (Raspberry Pi CM4 or Rockchip RK3568); SX1302/SX1303 8-channel multi-SF LoRa concentrator HAT; Quectel EC200U 4G LTE Cat-1 cellular modem; 12V 20Ah LiFePO4 battery pack; 20W monocrystalline solar panel + MPPT solar charge controller; 10-meter guyed lattice mast. | **₹12,500 – ₹15,000** | Ingests simultaneous packets from multiple RF channels; runs local physics validation and Kalman filters; syncs with cloud via MQTT over LTE. |
 
 ---
@@ -103,7 +103,7 @@ Where:
 
 **Answer:** Applying the scaling model across two operational panel scales demonstrates its dynamic adaptation:
 
-#### Scenario A: Localized Pilot Sector ($600\text{m} \times 200\text{m}$, Overburden $H = 150\text{m}$, Grid $\Delta = 25\text{m}$)
+#### Scenario A: Localized Pilot Sector (600m × 200m, Overburden H = 150m, Grid Δ = 25m)
 * Influence Radius: $r = 150 / \tan(63.4^\circ) = 75\text{ m}$.
 * Nyquist Maximum Spacing: $\Delta \le 75 / 2.86 = 26.2\text{ m} \implies$ grid resolution configured to $25\text{ m}$.
 * Active Dynamic Sizing: Sized to 37 Scout Nodes and 6 Anchor Relays to cover the critical tensile inflection sub-slice:
@@ -118,7 +118,7 @@ Where:
 | **Ground Anchor Pegs & Fixtures** | 43 | ₹150 | ₹6,450 | Anti-heave stainless steel ground stakes |
 | **Total Pilot Expenditure** | **43 stations** | — | **₹97,300** | **Comprehensive coverage under ₹1 Lakh** |
 
-#### Scenario B: Full Commercial Longwall Panel ($1,800\text{m} \times 280\text{m}$, Overburden $H = 220\text{m}$, Grid $\Delta = 35\text{m}$)
+#### Scenario B: Full Commercial Longwall Panel (1,800m × 280m, Overburden H = 220m, Grid Δ = 35m)
 * Influence Radius: $r = 220 / \tan(62^\circ) = 117\text{ m}$.
 * Nyquist Maximum Spacing: $\Delta \le 117 / 2.86 = 40.9\text{ m} \implies$ configured to $\Delta = 35\text{ m}$.
 * Sizing Output: 327 Scout Nodes, 82 Anchor Relays, 2 Master Edge Gateways:
@@ -146,7 +146,7 @@ Where:
 | **Monitoring Station Density** | 3 to 6 isolated multi-point stations | **411 active spatial nodes** | **>70× higher spatial sensor density** |
 | **Sensor Grid Spacing** | 250m to 500m gaps (aliased) | **25m to 35m physics-aligned grid** | Complies with spatial Nyquist theorem |
 | **Trenching & Cabling Cost** | ₹12,00,000 – ₹20,00,000 (cables shear during subsidence) | **₹0 (100% wireless LoRa mesh)** | Zero trenching labor; immune to cable shear |
-| **Spares & Maintenance Cost** | Imported proprietary spares ($1,000+ each; 8-week lead time) | Domestic COTS modules (₹1,450 unit cost; next-day delivery) | 90% cheaper spares; near-zero downtime |
+| **Spares & Maintenance Cost** | Imported proprietary spares (USD 1,000+ each; 8-week lead time) | Domestic COTS modules (₹1,450 unit cost; next-day delivery) | 90% cheaper spares; near-zero downtime |
 | **Regulatory Compliance** | Point measurements only; cannot map dynamic surface trough | Continuous surface curvature and strain field mapping | Full DGMS Tech Circular No. 3 compliance |
 
 ```

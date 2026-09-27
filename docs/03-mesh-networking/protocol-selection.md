@@ -30,11 +30,11 @@
 
 | Evaluation Criterion | LoRa Sub-GHz (IN865) | Zigbee / IEEE 802.15.4 | Wi-Fi Mesh (802.11s) | Cellular NB-IoT (Per Node) |
 | :--- | :--- | :--- | :--- | :--- |
-| **RF Carrier Frequency** | **865 – 867 MHz (Sub-GHz)** | $2.4\text{ GHz}$ ISM | $2.4\text{ GHz} / 5.8\text{ GHz}$ | Licensed $700\text{–}900\text{ MHz}$ |
-| **Diffraction & NLOS Penetration** | **Superior ($λ ≈ 34.6\text{ cm}$)** | Poor ($λ ≈ 12.5\text{ cm}$, high shadowing) | Very Poor (Severe multipath) | Excellent (High power cellular) |
-| **Maximum Range (Field Verified)** | **2 to 5 km (Ground-to-ground)** | $50\text{ to }100\text{ m}$ | $30\text{ to }70\text{ m}$ | $5\text{ to }15\text{ km}$ (Requires cell tower) |
-| **Deep Sleep Current** | **$< 12\ µA$ (SX1262 sleep)** | $20\text{ to }50\ µA$ | $> 15\text{ mA}$ (Constant listen) | $> 15\ µA$ (PSM mode) |
-| **Active TX Current / Duration** | **110 mA for 90.4 ms** | $35\text{ mA}$ for $20\text{ ms}$ | $300\text{ mA}$ for $50\text{ ms}$ | $220\text{ mA}$ for $5\text{ to }25\text{ seconds}$ |
+| **RF Carrier Frequency** | **865 – 867 MHz (Sub-GHz)** | 2.4 GHz ISM | 2.4 GHz / 5.8 GHz | Licensed 700–900 MHz |
+| **Diffraction & NLOS Penetration** | **Superior (λ ≈ 34.6 cm)** | Poor (λ ≈ 12.5 cm, high shadowing) | Very Poor (Severe multipath) | Excellent (High power cellular) |
+| **Maximum Range (Field Verified)** | **2 to 5 km (Ground-to-ground)** | 50 to 100 m | 30 to 70 m | 5 to 15 km (Requires cell tower) |
+| **Deep Sleep Current** | **< 12 µA (SX1262 sleep)** | 20 to 50 µA | > 15 mA (Constant listen) | > 15 µA (PSM mode) |
+| **Active TX Current / Duration** | **110 mA for 90.4 ms** | 35 mA for 20 ms | 300 mA for 50 ms | 220 mA for 5 to 25 seconds |
 | **Recurring SIM / Subscription Cost** | **₹0 (License-free WPC ISM band)** | ₹0 | ₹0 | ₹600 – ₹1,200 / node / year |
 | **Network Infrastructure Cost** | **Single Master Gateway Hub** | Dense repeaters every 60m | Dense routers every 40m | Dependent on telco tower uptime |
 | **Channel Contention Control** | **Deterministic TDMA Superframe** | CSMA/CA (Packet storms) | CSMA/CA (High contention) | Telco network scheduled |
