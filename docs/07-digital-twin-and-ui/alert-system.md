@@ -34,7 +34,7 @@ When ground failure occurs, every second of evacuation delay increases fatality 
 $$\text{Total Measured Critical Path Latency} = 5 + 69.9 + 20 + 50 + 200 + 1000 = \mathbf{1,344.9\text{ ms}} < \mathbf{1.4\text{ seconds}}$$
 
 ### Local Siren Independence from Cloud
-A vital safety invariant is that **the physical evacuation siren does NOT depend on cellular internet connectivity or cloud servers**:
+A non-negotiable safety invariant is that **the physical evacuation siren does NOT depend on cellular internet connectivity or cloud servers**:
 * The Master Gateway runs a local instance of the deterministic C8 validation logic.
 * If a valid emergency trip packet arrives from the field mesh, the gateway's onboard solid-state relay triggers the physical siren directly, even if the 4G/NB-IoT cellular link is completely severed.
 

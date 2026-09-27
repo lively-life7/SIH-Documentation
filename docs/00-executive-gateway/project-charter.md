@@ -6,7 +6,7 @@
 
 ## 1. Executive Summary
 
-Underground coal mining extraction inevitably induces subsidence—the settling, sinkage, or cracking of overburden rock and surface terrain. In India, roof and ground falls account for approximately 63% of underground mine fatalities according to Directorate General of Mines Safety (DGMS) records. Concurrently, subsidence threatens vital national infrastructure (e.g., railway lines, highways, aquifers, and overlying settlements), causing hundreds of crores in structural damage and disrupting operations.
+Underground coal mining extraction inevitably induces subsidence—the settling, sinkage, or cracking of overburden rock and surface terrain. In India, roof and ground falls account for approximately 63% of underground mine fatalities according to Directorate General of Mines Safety (DGMS) records. Concurrently, subsidence threatens key national infrastructure (railway lines, highways, aquifers, and overlying settlements), causing hundreds of crores in structural damage and disrupting operations.
 
 **AEGIS** is an indigenous, real-time, physics-informed IoT early warning system designed to detect subsurface deformation and predict surface crack formation **up to 8.9 days in advance**, while triggering automated sirens in **< 1.4 seconds**. 
 
