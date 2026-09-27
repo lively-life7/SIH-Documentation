@@ -56,6 +56,6 @@ Mining operators in India and internationally rely on four primary categories of
 | **Real-Time Sampling (< 1 min)** | No (15–30 days) | Yes (10–60 min) | No (6–12 days) | **Yes (60 seconds)** |
 | **Dense Spatial Grid (15–25m)** | No (50–100m) | No (100–300m) | Yes (15m pixel) | **Yes (15–25m)** |
 | **Instant Siren Trigger (< 2s)** | No | No | No | **Yes (< 1.4s)** |
-| **Sub-₹1 Lakh Panel Deployment** | No (High OPEX) | No (₹40–60L CAPEX) | No (Commercial fees) | **Yes (~₹97k)** |
+| **Algorithmic Low-Cost Scaling** | No (High OPEX) | No (₹40–60L CAPEX) | No (Commercial fees) | **Yes (~₹1,050–₹1,850/node)** |
 | **Monsoon & Weather Immunity** | Poor | Good | Poor | **Good (IP67 + RF)** |
 | **False Blast Discrimination** | N/A | Rare | None | **Yes (FFT + Blast Log)**|

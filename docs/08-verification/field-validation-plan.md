@@ -18,8 +18,8 @@ To validate AEGIS under active production conditions, a formal field trial plan 
 
 ## 2. Trial Deployment Architecture
 
-* **Hardware Array:** 37 Scout Nodes (17 Tier 1A Tilt, 14 Tier 1B Strain, 6 Tier 1C Extensometers) arranged along a traveling profile cross covering an active $600\text{m} \times 200\text{m}$ panel.
-* **Backbone Infrastructure:** 6 Anchor Backbone Relays + 1 Master Gateway Hub mounted on a 10m pneumatic mast situated at the surface colliery substation.
+* **Pilot Hardware Array:** 37 Scout Nodes (17 Tier 1A Tilt, 14 Tier 1B Strain, 6 Tier 1C Extensometers) arranged along a traveling profile cross covering an active $600\text{m} \times 200\text{m}$ panel sub-slice. (Note: for full-panel deployments, node counts scale algorithmically, e.g., 327 Scouts + 82 Anchors for a 1.8 km face).
+* **Backbone Infrastructure:** 6 Anchor Backbone Relays (sized dynamically for the pilot cluster at nominal fan-out 4, `max_children_per_anchor = 5`) + 1 Master Gateway Hub mounted on a 10m pneumatic mast situated at the surface colliery substation.
 * **Trial Duration:** **40 continuous operating days**, corresponding to approximately $160\text{ meters}$ of continuous longwall face advance.
 
 ---

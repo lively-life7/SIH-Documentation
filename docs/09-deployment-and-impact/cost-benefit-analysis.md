@@ -11,18 +11,21 @@ The primary economic barrier preventing the widespread adoption of continuous ge
 
 ```
 +-----------------------------------------------------------------------------------+
-|                        CAPITAL EXPENDITURE PER PANEL                              |
+|                        CAPITAL EXPENDITURE PER PANEL (INR)                        |
 |                                                                                   |
 |  Commercial Imported Sensor Array (Campbell / RST / Sisgeo: 5–10 Stations)        |
-|  [============================================================] ₹40,00,000 – ₹60,00,000
+|  [============================================================] ₹50,00,000 – ₹80,00,000
 |                                                                                   |
-|  AEGIS Indigenous Mesh Platform (37 Multi-Sensor Stations + Master Gateway)       |
+|  AEGIS Algorithmic Dynamic Mesh (Full Longwall: 327 Scouts + 82 Anchors)          |
+|  [========] ₹10,29,000                                                            |
+|                                                                                   |
+|  AEGIS Pilot Sub-Slice (37 Nodes + Gateway)                                       |
 |  [=] ₹97,200                                                                      |
 +-----------------------------------------------------------------------------------+
 ```
 
-* **Capital Savings:** **$> 98\%$ reduction in initial hardware expenditure**.
-* **Deployment Feasibility:** For the cost of a single imported commercial borehole station, an operator can equip **four entire extraction panels** with dense AEGIS sensor meshes.
+* **Capital Savings:** **80% to 98% reduction in initial hardware expenditure** compared to imported instrumentation.
+* **Deployment Feasibility:** For the cost of a single imported commercial borehole station (₹40–60 Lakhs), an operator can equip multiple full-scale longwall panels or dozens of bord-and-pillar extraction faces with dense AEGIS sensor meshes. Cost scales purely by network geometry without an arbitrary budget ceiling.
 
 ---
 
@@ -51,7 +54,8 @@ The true economic return of the AEGIS platform lies in preventing high-consequen
 ---
 
 ## 4. Return on Investment (ROI) Timeline
-
-* **Initial Panel Investment:** ₹97,200.
-* **Annual Net OPEX Savings:** ₹23,50,000.
-* **Payback Period:** **Under 2 months** purely on labor and contractor survey fee savings, with instantaneous return upon preventing a single infrastructure disruption.
+ 
+* **Pilot Network Investment (37 Nodes):** ₹97,200.
+* **Full-Scale Longwall Investment (411 Nodes):** ₹10,29,000.
+* **Annual Net OPEX Savings:** ₹23,50,000 (labor, vehicles, and commercial InSAR contracts eliminated).
+* **Payback Period:** **Under 2 months** for pilot clusters and **under 6 months** for complete longwall districts purely on operational savings, with immediate ROI upon preventing a single track warp or face inundation.

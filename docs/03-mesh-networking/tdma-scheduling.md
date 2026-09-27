@@ -29,11 +29,11 @@ Unslotted ALOHA channel access suffers from severe collision collapse when chann
 
 ## 2. Cluster Slot Structure & Bitmap Acknowledgments
 
-Each cluster block (lasting $1.9\text{ seconds}$) coordinates up to 6 leaf Scout nodes reporting to a designated Anchor Relay:
-* **Slots 1 to 6 (250 ms each):** Leaf Scout nodes transmit their 23-byte telemetry packet in their assigned sub-slot.
-* **Bitmap ACK Window (150 ms):** The Anchor Relay transmits a single compact **Bitmap ACK packet (4 bytes payload, 20 bytes on-air)**. Each bit in the mask corresponds to a child node ID:
-  $$\text{Bitmap} = \sum_{i=1}^6 b_i \cdot 2^{i-1}$$
-  If bit $b_i = 1$, node $i$ marks its packet as delivered and clears its immediate retransmit buffer. This single broadcast replaces 6 individual downlink packets, cutting downlink airtime by **$87\%$** and keeping gateway duty cycle well under statutory limits.
+Each cluster block coordinates up to **5 leaf Scout nodes** reporting to a designated Anchor Relay (`max_children_per_anchor = 5`, nominal fan-out 4 plus 1 fail-over headroom):
+* **Slots 1 to 5 (250 ms each):** Leaf Scout nodes transmit their 23-byte telemetry packet in their assigned sub-slot.
+* **Bitmap ACK Window (150 ms):** The Anchor Relay transmits a single compact **Bitmap ACK packet (1 byte mask, 20 bytes on-air)**. Each bit in the mask corresponds to a child node ID within the cluster:
+  $$\text{Bitmap} = \sum_{i=1}^5 b_i \cdot 2^{i-1}$$
+  If bit $b_i = 1$, node $i$ marks its packet as delivered and clears its immediate retransmit buffer. This single broadcast replaces 5 individual downlink packets, cutting downlink airtime by over **$80\%$** and keeping gateway duty cycle strictly below the 1.0% statutory ceiling.
 * **Retry Sub-slot (250 ms):** Any node whose bit was 0 attempts an immediate retransmission before the cluster window closes.
 
 ---

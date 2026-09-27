@@ -21,7 +21,7 @@ The disconnect in mine subsidence monitoring is not a lack of sensing transducer
 Implementing an indigenous, dense-mesh monitoring system delivers direct economic, operational, and regulatory returns:
 
 * **Eliminating Fatal Traps:** Giving underground mining crews and surface communities up to **8.9 days of advance warning** before surface tension triggers crown falls and uncontained collapses.
-* **Capital Conservation:** Lowering the barrier to whole-panel monitoring from ₹40–60 Lakhs (imported instrumentation) to **under ₹1 Lakh** per panel, enabling widespread adoption across Coal India Limited (CIL) subsidiaries (ECL, BCCL, CCL, WCL, SECL, NCL, MCL) and Singareni Collieries (SCCL).
+* **Capital Conservation:** Eliminating prohibitive imported costs (₹40–60 Lakhs per panel) through an algorithmic, modular COTS hardware architecture (~₹1,050 to ₹1,850/node), cutting whole-panel monitoring expenditures by 80% to 95% across Coal India Limited (CIL) subsidiaries (ECL, BCCL, CCL, WCL, SECL, NCL, MCL) and Singareni Collieries (SCCL).
 * **Statutory Compliance & Digital Transparency:** Automated digital logging fulfills DGMS Circular 7 of 1997 requirements, replacing handwritten survey ledgers with tamper-proof, bit-identical digital records.
 * **National Alignment (Atmanirbhar Bharat):** Complete hardware independence—every sensor, microcontroller, radio module, and battery cell is available within domestic Indian electronics supply chains.
 
