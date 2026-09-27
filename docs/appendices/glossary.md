@@ -5,36 +5,68 @@
 
 ---
 
-| Term | Plain Technical Meaning |
+### Question: What are the foundational physical and geological definitions governing ground subsidence and mining-induced strata mechanics?
+
+**Answer:** The following terms define the physical ground deformation phenomena monitored across active mining panels:
+
+| Technical Term | Authoritative Engineering Definition |
 | :--- | :--- |
-| **Subsidence** | Vertical sinking, depression, and lateral displacement of the ground surface caused by subterranean coal extraction. |
-| **Panel** | A defined rectangular subterranean block of coal bounded by development headings, extracted via longwall or depillaring methods. |
-| **Subsidence Trough** | The continuous dish-shaped depression that forms on the terrain surface above and around an extracted coal panel. |
-| **Knothe Model** | The classical mathematical influence formulation predicting the spatial shape and temporal rate of surface subsidence troughs. |
-| **Influence Radius ($r$)** | The horizontal distance past the edge of the extraction panel to which ground movement extends ($r = H / \tan\beta$). |
-| **Angle of Draw ($\beta$)** | The angle measured from the vertical defining the outer boundary of ground movement above an extraction face. |
-| **Surface Tilt ($T$)** | The slope angle or gradient of the ground surface ($\partial S / \partial x$), representing the first spatial derivative of displacement. |
-| **Horizontal Strain ($\varepsilon$)** | The relative stretching or compression of the ground surface ($\partial U_x / \partial x$), representing the second derivative of displacement. **The primary early warning precursor.** |
-| **Wire Extensometer** | A tensioned invar wire or rod stretched between two ground pegs to measure differential 3D baseline displacement directly. |
-| **Scout Node** | A self-contained, solar-powered field station (Tier 1) deployed across the panel carrying sensors, microcontroller, and LoRa radio. |
-| **Anchor Relay** | A field station (Tier 2) acting as a cluster head and mesh relay, forwarding aggregated child packets to the gateway over a backbone trunk. |
-| **Bedrock Anchor** | A fixed reference station installed outside the influence basin ($> 1.5r$) into undisturbed bedrock, providing the zero-displacement baseline. |
-| **Master Gateway** | The central communications hub (Tier 3) equipped with a 10m mast, SX1302 concentrator, cellular modem, and hardware siren relay. |
-| **LoRa (Long Range)** | A proprietary chirp spread spectrum (CSS) radio modulation technique optimized for low power and long-distance telemetry. |
-| **Spreading Factor (SF)** | The number of chirps used per data symbol in LoRa modulation. Lower SF (SF7) is fast with short airtime; higher SF (SF8) provides longer range. |
-| **Bandwidth (BW)** | The frequency width of the RF carrier signal. Fixed at **125 kHz** to comply with Indian statutory ceilings ($\le 200\text{ kHz}$). |
-| **Airtime** | The physical on-air transmission duration of a wireless packet, representing the primary energy and channel capacity constraint. |
-| **Duty Cycle** | The percentage of time a radio transmitter occupies the shared RF spectrum. Self-imposed at $\le 1.0\%$ across all AEGIS nodes. |
-| **TDMA** | Time-Division Multiple Access: A collision-free scheduling protocol where each node transmits only in its pre-assigned micro-time slot. |
-| **Epoch** | A 60-second synchronized time counter since scenario startup, serving as the master identity key for all telemetry rows. |
-| **Superframe** | The repeating 60-second TDMA scheduling cycle comprising beacon sync, cluster uplinks, backbone trunks, and quiet periods. |
-| **Bitmap ACK** | A single broadcast packet acknowledging multiple child transmissions simultaneously using a bitmask, cutting downlink airtime by 87%. |
-| **PDR** | Packet Delivery Ratio: The percentage of successfully received packets over a transmission channel. |
-| **PINN** | Physics-Informed Neural Network: A neural network constrained by differential physical laws that reconstructs continuous 3D terrain without alarm authority. |
-| **LOO Residual** | Leave-One-Out cross-validation residual: An accuracy metric computed by masking one node and evaluating prediction error. |
-| $d_{\mathbf{committed}}$ | The diameter of the Largest Empty Circle ($358\text{m}$) between sensor stations, representing the published spatial detection limit. |
-| **DGMS** | Directorate General of Mines Safety: The statutory regulatory body governing mine occupational safety in India. |
-| **C7 Corrector** | The backend 8-step calibration pipeline that converts raw degraded bitstreams into clean physical engineering units. |
-| **C8 Safety Detector** | The deterministic, 100% mathematically auditable alarm engine holding exclusive authority to trip evacuation sirens. |
-| **C9 Digital Twin** | The purely advisory AI pipeline that interpolates sparse field points into a dense 64×64 surface mesh for 3D SCADA visualization. |
-| **Rolling Store** | The 36-hour bounded telemetry buffer (`nodes.csv`, ~8 MB) maintained on disk to guarantee fixed storage consumption. |
+| **Subsidence ($S$)** | The vertical sinking, depression, and three-dimensional displacement of the ground surface caused by subterranean coal seam extraction and subsequent goaf compaction. |
+| **Extraction Panel** | A defined rectangular subterranean block of coal bounded by development gate roads, extracted systematically via mechanized longwall shearing or continuous miner depillaring. |
+| **Subsidence Trough** | The continuous dish-shaped depression or basin that forms on the terrain surface above and surrounding an extracted coal panel. |
+| **Knothe Model** | The classical Gaussian influence function formulation predicting the spatial profile shape and exponential time-dependent relaxation rate ($\eta(t) = 1 - e^{-ct}$) of surface subsidence. |
+| **Influence Radius ($r$)** | The horizontal distance extending outward from the extraction boundary to the asymptotic edge of detectable ground movement, defined by $r = H / \tan\beta$. |
+| **Angle of Draw ($\beta$)** | The angle measured from the vertical defining the outer boundary of ground movement above an underground extraction face. |
+| **Surface Tilt ($T$)** | The slope angle or spatial gradient of the ground surface ($\partial S / \partial x$), representing the first spatial derivative of vertical displacement. |
+| **Horizontal Strain ($\varepsilon$)** | The relative stretching (tensile, positive) or compression (compressive, negative) of the ground surface ($\partial U_x / \partial x$), representing the spatial derivative of horizontal displacement. **The primary early warning precursor for surface fissuring.** |
+| **Wire Extensometer** | A mechanical instrument consisting of a tensioned invar wire or rod coupled to a precision displacement transducer across ground stakes to measure differential baseline displacement directly. |
+
+---
+
+### Question: What are the physical hardware classifications, node roles, and spatial scaling rules across the sensor mesh?
+
+**Answer:** Field hardware is organized into a disciplined three-tier hierarchy scaled algorithmically to panel geometry:
+
+| Hardware Entity | Authoritative Engineering Definition & Structural Role |
+| :--- | :--- |
+| **Scout Node (Tier 1)** | A self-contained, solar-powered field station deployed across the panel carrying MEMS sensors (tilt, strain, extensometer), an ESP32 microcontroller, and an SX1262 LoRa radio. Unit cost is approximately ₹1,050 to ₹1,400. |
+| **Anchor Relay (Tier 2)** | A ruggedized field station acting as a cluster head and backbone mesh relay. Anchors aggregate child Scout packets (nominally 1 Anchor per 5 Scouts) and forward bundled telemetry to the gateway over dedicated trunk slots. |
+| **Bedrock Anchor ($A_1, A_2$)** | A specialized Tier 2 reference station installed outside the subsidence basin ($d \ge 1.5r$) into undisturbed bedrock, providing the absolute elevation datum and common-mode rejection baseline. |
+| **Master Gateway (Tier 3)** | The central surface communications and safety hub equipped with a 10m pneumatic mast, SX1302 8-channel concentrator, cellular NB-IoT backhaul, and a deterministic hardware dry-contact relay driving a 125 dB evacuation siren. |
+| **Dynamic Array Scaling** | Network size scales dynamically by panel geometry and influence radius $r$ (e.g., a 37-node pilot sub-slice covering $600\text{ m} \times 200\text{ m}$ up to a 409-node full-panel array for a $1.8\text{ km}$ longwall) without arbitrary ceilings. |
+
+---
+
+### Question: What are the core radio frequency and medium access control definitions governing telemetry transmission?
+
+**Answer:** Telecommunications parameters are strictly optimized for low power, long range, and statutory radio spectrum compliance:
+
+| Telecommunications Term | Authoritative Engineering Definition |
+| :--- | :--- |
+| **LoRa (Long Range)** | A proprietary chirp spread spectrum (CSS) sub-GHz radio modulation technique optimized for extreme link budget and low power consumption in industrial environments. |
+| **Spreading Factor (SF)** | The number of chirps used per data symbol in LoRa modulation. Lower spreading factors (SF7) yield shorter transmission airtime; higher factors (SF8) provide enhanced link margin for trunk hops. |
+| **Carrier Bandwidth (BW)** | The frequency width of the RF transmission channel. Configured strictly at **125.0 kHz** across all presets to satisfy Indian statutory bandwidth ceilings ($\le 200\text{ kHz}$). |
+| **Transmission Airtime** | The physical on-air duration of a radio packet ($90.4\text{ ms}$ for SF7 leaf packets, $406.0\text{ ms}$ for SF8 relay bundles), representing the primary determinant of battery consumption. |
+| **Duty Cycle** | The percentage of time a radio transmitter actively occupies the shared RF spectrum. Strictly self-enforced at $< 1.0\%$ across all nodes to prevent channel congestion. |
+| **TDMA (Time-Division Multiple Access)** | A deterministic MAC scheduling protocol where each node transmits exclusively in a pre-assigned microsecond time slot, completely eliminating co-channel packet collisions. |
+| **Superframe** | The repeating 60-second TDMA scheduling cycle comprising a gateway synchronization beacon, cluster leaf uplink slots, backbone relay trunk slots, and quiet guard intervals. |
+| **Bitmap ACK** | A single broadcast packet emitted by an Anchor or Gateway that acknowledges up to 8 child transmissions simultaneously using an 8-bit mask, reducing downlink airtime by 87%. |
+| **Packet Delivery Ratio (PDR)** | The percentage of scheduled telemetry frames successfully captured and persisted by the Master Gateway across the operational duration (statutory threshold $\ge 99.5\%$). |
+
+---
+
+### Question: What are the definitions and structural boundaries governing backend data pipelines, digital twins, and safety alarms?
+
+**Answer:** Backend processing enforces strict isolation between deterministic safety-critical alerting and advisory AI surface interpolation:
+
+| Computational Entity | Authoritative Engineering Definition & Safety Boundary |
+| :--- | :--- |
+| **Epoch** | A synchronized 32-bit integer counter incremented every 60 seconds since scenario initialization, serving as the master temporal key across the platform. |
+| **C7 Corrector** | The backend 8-step calibration pipeline that converts raw degraded bitstreams into clean physical engineering units, compensates for thermal drift and mechanical sag, and computes dynamic uncertainty $\sigma_{\text{final}}$. |
+| **C8 Safety Detector** | The deterministic, 100% auditable alarm engine holding exclusive statutory authority to trip the 125 dB evacuation siren via multi-node spatial quorum voting within $< 1.4\text{ seconds}$. |
+| **C9 Digital Twin** | An advisory scientific machine learning pipeline that interpolates sparse sensor points into a continuous $64 \times 64$ surface grid for SCADA visualization. **Holds zero alarm authority.** |
+| **PINN (Physics-Informed Neural Network)** | A deep neural network trained using automatic differentiation to minimize both data residuals and the Knothe partial differential equation loss, enforcing physical consistency without truth leakage. |
+| **LOO Residual** | Leave-One-Out cross-validation residual: A validation metric computed by systematically withholding one sensor node and calculating the neural network's interpolation error at that coordinate. |
+| **$d_{\mathbf{committed}}$ (Largest Empty Circle)** | The diameter of the largest circular area on the surface panel lacking sensor instrumentation ($358\text{ m}$), published directly on the SCADA header to prevent false assumptions of zero-blind-spot coverage. |
+| **Rolling Store (`nodes.csv`)** | A circular telemetry buffer maintained on the edge gateway disk strictly bounded to 36 hours of historical readings to prevent storage exhaustion (Test T30). |
+| **DGMS** | Directorate General of Mines Safety: The statutory regulatory authority under the Ministry of Labour and Employment governing occupational health and safety across Indian mines. |

@@ -112,7 +112,7 @@ docs/
      - ₹1,050 per Scout Node (indigenous COTS BOM)
      - 8.9-day advance crack prediction
      - <1.4s end-to-end siren latency
-     - Dynamic panel coverage & modular cost scaling per panel dimensions & depth (replaces rigid 31-node / fixed-cost assumptions)
+     - Dynamic panel coverage & modular cost scaling per panel dimensions & depth (physics-derived dynamic array sizing)
      - 72h zero data loss buffer
      - T1–T46 verification register
      - Zero false alarm (Byzantine quorum) -->

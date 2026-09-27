@@ -5,47 +5,62 @@
 
 ---
 
-## 1. Unified Software Architecture
-
-The user interface layer is built around a cross-platform TypeScript and React architecture delivering synchronized situational awareness across control room desktop workstations, enterprise web portals, and ruggedized field tablets.
+### Question: What is the unified cross-platform software architecture connecting edge gateways, control room desktops, cloud backends, and mobile field clients?
+**Answer:** The AEGIS user interface layer is built around a unified TypeScript, React 19, and Node.js software stack that ensures seamless situational awareness across three distinct operational environments: on-premise mine control rooms, corporate enterprise headquarters, and remote field inspection sectors:
 
 ```mermaid
 flowchart TD
-    GATEWAY["Master Edge Gateway<br/>Local Ingestion & Siren Controller"] -->|Local LAN WebSockets| ELECTRON["Desktop Electron SCADA<br/>★ LOCAL CONTROL ROOM ★<br/>Offline-first · Zero cloud dependency"]
-    GATEWAY -->|4G / NB-IoT Uplink| CLOUD["Central Cloud Backend<br/>FastAPI + PostgreSQL + TimescaleDB"]
+    GATEWAY["Master Edge Gateway<br/>Local Ingestion & Siren Controller"] -->|Local Mine LAN WebSockets| ELECTRON["Desktop Electron SCADA<br/>★ LOCAL CONTROL ROOM ★<br/>Offline-first · Zero internet dependency"]
+    GATEWAY -->|4G / NB-IoT / Satellite Uplink| CLOUD["Central Cloud Backend<br/>FastAPI + PostgreSQL + TimescaleDB"]
     CLOUD -->|Secure HTTPS / WebSockets| WEB["Enterprise Web Portal<br/>HQ Corporate Planning & Multi-Mine SCADA"]
-    CLOUD -->|PWA / Offline Sync| MOBILE["Mobile Field Companion<br/>Overman Inspection & Alert Acknowledgment"]
+    CLOUD -->|PWA / Background Sync| MOBILE["Mobile Field Companion<br/>Overman Inspection & Alert Acknowledgment"]
 ```
 
----
-
-## 2. Desktop Electron Application (Offline-First Control Room)
-
-In remote mining coalfields (e.g., Godavari Valley, Singrauli, Korba), public telecommunications links suffer frequent fiber cuts and weather disruptions.
-* **The Problem:** A cloud-hosted web application stops functioning during internet outages, leaving the mine control room blind.
-* **The Solution:** The primary control room interface runs as an **Electron desktop application** communicating directly with the Master Gateway over the local mine Ethernet LAN.
-* **Local Caching:** Telemetry, alert queues, and terrain state are cached locally in an on-premise TimescaleDB instance. Full SCADA monitoring, 3D visualization, and emergency siren control function with **zero dependency on external internet connectivity**.
+1. **Local Control Room Tier (Desktop Electron):** Directly wired to the local edge gateway via on-premise industrial Ethernet; immune to external internet disruptions.
+2. **Central Cloud Tier (Enterprise Backend):** Aggregates telemetry across multiple colliery leases into a centralized TimescaleDB cluster for high-level management and enterprise analytics.
+3. **Enterprise Web Tier (React SPA):** Enables remote geotechnical consultants and corporate directors to monitor multiple mines simultaneously via standard web browsers.
+4. **Mobile Field Tier (PWA):** Lightweight Progressive Web App running on ruggedized Android tablets for mining overmen and geotechnical surveyors walking the surface panel.
 
 ---
 
-## 3. Mobile Companion Application (Field Inspection PWA)
+### Question: Why is the Control Room application built as an offline-first Electron desktop app rather than a purely cloud-hosted web portal?
+**Answer:** In deep Indian coalfields, terrestrial telecommunication cables and 4G base stations suffer frequent disruptions due to heavy monsoonal storms, lightning strikes, and accidental fiber cuts by heavy earthmoving machinery.
 
-Mining Overmen, Surveyors, and Geotechnical Engineers operate on foot across active subsidence panels. AEGIS provides a lightweight, ruggedized Progressive Web App (PWA):
-* **Field Inspection Checklists:** Surveyors inspect ground fissures, record crack widths with digital calipers, and log photographic evidence directly into the central database.
-* **Alert Acknowledgment:** Field supervisors receive immediate push notifications and can acknowledge advisory alerts with a single tap.
-* **Offline Synchronization:** Observations recorded in radio shadow zones (e.g., inside deep opencast cuts) are stored locally in IndexedDB and synchronize automatically upon re-entering LoRa/Wi-Fi coverage.
+Deploying a cloud-hosted web application for primary control room operations introduces fatal safety vulnerabilities:
+* **The Internet Outage Failure Mode:** If external internet fails, a cloud-hosted web dashboard goes blank, leaving control room operators completely blind while active mining continues underground.
+* **The AEGIS Offline-First Solution:** The primary control room interface runs as a standalone **Electron desktop application** communicating over the mine's private local area network (LAN) directly to the Master Edge Gateway.
+* **Local Invariant:** Telemetry ingestion, 3D terrain rendering, C8 Byzantine quorum checks, and siren actuation execute entirely within the local mine perimeter. The control room maintains 100% full monitoring, alerting, and SCADA control capability with **zero dependency on external internet or cloud connectivity**.
 
 ---
 
-## 4. API & WebSocket Communication Contracts
+### Question: What operational capabilities does the Mobile Companion PWA provide to field mining overmen and geotechnical surveyors?
+**Answer:** Field personnel (Mining Overmen, Surveyors, and Ventilation Officers) traverse active surface panels to inspect ground fissures and tension cracks. The AEGIS Mobile Companion is engineered as an offline-first Progressive Web App (PWA) tailored for field conditions:
 
-Real-time and historical telemetry are exposed through standardized, secure interfaces:
+1. **Digital Fissure Inspection Logging:**
+   * Surveyors locate physical ground fissures, measure crack widths with bluetooth digital calipers, and capture geo-tagged photographs.
+   * Readings are validated against local threshold rules and submitted directly into the database.
+2. **Single-Tap Field Alert Acknowledgment:**
+   * When Tier 2 Warning or Tier 3 Critical alerts trip, field supervisors receive immediate audio-haptic push notifications on their ruggedized tablets, enabling rapid field verification and single-tap acknowledgment.
+3. **Offline IndexedDB Synchronization:**
+   * When walking into deep opencast benches, valleys, or high-wall shadow zones where wireless connectivity drops, the PWA switches to offline mode. All inspection entries, photos, and notes are cached locally in browser `IndexedDB`.
+   * When the surveyor walks back into Wi-Fi or LoRa coverage, a background service worker automatically synchronizes pending records upstream without data loss.
 
-### 1. High-Speed WebSocket Feed (`/ws/live`)
-* Delivers live telemetry rows, link quality updates, and alarm events with $< 100\text{ ms}$ latency.
-* Uses binary protocol buffers or compact JSON to minimize network bandwidth over cellular telemetry connections.
+---
 
-### 2. Analytical REST API Endpoints
-* `GET /api/v1/nodes`: Retrieves the active configuration manifest, sensor calibration constants, and 3D coordinates.
-* `GET /api/v1/telemetry/historical`: Queries columnar Parquet archives for arbitrary time windows and node subsets.
-* `POST /api/v1/alarms/acknowledge`: Cryptographically signs and logs operator alert acknowledgments for DGMS statutory audits.
+### Question: What API and WebSocket contracts govern communication between client applications and backend ingestion services?
+**Answer:** Real-time data streams and analytical queries are serviced through standardized, authenticated REST and WebSocket interfaces:
+
+#### 1. High-Speed Streaming WebSocket (`/ws/live`)
+* **Transport:** Secure WebSockets (`wss://`) utilizing compact binary Protocol Buffers (Protobuf) or compressed JSON to conserve bandwidth over cellular links.
+* **Payload:** Emits live epoch packets containing calibrated physical readings, dynamic uncertainty bounds ($\sigma$), radio link quality metrics (RSSI/SNR), and C8 alarm state transitions with $< 100\text{ ms}$ latency.
+* **Heartbeat Contract:** Gateway transmits a bidirectional ping/pong every 15 seconds; absence of 2 consecutive responses flags the connection as degraded.
+
+#### 2. Analytical REST API Endpoints
+* `GET /api/v1/nodes`:
+  * Returns the cryptographically verified configuration manifest (`nodes.json`), including 3D Cartesian coordinates, sensor sensitivities, and TDMA time slot assignments.
+* `GET /api/v1/telemetry/historical`:
+  * Accepts query parameters `start_time`, `end_time`, `node_ids`, and `channels`. Queries columnar Parquet partitions and streams compressed data vectors to the client.
+* `POST /api/v1/alarms/acknowledge`:
+  * Ingests operator alert acknowledgments. Requires operator ID, statutory DGMS digital PIN, and textual operational notes. Generates an immutable SHA-256 audit entry logged to both local flash and remote audit stores.
+* `POST /api/v1/field/inspections`:
+  * Ingests field surveyor crack measurement reports, photographic blobs, and GPS inspection coordinates.

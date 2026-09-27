@@ -7,7 +7,8 @@
 
 ## 1. End-to-End System Topology
 
-AEGIS operates across four discrete physical and computational tiers. Telemetry moves unidirectionally from the field surface through LoRa mesh relays into an on-premise gateway, which forwards packets over cellular NB-IoT/Ethernet into the ingestion engine. 
+### Question: How is the AEGIS multi-tier architecture partitioned to ensure deterministic telemetry flow from sensor to siren?
+**Answer:** AEGIS operates across four discrete, decoupled physical and computational tiers. Telemetry moves unidirectionally from the physical field surface through wireless LoRa mesh relays into an on-premise edge gateway, which forwards compressed packets over cellular NB-IoT or industrial Ethernet into the cloud/server analytical pipeline.
 
 ```mermaid
 flowchart TD
@@ -49,24 +50,8 @@ flowchart TD
 
 ---
 
-## 2. The Five Inviolable System Boundaries
-
-System integrity is preserved through five architectural firewalls enforced by software contracts and CI test suites:
-
-1. **Boundary 1 (Ground Truth Quarantine):**
-   The synthetic ground truth directory (`truth/`) has zero import paths from backend production modules (`backend/`). This boundary is tested automatically in CI via test `T8`. Backend code only ever sees telemetry through the raw CSV ingestion contract.
-2. **Boundary 2 (Single Authoritative Physics Implementation):**
-   Exactly one numerical implementation of the Knothe subsidence equation $S(x,y,t)$ exists in `sim/knothe.py`. Every spatial derivative (tilt, curvature, horizontal displacement, strain) derives analytically from this single function. No secondary approximations exist.
-3. **Boundary 3 (Link Propagation Model Independence):**
-   Reliable communication ranges (`reliable_range_*`) are runtime outputs calculated by the log-distance path loss and log-normal shadowing link model. They are never declared as static configuration constants.
-4. **Boundary 4 (Safety Authority Firewall — C8 vs. C9):**
-   The Physics-Informed Neural Network (C9 PINN) reconstructs 3D continuous deformation heatmaps for human operators. **C9 possesses zero authority to trip alarms.** The classical Knothe detector (C8) exclusively makes evacuation decisions using transparent, deterministic mathematical thresholds and Byzantine spatial quorum checks. C9 output never routes into C8 logic.
-5. **Boundary 5 (No Language Models in Safety Loops):**
-   No generative text model or uncalibrated statistical black box is permitted in the alarm evaluation, packet parsing, or siren triggering paths.
-
----
-
-## 3. Subsystem Ownership Matrix
+### Question: What specific operational responsibilities and strict prohibitions govern each subsystem across the pipeline?
+**Answer:** To prevent architectural cross-contamination and guarantee determinism, each subsystem has an explicit ownership contract defining what it owns exclusively and what it is strictly prohibited from executing.
 
 | Subsystem | Primary Owner | Owns Exclusively | Strictly Does NOT Own |
 | :--- | :--- | :--- | :--- |
@@ -79,9 +64,38 @@ System integrity is preserved through five architectural firewalls enforced by s
 
 ---
 
-## 4. End-to-End Latency & Telemetry Budget
+## 2. The Five Inviolable System Boundaries
 
-Data flows through the pipeline with verified maximum latency ceilings:
+### Question: What architectural firewalls ensure system integrity, mathematical consistency, and safety-critical isolation?
+**Answer:** System integrity is guaranteed through five inviolable architectural boundaries enforced by software contracts and automated continuous integration (CI) test suites:
+
+1. **Boundary 1 (Ground Truth Quarantine):**
+   * The synthetic ground truth directory (`truth/`) has zero import paths from backend production modules (`backend/`). This boundary is strictly validated in CI via test `T8`. Production backend code only ever receives telemetry through the raw CSV ingestion contract, eliminating simulation leakage.
+2. **Boundary 2 (Single Authoritative Physics Implementation):**
+   * Exactly one numerical implementation of the Knothe subsidence equation $S(x,y,t)$ exists across the codebase in `sim/knothe.py`. Every spatial derivative (tilt, curvature, horizontal displacement, strain) derives analytically from this single master formulation. No competing or secondary approximations are permitted.
+3. **Boundary 3 (Link Propagation Model Independence):**
+   * Reliable communication ranges (`reliable_range_*`) are dynamic runtime outputs calculated using the log-distance path loss and log-normal shadowing link model based on local terrain and Fresnel clearances. They are never hardcoded as static configuration constants.
+4. **Boundary 4 (Safety Authority Firewall — C8 vs. C9):**
+   * The Physics-Informed Neural Network (C9 PINN) reconstructs continuous 3D deformation heatmaps for human visualization. **C9 possesses zero authority to trip alarms.** The classical Knothe detector (C8) exclusively triggers evacuation alarms using transparent, deterministic mathematical thresholds and Byzantine spatial quorum checks. C9 output never routes into C8 logic.
+5. **Boundary 5 (No Language Models in Safety Loops):**
+   * Generative text models, uncalibrated statistical regressors, or nondeterministic heuristics are strictly prohibited from the alarm evaluation, packet parsing, and siren actuation execution paths.
+
+---
+
+### Question: Why is the PINN digital twin strictly prohibited from triggering evacuation sirens, and how is alarm integrity guaranteed?
+**Answer:** While Physics-Informed Neural Networks excel at solving continuous partial differential equations (PDEs) for 3D surface interpolation across unmonitored coordinates, deep neural networks are inherently susceptible to out-of-distribution hallucinations, local minima convergence traps, and gradient instability under sudden sensor noise bursts. In life-critical mining safety, an uncalibrated false alarm causes unwarranted mine shutdowns and dangerous panic, while a false negative leads to fatal entrapment.
+
+To guarantee 100% alarm integrity:
+* **Deterministic Verification:** Alarm trips are governed exclusively by C8, which executes closed-form analytical equations and strict deterministic rules.
+* **Spatial Byzantine Quorum Gating:** An acute acceleration or tilt trigger from a single Scout Node cannot trip an evacuation siren on its own. C8 enforces a 5-node spatial Byzantine quorum: at least $\ge 3\sigma$ standard deviations of concordant movement must be registered across a cluster of 5 adjacent nodes within the Knothe influence radius $r$.
+* **Blast Veto Integration:** Transient accelerations are cross-referenced against shift blasting logs mandated by DGMS Circular 7 of 1997. If a vibration burst matches the blast log window and exhibits high-amplitude low-frequency energy (40–80 Hz), the alarm is safely vetoed.
+
+---
+
+## 3. Telemetry Budget & End-to-End Latency Verification
+
+### Question: What is the end-to-end latency budget from ground movement detection to siren actuation, and how is sub-1.4-second response achieved?
+**Answer:** Telemetry moves through a deterministic pipeline designed to guarantee actuation within statutory emergency response envelopes. The full physical and digital propagation budget is mapped below:
 
 ```
 [Physical Ground Movement]
@@ -99,5 +113,17 @@ Data flows through the pipeline with verified maximum latency ceilings:
 [High-Decibel Field Siren Evacuation]
 ```
 
-* **Total Measured Critical Latency:** **< 1.4 seconds** from acute threshold breach at the edge to siren contact closure.
-* **Routine Telemetry Bandwidth:** 23 bytes per node per 60-second epoch. For a representative panel deployment of 37 nodes, daily raw bandwidth is $\approx 1.22\text{ MB/day}$, easily accommodated by low-cost 2G/NB-IoT telemetry plans.
+* **Measured End-to-End Latency:** **< 1.4 seconds** from acute physical threshold breach at the edge to siren contact closure.
+* **Edge-Direct Autonomous Trip Mode:** In the event of a catastrophic backhaul cellular outage, the edge gateway evaluates the spatial quorum locally using received LoRa packets and trips its local siren relay directly within **< 250 milliseconds**, ensuring life safety even during complete telecommunications severance.
+
+---
+
+### Question: How does AEGIS manage telemetry bandwidth and network capacity across dynamic panel deployments without data congestion?
+**Answer:** AEGIS utilizes an ultra-compact 23-byte binary wire payload transmitted once per 60-second TDMA superframe epoch. For a dynamic panel deployment containing $N$ active nodes:
+
+$$\text{Daily Raw Bandwidth} = N \times 23\text{ bytes} \times 60\text{ epochs/hr} \times 24\text{ hr/day} \approx N \times 33.12\text{ KB/day}$$
+
+* For a compact panel cluster of $N = 40$ nodes, daily telemetry is $\approx 1.32\text{ MB/day}$.
+* For an expansive, full-scale longwall extraction panel of $N = 411$ nodes, daily telemetry is $\approx 13.6\text{ MB/day}$.
+
+This lightweight data footprint is readily accommodated by standard low-bandwidth 2G/NB-IoT or satellite uplinks. Within the physical RF mesh, each transmission requires only $90.4\text{ ms}$ of airtime at SF7/125 kHz. Across the 60-second superframe, channel utilization per gateway remains below $8\%$, which is well below the $18\%$ pure ALOHA collision threshold and ensures deterministic, collision-free packet arrival.
