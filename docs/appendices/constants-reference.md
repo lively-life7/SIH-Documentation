@@ -16,7 +16,7 @@ All mathematical simulation models, embedded firmware profiles, backend calibrat
 | Constant Name | Value | Engineering Units | Usage & Ownership |
 | :--- | :--- | :--- | :--- |
 | `H` | `150.0` | meters | Overburden seam depth below surface datum; surface & PINN (Fixed) |
-| `TAN_BETA` | `2.0` | dimensionless | Tangent of major draw angle ($\beta \approx 63.4^\circ$); surface & PINN (Fixed) |
+| `TAN_BETA` | `2.0` | dimensionless | Tangent of major draw angle ($\beta ≈ 63.4^°$); surface & PINN (Fixed) |
 | `R_INFL` | `75.0` | meters | Radius of influence ($H / \tan\beta$); surface & PINN (Fixed) |
 | `M_SEAM` | `3.0` | meters | Total extracted coal seam thickness; surface & PINN (Fixed) |
 | `A_SUBS` | `0.65` | dimensionless | True subsidence factor; **surface ONLY** (PINN must learn this) |
@@ -24,7 +24,7 @@ All mathematical simulation models, embedded firmware profiles, backend calibrat
 | `C_KNOTHE` | `0.01414` | $\text{day}^{-1}$ | True time decay coefficient; **surface ONLY** (PINN must learn this) |
 | `B_HORIZ` | `24.0` | meters | Awershin horizontal displacement ratio ($0.32 \cdot r$) |
 | `PANEL` | `(100, 100, 700, 300)` | meters | Rectangular extraction boundary coordinates ($x_1, y_1, x_2, y_2$) |
-| `GRID` | `(25, 775, 25, 375, 64, 64)` | meters | Output evaluation mesh matrix ($64 \times 64$) |
+| `GRID` | `(25, 775, 25, 375, 64, 64)` | meters | Output evaluation mesh matrix ($64 × 64$) |
 
 ---
 
@@ -32,10 +32,10 @@ All mathematical simulation models, embedded firmware profiles, backend calibrat
 
 | Channel | Thermal Sensitivity ($k_T$) | Random Drift ($\sigma_b$) | White Noise ($\sigma_w$) | LSB Resolution |
 | :--- | :--- | :--- | :--- | :--- |
-| **Tilt ($T_x, T_y$)** | $250\ \mu\text{rad/}^\circ\text{C}$ | $3\ \mu\text{rad}$ | $8\ \mu\text{rad}$ | **2 µrad** |
-| **Horizontal Strain ($\varepsilon$)** | $5\ \mu\varepsilon/^\circ\text{C}$ | $0.5\ \mu\varepsilon$ | $1.2\ \mu\varepsilon$ | **1 µε** |
-| **Extensometer ($Ext$)** | $12\ \mu\text{m/}^\circ\text{C}$ | $5\ \mu\text{m}$ | $15\ \mu\text{m}$ | **10 µm** |
-| **Die Temperature ($T_{\text{die}}$)** | — | — | $0.05^\circ\text{C}$ | **0.1°C** |
+| **Tilt ($T_x, T_y$)** | $250\ µ\text{rad/}^°\text{C}$ | $3\ µrad$ | $8\ µrad$ | **2 µrad** |
+| **Horizontal Strain ($ε$)** | $5\ µε/^°\text{C}$ | $0.5\ µε$ | $1.2\ µε$ | **1 µε** |
+| **Extensometer ($Ext$)** | $12\ µ\text{m/}^°\text{C}$ | $5\ µm$ | $15\ µm$ | **10 µm** |
+| **Die Temperature ($T_{\text{die}}$)** | — | — | $0.05^°\text{C}$ | **0.1°C** |
 | **Battery Voltage ($V_{\text{bat}}$)** | — | — | $5\text{ mV}$ | **1 mV** |
 
 * Reference Temperature: `T_REF = 25.0 °C`
@@ -51,7 +51,7 @@ All mathematical simulation models, embedded firmware profiles, backend calibrat
 | `PPV_K`, `PPV_EXP` | `1140.0, -1.6` | USBM explosive charge ground attenuation coefficients |
 | `Q_EQ_TRUCK` | `0.14 kg` | Equivalent explosive blast charge simulating a loaded haul truck |
 | `CONV_A0`, `CONV_D0` | `0.8 mm/s, 120.0 m` | Armored face conveyor baseline vibration and spatial decay |
-| `THETA_C` | `1500.0 µε` | Critical tensile rock fracture initiation threshold ($\pm 10\%$) |
+| `THETA_C` | `1500.0 µε` | Critical tensile rock fracture initiation threshold ($± 10\%$) |
 | `F_DOM_BANDS` | `[8-20, 40-80, 50±0.5, 100-250]` | Dominant frequency classification bins (Truck, Blast, Conveyor, Fracture) |
 
 ---
@@ -61,7 +61,7 @@ All mathematical simulation models, embedded firmware profiles, backend calibrat
 | Constant Name | Value | Regulatory / Technical Note |
 | :--- | :--- | :--- |
 | `RF_BAND` | `IN865 (865–867 MHz)` | Indian delicensed frequency band per GSR 564(E) |
-| `CARRIER_BW` | `125.0 kHz` | Statutory compliance: Strictly $\le 200\text{ kHz}$ (Test T18) |
+| `CARRIER_BW` | `125.0 kHz` | Statutory compliance: Strictly $≤ 200\text{ kHz}$ (Test T18) |
 | `TX_POWER_CONDUCTED`| `30.0 dBm (1.0 W)` | Maximum transmitter conducted power ceiling |
 | `ERP_DESIGN` | `30.0 dBm (1.0 W)` | Design effective radiated power (Legal ceiling: 36 dBm) |
 | `DUTY_CYCLE_LIMIT` | `1.0% (0.010)` | Self-imposed ETSI/LoRaWAN operational limit |

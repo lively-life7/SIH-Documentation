@@ -139,10 +139,25 @@
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <!-- Flexible Alerts (renders > [!NOTE], > [!IMPORTANT] properly) -->
   <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
-  <!-- KaTeX Core Library (required for math rendering) -->
+  <!-- KaTeX Core Library & Auto-Render Plugin -->
   <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <!-- Docsify KaTeX Plugin -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
+  <script>
+    window.$docsify.plugins = [].concat(function(hook, vm) {
+      hook.doneEach(function() {
+        if (typeof renderMathInElement !== 'undefined') {
+          renderMathInElement(document.body, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false }
+            ],
+            ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            throwOnError: false
+          });
+        }
+      });
+    }, window.$docsify.plugins || []);
+  </script>
   <!-- Mermaid.js for architectural diagrams -->
   <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-mermaid@latest/dist/docsify-mermaid.js"></script>

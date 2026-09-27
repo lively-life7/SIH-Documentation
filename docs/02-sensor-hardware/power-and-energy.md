@@ -41,7 +41,7 @@
 
 The precise electrical charge consumption per 60-second epoch is itemized below:
 
-| Operational Phase | Duration ($t$) | Current ($I$) | Electrical Charge ($I \times t$) | Energy ($V_{cc} = 3.2\text{V}$) |
+| Operational Phase | Duration ($t$) | Current ($I$) | Electrical Charge ($I × t$) | Energy ($V_{cc} = 3.2\text{V}$) |
 | :--- | :--- | :--- | :--- | :--- |
 | **Sensor I²C / SPI Read** | $3.0\text{ ms}$ | $15.0\text{ mA}$ | $0.0450\text{ mA}\cdot\text{s}$ | $0.144\text{ mJ}$ |
 | **Vibration Sampling Burst (256 pts @ 400Hz)** | $640.0\text{ ms}$ | $22.0\text{ mA}$ | $14.0800\text{ mA}\cdot\text{s}$ | $45.056\text{ mJ}$ |
@@ -92,10 +92,10 @@ The ESP32’s dual-core Xtensa LX6 processor operating at $240\text{ MHz}$ provi
 
 | Computational Task | Execution Time | RAM Footprint | CPU Headroom Factor | Energy per Epoch |
 | :--- | :--- | :--- | :--- | :--- |
-| **7-Channel Sensor Polling ($I^2C$/SPI)** | $3.0\text{ ms}$ | $64\text{ Bytes}$ | $> 20,000\times$ | $0.144\text{ mJ}$ ($0.18\%$) |
-| **256-Point Real FFT Feature Extraction** | $1.5\text{ ms}$ | $2.0\text{ KB}$ | $> 40,000\times$ | $0.216\text{ mJ}$ ($0.27\%$) |
-| **Wire Framing & CRC-16 Calculation** | $0.045\text{ ms}$ | $23\text{ Bytes}$ | $> 1,000,000\times$ | $0.003\text{ mJ}$ ($0.004\%$) |
-| **Flash Log Append (SPI Ring Buffer)** | $0.8\text{ ms}$ | $128\text{ Bytes}$ | $> 75,000\times$ | $0.038\text{ mJ}$ ($0.05\%$) |
+| **7-Channel Sensor Polling ($I^2C$/SPI)** | $3.0\text{ ms}$ | $64\text{ Bytes}$ | $> 20,000×$ | $0.144\text{ mJ}$ ($0.18\%$) |
+| **256-Point Real FFT Feature Extraction** | $1.5\text{ ms}$ | $2.0\text{ KB}$ | $> 40,000×$ | $0.216\text{ mJ}$ ($0.27\%$) |
+| **Wire Framing & CRC-16 Calculation** | $0.045\text{ ms}$ | $23\text{ Bytes}$ | $> 1,000,000×$ | $0.003\text{ mJ}$ ($0.004\%$) |
+| **Flash Log Append (SPI Ring Buffer)** | $0.8\text{ ms}$ | $128\text{ Bytes}$ | $> 75,000×$ | $0.038\text{ mJ}$ ($0.05\%$) |
 | **LoRa Uplink Transmission (RF Output)** | $90.4\text{ ms}$ | — | — | **$31.821\text{ mJ}$ ($39.3\%$)** |
 | **Deep Sleep Standby (RTC Active)** | $59,225\text{ ms}$ | — | — | **$2.274\text{ mJ}$ ($2.8\%$)** |
 

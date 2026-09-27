@@ -86,11 +86,11 @@
 
 | Performance Metric | Minimum Statutory Threshold | Verification & Measurement Protocol |
 | :--- | :--- | :--- |
-| **Displacement Correlation ($R^2$)** | **$R^2 \ge 0.90$** vs. manual leveling | Linear regression of daily median node subsidence against weekly optical Total Station survey elevations. |
-| **Advance Crack Warning** | **$\ge 7.0\text{ days}$** prior to surface rupture | Time interval between AEGIS flagging critical tensile strain ($\varepsilon > 1500\ \mu\varepsilon$) and visual ground cracking verified in the field shift book. |
+| **Displacement Correlation ($R^2$)** | **$R^2 ≥ 0.90$** vs. manual leveling | Linear regression of daily median node subsidence against weekly optical Total Station survey elevations. |
+| **Advance Crack Warning** | **$≥ 7.0\text{ days}$** prior to surface rupture | Time interval between AEGIS flagging critical tensile strain ($ε > 1500\ µε$) and visual ground cracking verified in the field shift book. |
 | **False Blast Alarms** | **Zero false evacuation sirens** | Cross-referencing all seismic trigger vetoes against the statutory DGMS colliery blasting log (`events.csv`). 100% blast veto accuracy required. |
-| **Telemetry Availability (PDR)** | **$\ge 99.5\%$ packet delivery** | Ratio of persisted frames in `nodes.csv` to scheduled TDMA transmission slots across 40 continuous operating days ($57,600\text{ superframes}$). |
+| **Telemetry Availability (PDR)** | **$≥ 99.5\%$ packet delivery** | Ratio of persisted frames in `nodes.csv` to scheduled TDMA transmission slots across 40 continuous operating days ($57,600\text{ superframes}$). |
 | **Emergency Trigger Latency** | **$< 1.4\text{ seconds}$** | Wall-clock latency measured from mechanical trip switch injection at a remote Scout to hardware relay closure of the 125 dB surface siren. |
 | **Byzantine Resilience** | **Zero single-node false trips** | Controlled electrical shorting or mechanical destruction of individual sensors must produce diagnostic warnings (**F4**), never an evacuation siren. |
 | **Environmental Enclosure Protection** | **IP67 Verification** | Physical teardown of all 37 pilot Scout enclosures at Day 40; zero internal dust accumulation or moisture condensation. |
-| **Power Autonomy** | **$V_{\text{bat}} \ge 3.3\text{ V}$ continuous** | Battery voltage telemetry must demonstrate zero net discharge over consecutive cloudy or monsoon operational periods. |
+| **Power Autonomy** | **$V_{\text{bat}} ≥ 3.3\text{ V}$ continuous** | Battery voltage telemetry must demonstrate zero net discharge over consecutive cloudy or monsoon operational periods. |

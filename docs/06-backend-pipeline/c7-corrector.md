@@ -58,7 +58,7 @@ Such artificial impulses falsely indicate sudden structural unloading or catastr
 | Bit Index | Flag Identifier | Binary Value | Physical Condition & Algorithmic Impact |
 | :--- | :--- | :--- | :--- |
 | **Bit 0** | `selftest_ok` | `1` = Pass, `0` = Fail | Transducer self-test circuit status; if `0`, node is stripped of C8 voting rights. |
-| **Bit 1** | `accel_sat` | `1` = Saturated | MEMS accelerometer clipping ($> \pm 2g$); disqualifies tilt calculation. |
+| **Bit 1** | `accel_sat` | `1` = Saturated | MEMS accelerometer clipping ($> ± 2g$); disqualifies tilt calculation. |
 | **Bit 2** | `gauge_open` | `1` = Open/Short | Wheatstone bridge lead wire severed or shorted; forces strain channel invalid. |
 | **Bit 3** | `i2c_timeout` | `1` = Bus Error | Digital sensor bus lockup; triggers hardware watchdog reboot flag. |
 | **Bit 4** | `solar_active`| `1` = Charging | Photovoltaic harvesting active; alerts thermal model to expect rapid solar heating. |
@@ -108,9 +108,9 @@ Continuous integration test `T7` enforces this execution invariant. In `T7`, syn
 
 | Channel | Transducer Hardware | Raw Representation | Transfer Function to SI Engineering Units | SI Output Unit |
 | :--- | :--- | :--- | :--- | :--- |
-| **Biaxial Tilt ($X, Y$)** | MEMS Dual-Axis Inclinometer | `int16` $(-32768 \dots 32767)$ | $\theta = \arcsin\left(\frac{\text{raw} \cdot g_{\text{scale}}}{g}\right) - \theta_{\text{offset}}$ | Radians ($\text{rad}$) / $\text{mm/m}$ |
-| **Tensile Strain ($\varepsilon$)** | Vibrating Wire / Foil Gauge | `int24` ADC raw counts | $\varepsilon = \left(\frac{\text{raw} - \text{raw}_{\text{zero}}}{\text{GF} \cdot V_{\text{bridge}}}\right) \times 10^6$ | Microstrain ($\mu\varepsilon$) |
-| **Displacement ($\Delta L$)** | Multi-Point Extensometer | `int16` LVDT counts | $\Delta L = \text{raw} \cdot S_{\text{LVDT}} \cdot L_{\text{rod}}$ | Millimeters ($\text{mm}$) |
+| **Biaxial Tilt ($X, Y$)** | MEMS Dual-Axis Inclinometer | `int16` $(-32768 \dots 32767)$ | $θ = \arcsin≤ft(\frac{\text{raw} \cdot g_{\text{scale}}}{g}\right) - θ_{\text{offset}}$ | Radians ($\text{rad}$) / $\text{mm/m}$ |
+| **Tensile Strain ($ε$)** | Vibrating Wire / Foil Gauge | `int24` ADC raw counts | $ε = ≤ft(\frac{\text{raw} - \text{raw}_{\text{zero}}}{\text{GF} \cdot V_{\text{bridge}}}\right) × 10^6$ | Microstrain ($µε$) |
+| **Displacement ($Δ L$)** | Multi-Point Extensometer | `int16` LVDT counts | $Δ L = \text{raw} \cdot S_{\text{LVDT}} \cdot L_{\text{rod}}$ | Millimeters ($\text{mm}$) |
 | **Vibration (PPV)** | 3-Axis Geophone / Accelerometer | `int16` Peak amplitude | $\text{PPV} = \frac{\text{raw} \cdot V_{\text{LSB}}}{\text{Sensitivity}_{\text{geo}}}$ | Millimeters/second ($\text{mm/s}$) |
 
 ---

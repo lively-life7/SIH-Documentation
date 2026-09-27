@@ -58,7 +58,7 @@ flowchart TD
 | **C7 Cleaning** | Raw `nodes.csv` + `nodes.json` | Calibrated state dictionary (SI units) | $< 35\text{ ms}$ | Sag undo prior to thermal subtraction; NaN propagation |
 | **C8 Quorum** | Calibrated state + `events.csv` | Alarm classification (Quiet/Warn/Crit) | $< 10\text{ ms}$ | 5-station Byzantine quorum + DGMS blast veto |
 | **Siren Action** | Dry-contact relay command | 125 dB physical audio siren | $< 250\text{ ms}$ | Local hardware latch; independent of cellular/cloud |
-| **C9 Twin** | Calibrated state buffer (48 slices) | $64 \times 64$ continuous elevation mesh | $\sim 45\text{ s}$ (Async)| PINN decoupled from safety alarm loop |
+| **C9 Twin** | Calibrated state buffer (48 slices) | $64 × 64$ continuous elevation mesh | $\sim 45\text{ s}$ (Async)| PINN decoupled from safety alarm loop |
 
 #### Latency Budget Synthesis:
 The critical safety path (Ingestion $\to$ C7 Calibration $\to$ C8 Quorum $\to$ Siren Contact Closure) executes in:

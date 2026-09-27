@@ -17,10 +17,10 @@
 
 | Component | Part Description / Model | Unit Cost (₹) | Source / Distributor | Technical Justification |
 | :--- | :--- | :--- | :--- | :--- |
-| **Compute & Wireless** | ESP32-WROOM-32 (Dual Core, 240 MHz) + Semtech SX1262 LoRa module | ₹480 | Robu.in / Domestic distributors | Ultra-low deep-sleep current ($5\ \mu\text{A}$), 865–867 MHz band support, $+22\text{ dBm}$ link budget. |
-| **Primary Inclinometer** | InvenSense MPU-6050 (3-axis MEMS accelerometer + gyro) | ₹160 | Domestic electronics distributor | $16\text{-bit}$ resolution, $\pm 2g$ scale, $0.05^\circ$ angular tilt resolution, digital $I^2C$ interface. |
-| **Energy Storage** | 3.2V 1500mAh LiFePO4 18650 cell + TP5000 CC/CV charge management | ₹240 | Robu.in / Semikart | Intrinsically stable lithium chemistry; zero thermal runaway risk up to $60^\circ\text{C}$; 2000+ lifecycle cycles. |
-| **Solar Harvesting** | 1W 5V Monocrystalline Solar Panel (Epoxy sealed) | ₹180 | Domestic solar manufacturer | Delivers $\approx 180\text{ mA}$ peak current under peak sunlight; recharges daily node energy consumption in under 45 minutes. |
+| **Compute & Wireless** | ESP32-WROOM-32 (Dual Core, 240 MHz) + Semtech SX1262 LoRa module | ₹480 | Robu.in / Domestic distributors | Ultra-low deep-sleep current ($5\ µA$), 865–867 MHz band support, $+22\text{ dBm}$ link budget. |
+| **Primary Inclinometer** | InvenSense MPU-6050 (3-axis MEMS accelerometer + gyro) | ₹160 | Domestic electronics distributor | $16\text{-bit}$ resolution, $± 2g$ scale, $0.05^°$ angular tilt resolution, digital $I^2C$ interface. |
+| **Energy Storage** | 3.2V 1500mAh LiFePO4 18650 cell + TP5000 CC/CV charge management | ₹240 | Robu.in / Semikart | Intrinsically stable lithium chemistry; zero thermal runaway risk up to $60^°\text{C}$; 2000+ lifecycle cycles. |
+| **Solar Harvesting** | 1W 5V Monocrystalline Solar Panel (Epoxy sealed) | ₹180 | Domestic solar manufacturer | Delivers $≈ 180\text{ mA}$ peak current under peak sunlight; recharges daily node energy consumption in under 45 minutes. |
 | **Enclosure & Mount** | IP67 Polycarbonate Enclosure + PG7 cable glands + rebar clamp | ₹270 | Local injection molding / hardware | Ingress protection against mine slurry, heavy monsoon downpours, and coal dust; UV-stabilized. |
 | **Passives & PCB** | Double-sided FR4 PCB, TVS surge diodes, bypass caps, fasteners | ₹120 | Domestic assembly / JLCPCB | Transient voltage protection against electro-static discharge and induced surface lightning spikes. |
 | **Total Unit Cost** | — | **₹1,450** | — | **Fully functional autonomous Tier 1A Scout Node.** |

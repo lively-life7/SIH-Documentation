@@ -68,9 +68,9 @@ By evaluating these analytical derivatives, AEGIS achieves exact ground truth be
 | Physical Channel | Fully Settled State ($t \to \infty$) | At Day 40 ($\eta = 0.432$) | Hardware Measurement Range | Margin to Saturation |
 | :--- | :--- | :--- | :--- | :--- |
 | **Subsidence ($S$)** | **1.950 meters** | $0.842\text{ meters}$ | Analytical Benchmark | — |
-| **Surface Tilt ($T$)** | **25,978 µrad ($1.49^\circ$)** | $11,222\ \mu\text{rad}$ | $\pm 65,534\ \mu\text{rad}$ @ $2\ \mu\text{rad}$ LSB | **2.52×** |
-| **Horizontal Strain ($\varepsilon$)** | **12,649 µε** | $5,464\ \mu\varepsilon$ | $\pm 32,767\ \mu\varepsilon$ @ $1\ \mu\varepsilon$ LSB | **2.59×** |
-| **Extensometer (10m Span)** | **126.5 mm** | $54.6\text{ mm}$ | $\pm 327.6\text{ mm}$ @ $10\ \mu\text{m}$ LSB | **2.59×** |
+| **Surface Tilt ($T$)** | **25,978 µrad ($1.49^°$)** | $11,222\ µrad$ | $± 65,534\ µrad$ @ $2\ µrad$ LSB | **2.52×** |
+| **Horizontal Strain ($ε$)** | **12,649 µε** | $5,464\ µε$ | $± 32,767\ µε$ @ $1\ µε$ LSB | **2.59×** |
+| **Extensometer (10m Span)** | **126.5 mm** | $54.6\text{ mm}$ | $± 327.6\text{ mm}$ @ $10\ µm$ LSB | **2.59×** |
 
 **Engineering Validation:**
 1. **Dynamic Headroom:** Every physical channel maintains a safety factor greater than $2.5\times$ above the maximum theoretical asymptotic deformation. Transducers will never saturate, even during extreme geological super-subsidence events.

@@ -82,14 +82,14 @@ Where:
 | Parameter Symbol | Frozen Value | Engineering Units | Physical Meaning |
 | :--- | :--- | :--- | :--- |
 | `H` | 150.0 | meters | Seam depth below surface datum |
-| `TAN_BETA` | 2.0 | dimensionless | Tangent of major angle of draw ($\beta \approx 63.4^\circ$) |
+| `TAN_BETA` | 2.0 | dimensionless | Tangent of major angle of draw ($\beta ≈ 63.4^°$) |
 | `R_INFL` | 75.0 | meters | Knothe radius of influence ($H / \tan\beta$) |
 | `M_SEAM` | 3.0 | meters | Extracted coal seam thickness |
 | `A_SUBS` | 0.65 | dimensionless | Empirical subsidence coefficient (PINN target) |
 | `S_MAX` | 1.95 | meters | Maximum asymptotic center subsidence ($a \cdot m_{\text{seam}}$) |
 | `C_KNOTHE` | 0.01414 | $\text{day}^{-1}$ | Time decay coefficient (PINN target) |
 | `B_HORIZ` | 24.0 | meters | Awershin horizontal displacement factor ($0.32 \cdot r$) |
-| `PANEL` | (100, 100, 700, 300) | meters | Extraction panel coordinates ($600\text{m} \times 200\text{m}$) |
+| `PANEL` | (100, 100, 700, 300) | meters | Extraction panel coordinates ($600\text{m} × 200\text{m}$) |
 
 Any dynamic panel deployment recalculates $r$, $S_{\text{max}}$, and $B_{\text{horiz}}$ algorithmically from the site's measured depth $H$, seam height $m_{\text{seam}}$, and draw angle tangent $\tan\beta$.
 

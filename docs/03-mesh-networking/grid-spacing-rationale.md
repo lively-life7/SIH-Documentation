@@ -110,12 +110,12 @@ This confirms that the primary surface zone of tensile and compressive deformati
 
 **Answer:** Across empirical survey lines and synthetic field datasets (such as the Adriyala Longwall Project at $H = 375\text{m}$, $r = 187.5\text{m}$), evaluating reconstruction error across various grid spacings yields an interpolation error knee:
 
-| Grid Spacing ($\Delta$) | Maximum Spatial Interpolation Error | Relative Deployment Density | Engineering Assessment |
+| Grid Spacing (Δ) | Maximum Spatial Interpolation Error | Relative Deployment Density | Engineering Assessment |
 | :--- | :--- | :--- | :--- |
-| **100 meters** | $142\text{ mm}$ | $1.0\times$ (Low) | Unacceptable; severe spatial aliasing; completely misses localized tensile fractures |
-| **60 meters** | $58\text{ mm}$ | $1.6\times$ | Marginal; fails to reliably resolve peak tensile strain inflection points |
-| **40 meters** | **21 mm (Optimal Knee)** | **2.4×** | **Optimal Engineering Knee for Deep Seams ($H > 300\text{m}$)** |
-| **20 meters** | $18\text{ mm}$ | $4.8\times$ | Diminishing returns for deep seams (doubles hardware for only 3mm gain); mandatory for shallow panels |
+| **100 meters** | 142 mm | 1.0× (Low) | Unacceptable; severe spatial aliasing; completely misses localized tensile fractures |
+| **60 meters** | 58 mm | 1.6× | Marginal; fails to reliably resolve peak tensile strain inflection points |
+| **40 meters** | **21 mm (Optimal Knee)** | **2.4×** | **Optimal Engineering Knee for Deep Seams (H > 300m)** |
+| **20 meters** | 18 mm | 4.8× | Diminishing returns for deep seams (doubles hardware for only 3mm gain); mandatory for shallow panels |
 
 For deep seams ($H > 300\text{m}$), **40m spacing** achieves the ideal engineering knee, delivering high reconstruction accuracy ($21\text{ mm}$ error) without over-instrumentation. For shallow panels ($H \le 150\text{m}$), the error curve shifts leftward, making **15–25m spacing** mandatory to capture the sharper deformation gradient.
 

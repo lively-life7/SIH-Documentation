@@ -44,14 +44,14 @@
 
 | Offset (Bytes) | Field Identifier | Wire Data Type | Physical Scaling / LSB | Valid Measurement Range | Physical Geotechnical Meaning |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **0 – 1** | `tilt_x` | int16 (Little-Endian) | $2\ \mu\text{rad / LSB}$ | $\pm 65,534\ \mu\text{rad}$ ($\approx \pm 3.75^\circ$) | Transverse ground surface inclination angle |
-| **2 – 3** | `tilt_y` | int16 (Little-Endian) | $2\ \mu\text{rad / LSB}$ | $\pm 65,534\ \mu\text{rad}$ ($\approx \pm 3.75^\circ$) | Longitudinal ground surface inclination angle |
-| **4 – 5** | `strain_ue` | int16 (Little-Endian) | $1\ \mu\varepsilon\text{ / LSB}$ | $\pm 32,767\ \mu\varepsilon$ | Horizontal ground strain across 10m baseline |
-| **6 – 7** | `ext_delta_10um`| int16 (Little-Endian) | $10\ \mu\text{m / LSB}$ | $\pm 327.6\text{ mm}$ | 3D relative peg displacement across fault line |
+| **0 – 1** | `tilt_x` | int16 (Little-Endian) | $2\ µ\text{rad / LSB}$ | $± 65,534\ µrad$ ($≈ ± 3.75^°$) | Transverse ground surface inclination angle |
+| **2 – 3** | `tilt_y` | int16 (Little-Endian) | $2\ µ\text{rad / LSB}$ | $± 65,534\ µrad$ ($≈ ± 3.75^°$) | Longitudinal ground surface inclination angle |
+| **4 – 5** | `strain_ue` | int16 (Little-Endian) | $1\ µε\text{ / LSB}$ | $± 32,767\ µε$ | Horizontal ground strain across 10m baseline |
+| **6 – 7** | `ext_delta_10um`| int16 (Little-Endian) | $10\ µ\text{m / LSB}$ | $± 327.6\text{ mm}$ | 3D relative peg displacement across fault line |
 | **8 – 9** | `vib_rms_x100` | uint16 (Little-Endian)| $0.01\text{ mm/s / LSB}$ | $0.00\text{ to }655.35\text{ mm/s}$ | RMS ground vibration velocity during burst |
 | **10 – 11**| `vib_peak_x100`| uint16 (Little-Endian)| $0.01\text{ mm/s / LSB}$ | $0.00\text{ to }655.35\text{ mm/s}$ | Peak Particle Velocity (PPV) shock impulse |
 | **12** | `vib_fdom_hz` | uint8 | $1\text{ Hz / LSB}$ | $0\text{ to }255\text{ Hz}$ | Dominant FFT spectral frequency peak |
-| **13 – 14**| `temp_dc` | int16 (Little-Endian) | $0.1^\circ\text{C / LSB}$ | $-40.0^\circ\text{C to }+85.0^\circ\text{C}$ | Semiconductor die temperature for thermal compensation |
+| **13 – 14**| `temp_dc` | int16 (Little-Endian) | $0.1^°\text{C / LSB}$ | $-40.0^°\text{C to }+85.0^°\text{C}$ | Semiconductor die temperature for thermal compensation |
 | **15 – 16**| `vbat_mv` | uint16 (Little-Endian)| $1\text{ mV / LSB}$ | $2,500\text{ to }4,500\text{ mV}$ | LiFePO4 battery terminal voltage |
 | **17** | `status_flags` | uint8 (Bitmask) | 8 discrete flags | Bitfield | Sensor self-test, trip, solar, and failover status |
 | **18 – 19**| `epoch_lo` | uint16 (Little-Endian)| 1 epoch ($60\text{ s}$) | $0\text{ to }65,535$ ($45.5\text{ days}$) | Lower 16 bits of hardware sample sequence clock |

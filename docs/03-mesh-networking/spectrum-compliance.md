@@ -27,7 +27,7 @@ The regulatory foundation is **Gazette of India Notification G.S.R. 564(E)**, da
 | Technical Parameter | Statutory Ceiling (GSR 564(E)) | AEGIS Operational Specification | Regulatory Compliance Margin | Verification Status |
 | :--- | :--- | :--- | :--- | :--- |
 | **Frequency Range** | $865.000\text{ to }867.000\text{ MHz}$ | **$865.100\text{ to }866.900\text{ MHz}$** | $100\text{ kHz}$ guard band from band edges | **PASS** (Full containment) |
-| **Channel Bandwidth** | **$\le 200\text{ kHz}$ maximum** | **$125\text{ kHz}$ (BW125)** | $75\text{ kHz}$ buffer below statutory limit | **PASS (Test T18)** |
+| **Channel Bandwidth** | **$≤ 200\text{ kHz}$ maximum** | **$125\text{ kHz}$ (BW125)** | $75\text{ kHz}$ buffer below statutory limit | **PASS (Test T18)** |
 | **Conducted RF Power** | Maximum $30.0\text{ dBm}$ ($1.0\text{ W}$) | **$+14\text{ dBm}$ (Scout) / $+27\text{ dBm}$ (Relay)** | $3.0\text{ dBm}$ to $16.0\text{ dBm}$ below limit | **PASS** |
 | **Effective Radiated Power (ERP)** | Maximum $36.0\text{ dBm}$ ($4.0\text{ W}$) | **$+30.0\text{ dBm}$ ERP (Gateway 8.5 dBi omni)** | $6.0\text{ dB}$ safety margin below statutory ceiling | **PASS** |
 | **Statutory Duty Cycle Clause** | **None specified in GSR 564(E)** | **Self-imposed $1.0\%$ ceiling** | Scout: $0.15\%$ max; Anchor: $0.56\%$ max | **PASS (Test T12)** |
