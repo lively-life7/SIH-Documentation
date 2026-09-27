@@ -23,10 +23,10 @@ Current monitoring approaches in Indian coalfields suffer from fatal trade-offs:
 
 ## 3. Core Architectural Principles & Clarifications
 
-### Dynamic Panel Sizing vs. Static Node Counts
+### Dynamic Panel Sizing vs. Static Hardware Caps
 > [!IMPORTANT]
-> **Dynamic Scaling Model:**
-> Previous legacy notes referenced a fixed "31-node / <₹1.5 Lakhs" setup. In real-world mining engineering, **a fixed node count is technically incorrect**. Coal panels differ significantly based on mining methods (Bord-and-Pillar depillaring vs. Longwall faces), seam depth ($H \in [50\text{m}, 400\text{m}]$), panel length ($L \in [200\text{m}, 1500\text{m}]$), and panel width ($W \in [100\text{m}, 300\text{m}]$).
+> **Dynamic Scaling Architecture:**
+> In real-world underground coal mining, **a static, fixed hardware count is technically incorrect**. Coal panels differ substantially based on extraction methods (Bord-and-Pillar depillaring vs. Longwall faces), seam depth ($H \in [50\text{m}, 400\text{m}]$), panel length ($L \in [200\text{m}, 1500\text{m}]$), and panel width ($W \in [100\text{m}, 300\text{m}]$).
 
 AEGIS employs a **physics-derived dynamic sizing model**:
 * **Influence Radius Calculation:** $r = \frac{H}{\tan(\beta)}$, where $\beta$ is the major angle of draw.

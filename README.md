@@ -76,8 +76,8 @@ docs/
 ## Architectural Clarification: Dynamic Panel Sizing & Modular Cost Scaling
 
 > [!IMPORTANT]
-> **Dynamic Scaling Over Static Node Counts:**
-> Previous early drafts referenced a fixed "31-node / <₹1.5 Lakhs" deployment. In actual underground mining operations, panel dimensions, extraction depths, and geological strata vary substantially. AEGIS rejects rigid node counts and fixed package costs in favor of a **physics-driven dynamic sizing model**:
+> **Dynamic Scaling Over Static Hardware Limits:**
+> In actual underground mining operations, panel dimensions, extraction depths, and geological strata vary substantially. AEGIS rejects rigid static node counts and arbitrary package caps in favor of a **physics-driven dynamic sizing model**:
 > 
 > 1. **Variable Mine Panel Geometry:** Coal panels range from 200m to 1,500m in length, 100m to 300m in width, with seam depths ($H$) from 50m to 400m+. Node counts are computed dynamically based on the Knothe influence radius ($r = H / \tan\beta$) and the Nyquist spatial sampling limit ($\Delta \le r/2.86 \approx 15\text{--}25\text{m}$).
 > 2. **Modular Cost Scaling:** The Scout Node BOM is maintained at an ultra-low unit cost (~₹1,050/node using indigenous COTS components). The total panel deployment cost scales linearly with the calculated node count ($N$) and terrain criticality, providing massive savings compared to imported systems (₹2–5L per unit, ₹40–60L+ per panel) regardless of panel size.
